@@ -512,12 +512,13 @@ for (my $i=0; $i<scalar(@blockorder); $i++) {
 #		my $svganchor=$svgtag->anchor (id=>"Anchor$idvblock-$idvtrack");
 		my $gridlineX1=$confighash{'plot_margin_left'}+$confighash{'plot_line_size'}/2+$confighash{'gridline_left_margin'};
 		my $gridlineX2=$confighash{'plot_width'}-$confighash{'plot_line_size'}/2-$confighash{'plot_margin_right'}-$confighash{'gridline_right_margin'};
-		if (($confighash{'bar_fill_width'}*scalar(@tissueorder)*(scalar(keys %{$annotationhash{$idvblock}{$idvtrack}})))>($gridlineX2-$gridlineX1)) {
-			die "Error: not enought space to draw barplot, consider to reduce bar_fill_width\n";
-		}
-		my $barplot_inter_feature_space=($gridlineX2-$gridlineX1-$confighash{'bar_fill_width'}*scalar(@tissueorder)*(scalar(keys %{$annotationhash{$idvblock}{$idvtrack}})))/(scalar(keys %{$annotationhash{$idvblock}{$idvtrack}})+1);
+		
 		if ($idvtrack eq 'EXPRESSION') {### For Expression ###
 			###Drawing gridline
+			if (($confighash{'bar_fill_width'}*scalar(@tissueorder)*(scalar(keys %{$annotationhash{$idvblock}{$idvtrack}})))>($gridlineX2-$gridlineX1)) {
+			die "Error: not enought space to draw barplot, consider to reduce bar_fill_width BLOCK $idvblock TRACK $idvtrack\n";
+		}
+			my $barplot_inter_feature_space=($gridlineX2-$gridlineX1-$confighash{'bar_fill_width'}*scalar(@tissueorder)*(scalar(keys %{$annotationhash{$idvblock}{$idvtrack}})))/(scalar(keys %{$annotationhash{$idvblock}{$idvtrack}})+1);
 			unless ($gridline_drawed) {
 				unless ($gridlineX1<$gridlineX2) {
 					die "Error: no space to draw gridline BLOCK TRACK \n";
@@ -1310,6 +1311,7 @@ sub AssignSubtrack {
 					if ($ASstart>$ASblockmax{$_}) {
 						$ASfinaltracks{$ASthisid}=$_;
 						$ASblockmax{$_}=$ASend;
+						last;
 					}
 				}
 				unless (exists $ASfinaltracks{$ASthisid}) {
@@ -1317,6 +1319,7 @@ sub AssignSubtrack {
 					$ASblockmax{$AStracknum}=$ASend;
 					$ASfinaltracks{$ASthisid}=$AStracknum;
 				}
+				print "Test: Feature ID $ASthisid TRACK $AStracknum\n"; ### For test ###
 			}
 		}
 	}
