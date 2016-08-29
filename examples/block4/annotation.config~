@@ -2,17 +2,17 @@
 ##Mkae sure feature_name is unique
 AA	1	5709	+	AA0650090	.	gene	arrow	brown
 AA	6026	7010	-	AA0650080	.	gene	arrow	darkcyan
-AA	7131	11192	+	AA0650070	.	gene	arrow	blue
+AA	7131	11192	+	AA0650070	.	gene	arrow	darkrgb(0, 255, 0)
 AA	11334	15255	-	AA0650060	.	gene	arrow	darkslategray
 AA	14816	17115	+	AA0650040	.	gene	arrow	rgb(255, 0, 255)
 BB	1001	6635	+	AA0792530	.	gene	arrow	brown
 BB	6699	7690	-	AA0792540	.	gene	arrow	darkcyan
-BB	7791	11795	+	AA0792550	.	gene	arrow	blue
+BB	7791	11795	+	AA0792550	.	gene	arrow	darkrgb(0, 255, 0)
 BB	11891	15420	-	AA0792560	.	gene	arrow	darkslategray
 BB	15521	18289	+	AA0792570	.	gene	arrow	rgb(255, 0, 255)
 DD	1001	14570	+	AA0860630	.	gene	arrow	brown
 DD	14525	15560	-	AA0860640	.	gene	arrow	darkcyan
-DD	15558	19721	+	AA0860650	.	gene	arrow	blue
+DD	15558	19721	+	AA0860650	.	gene	arrow	darkrgb(0, 255, 0)
 DD	19734	23500	-	AA0860660	.	gene	arrow	darkslategray
 DD	23601	26290	+	AA0860670	.	gene	arrow	rgb(255, 0, 255)
 AA	11932	12009	.	AA_repeat1	.	repeat	box	black
