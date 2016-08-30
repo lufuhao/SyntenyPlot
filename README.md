@@ -61,8 +61,13 @@ anntation.config specifies the gene/feature/repeat locations
 + [ ] 2. Make delicate legends.
 + [ ] 3. Avoid Tick marks out of main plot
 
+#Citation:
+
+To be published.
+
 #Author:
 ---------------------------------------------------------------------
+
 >	**Fu-Hao Lu**
 
 >	Post-Doctoral Scientist in Micheal Bevan laboratory
@@ -72,4 +77,5 @@ anntation.config specifies the gene/feature/repeat locations
 >	Norwich NR4 7UH, United Kingdom
 
 >	E-mail: <Fu-Hao.Lu@jic.ac.uk>
+
 ---------------------------------------------------------------------
