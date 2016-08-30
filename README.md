@@ -22,7 +22,7 @@ another method
 </div>
 
 <a href="./block4.svg">
-  <img src="./block4.svg?raw=true" width="200" height="100">
+  <img src="./block4.svg?raw=true" width="200" height="100" align="center">
 </a>
 
 #Requirements: 
