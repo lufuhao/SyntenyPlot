@@ -10,8 +10,6 @@ SVG format further improvement could be achieved using Adobe Illustrator on Wind
 
 >Click *block4.svg* for an example, to see what the output svg looks like.
 
-<a><img src="./block4.svg?raw=true" style="width:500px;height:250px;"></a>
-
 #Requirements: 
 	Perl Modules: SVG, Data::Dumper
 
