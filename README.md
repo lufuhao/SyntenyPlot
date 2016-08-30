@@ -8,7 +8,7 @@ Produce publishable vector-format synteny views using user-defined parameter and
 
 SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
-![OutputExample](./block4.svg "Example: block4")
+![OutputExample](./block4.svg?raw=true "Example: block4")
 
 #Requirements: 
 	Perl Modules: SVG, Data::Dumper
@@ -42,9 +42,9 @@ anntation.config specifies the gene/feature/repeat locations
 
 #TO-DO list;
 
->	1. Support CDS TRACKs
->	2. Make delicate legends.
->	3. Avoid Tick marks out of main plot
++ [ ] 1. Support CDS TRACKs
++ [ ] 2. Make delicate legends.
++ [ ] 3. Avoid Tick marks out of main plot
 
 #Author:
 ---------------------------------------------------------------------
