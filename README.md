@@ -10,13 +10,13 @@ usage: synteny_plot.pl global.config synteny.config annotation.config output.svg
 	Perl Modules: SVG, Data::Dumper
 
 #HOW-TO
-##1. user.config
+##1. **user.config**
 
 user.config contains plot parameter for the plot, including length, height, and color of line and fillins
 
 >		Better to defined the sequence length here as autodetected length by this script might not be the real length
 
-##2. synteny.config
+##2. **synteny.config**
 
 synteny.config specifies the syntonic region between two sequences
 
@@ -27,7 +27,7 @@ synteny.config specifies the syntonic region between two sequences
 >		*Final format:	
 >			#REF1	START1	END1	REF2	START2	END2	...
 
-##3. anntation.config 
+##3. **anntation.config**
 
 anntation.config specifies the gene/feature/repeat locations
 
@@ -44,7 +44,7 @@ anntation.config specifies the gene/feature/repeat locations
 
 #Author:
 
->	Fu-Hao Lu
+>	**Fu-Hao Lu**
 >	Post-Doctoral Scientist in Micheal Bevan laboratory
 >	Cell and Developmental Department, John Innes Centre
 >	Norwich NR4 7UH, United Kingdom
