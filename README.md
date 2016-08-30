@@ -21,8 +21,8 @@ another method
         <img width="45%" src="./block4.svg" alt="Example" title="Example"</img>
 </div>
 
-<a href="https://github.com/lufuhao/SyntenyPlot/blob/master/block4.svg">
-  <img src="https://github.com/lufuhao/SyntenyPlot/blob/master/block4.svg" width="100%" height="144">
+<a href="./block4.svg">
+  <img src="./block4.svg" width="100%" height="144">
 </a>
 
 #Requirements: 
