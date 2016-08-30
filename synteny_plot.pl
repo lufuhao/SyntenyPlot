@@ -7,7 +7,21 @@ use constant USAGE =><<EOH;
 
 usage: $0 global.config synteny.config annotation.config output.svg
 
-v20160824
+Descriptions:
+	Produce publishable vector-format synteny views using user-defined parameter and datasets
+
+Requirements: 
+	Perl Modules: SVG, Data::Dumper
+
+Version:
+	v20160829
+
+Author:
+	Fu-Hao Lu
+	Post-Doctoral Scientist in Micheal Bevan laboratory
+	Cell and Developmental Department, John Innes Centre
+	Norwich NR4 7UH, United Kingdom
+	E-mail: Fu-Hao.Lu\@jic.ac.uk
 
 EOH
 die USAGE if (scalar(@ARGV) !=4 or $ARGV[0] eq '-h' or $ARGV[0] eq '--help');
@@ -36,98 +50,121 @@ $outputsvg=$ARGV[3];
 
 
 ### Defaults
+my %userdefault=();
 my %confighash=();
 my %syntenyhash=();
 my %annotationhash=();
 my @blockorder=();
-my $use_defined_order=0;
 my @tissueorder=();
-my $use_defined_tissueorder=0;
-my %seqlength=();
-my $use_defined_trackorder=0;
 my @trackoders=();
+my %seqlength=();
 my %alltrackheight=();
-my $auto_calc_expression_height=0;
 my %express_location=();
 my $primaryloci=[];
 my %loci=();
 my %tissue_lengend=();
-##[plot]
-#%confighash= {'plot_height' => 500, 'plot_width' => 2000};
-my $plot_height_default=500;
-my $plot_width_default=2000;
-my $plot_margin_left_default=10;
-my $plot_margin_right_default=10;
-my $plot_margin_top_default=10;
-my $plot_margin_bottom_default=10;
-my $plot_line_size_default=1;
-my $plot_background_color_default='white';
-$confighash{'plot_inner1_height'}=1;
-$confighash{'plot_inner1_color'}='rgb(70, 130, 180)';
-$confighash{'plot_inner2_height'}=1;
-$confighash{'plot_inner2_color'}='rgb(154, 188, 217)';
-##[synteny]
-my $synteny_height_default=50;
-#my $synteny_fillin_color_default='rgb(204,233,223)';
-my $synteny_line_color_default='black';
-my $synteny_order_default='ToBeDetected';
-##[ruler]
-my $ruler_mark_interval_default=5000;
-my $ruler_tick_length_default=9;
-my $ruler_tick_width_default=1;
-my $ruler_font_size_default=16;
-my $ruler_text_color_default='black';
-##[track]
-my $track_height_default=5;
-my $track_space_default=3;
-my $track_color_default='black';
-my $track_arrow_add_default=3;
-my $track_arrow_length_default=15;
-my $track_order_default='ToBeDetected';
+my $use_defined_order=0;
+my $use_defined_tissueorder=0;
+my $use_defined_trackorder=0;
+my $auto_calc_expression_height=0;
 my $track_remaining_space_height=0;
-$confighash{'track_subtrack_space_height'}=3;
-###[expression]
-my $gridline_width_default=1;
-my $gridline_color_default='grey';
-my $gridline_left_margin_default=15;
-my $gridline_right_margin_default=5;
-my $error_line_width_default=1;
-my $error_line_length_default=5;
-my $bar_line_width_default=1;
-my $barplot_order_default='ToBeDetected';
 my $expression_top_space=3;
 
 
-### read global config
+### Default
+#%confighash= {'plot_height' => 500, 'plot_width' => 2000};
+%userdefault=(
+##[plot]
+	'plot_height' => 500,
+	'plot_width' => 2000,
+	'plot_margin_left' => 10,
+	'plot_margin_right' => 10,
+	'plot_margin_top' => 10,
+	'plot_margin_bottom' => 10,
+	'plot_line_size' => 1,
+	'plot_background_color' => 'white',
+#	'plot_font_family' => 'Arial',
+##[synteny]
+	'synteny_height' => 50,
+	'synteny_fillin_color' => 'rgb(204,233,223)',
+	'synteny_line_color' => 'black',
+	'synteny_line_width' => 1,
+	'synteny_order' => 'ToBeDetected',
+##[ruler]
+	'ruler_mark_interval' => 5000,
+	'ruler_tick_color' => 'black',
+	'ruler_tick_length' => 14,
+	'ruler_font_size' => 14,
+	'ruler_tick_width' => 1,
+	'ruler_font_distance' => 2,
+	'ruler_text_color' => 'black',
+##[track]
+	'track_height' => 5,
+	'track_space' => 3,
+	'track_color' => 'black',
+	'track_arrow_add' => 2,
+	'track_arrow_length' => 15,
+	'track_order' => 'ToBeDetected',
+	'track_subtrack_space_height' => 3,
+##[expression]
+### [expression][gridline]
+	'gridline_width' => 1,
+	'gridline_color' => 'grey',
+	'gridline_interval' => 2,
+	'gridline_min' => 0,
+	'gridline_max' => 6,
+	'gridline_left_margin' => 15,
+	'gridline_right_margin' => 5,
+	'gridtext_color' => 'black',
+	'gridtext_size' => 12,
+### [expression][barplot]
+	'barplot_order' => 'ToBeDetected',
+	'bar_line_width' => 1,
+	'bar_alignment' => 'MIDDLE',
+	'bar_fill_width' => 15,
+### [expression][stdev]
+	'error_line_width' => 1,
+	'error_line_length' => 5,
+	'error_line_color' => 'black',
+### [expression][LEGEND]
+	'legend_plot_position' => 'TOP',
+	'legend_text_color' => 'black',
+	'legend_text_size' => 14,
+	'legend_plot_aplignment' => 'RIGHT',
+	'legend_between_interval' => 9,
+);
+
+
+
+### Reading configs
+### read user config
 unless (&readUsrCfg($userconfig)) {
 	die "(MAIN)Error: unable to read user.config: $userconfig\n";
 }
-
 if ($confighash{'synteny_order'} eq 'ToBeDetected') {
 	$use_defined_order=0;
 }
-elsif ($confighash{'synteny_order'} !~ /,/) {
+else {
 	$use_defined_order=1;
-}
-if ($use_defined_order==1) {
 	@blockorder=split(/,/, $confighash{'synteny_order'});
+}
+if ($confighash{'track_order'} eq 'ToBeDetected') {
+	print "Info: TRACK order not user-defined\n";
+	$use_defined_trackorder=0;
+}
+else {
+	print "Info: TRACK order user-defined\n";
+	$use_defined_trackorder=1;
+	@trackoders=split(/,/, $confighash{'track_order'});
+	foreach (my $i=0; $i<scalar(@trackoders); $i++) {$trackoders[$i]=uc($trackoders[$i]);}
 }
 if ($confighash{'barplot_order'} eq 'ToBeDetected') {
 	$use_defined_tissueorder=0;
 }
-elsif ($confighash{'barplot_order'} !~ /,/) {
+else {
 	$use_defined_tissueorder=1;
-}
-if ($use_defined_tissueorder==1) {
 	@tissueorder=split(/,/, $confighash{'barplot_order'});
 }
-if ($confighash{'track_order'} eq 'ToBeDetected') {
-	$use_defined_trackorder=0;
-}
-elsif ($confighash{'barplot_order'} !~ /,/) {
-	$use_defined_trackorder=1;
-}
-
 
 ### read synteny config
 unless (&readSyntenyCfg($syntenyconfig)) {
@@ -138,12 +175,15 @@ unless (&readAnnotationCfg($annotationconfig)) {
 	die "(MAIN)Error: unable to read annotation.config: $annotationconfig\n";
 }
 
-print "\n\n\n###SUMMARY: ###\n";
 
+
+### Print Input SUMMARY ###
+print "\n\n\n###SUMMARY: ###\n";
 print "BLOCK order (predefined: $use_defined_order TotalElement: ", scalar(@blockorder), "): ", join(',', @blockorder), "\n";
 print "TRACK order (predefined: $use_defined_trackorder TotalElement: ", scalar(@trackoders), "): ", join(',', @trackoders), "\n";
 print "TRACK order (predefined: $use_defined_tissueorder TotalElement: ", scalar(@tissueorder), "): ", join(',', @tissueorder), "\n";
 print "\n\n\n";
+
 
 
 ### Estimate track height
@@ -267,7 +307,7 @@ $trackdrawspace=$trackdrawspace-$confighash{'plot_line_size'}*(scalar(@blockorde
 print "Test: Total Y writable space: $trackdrawspace\n"; ### for test ###
 
 
-###Check if every track gets its height
+###Double Check if every track gets its height
 my %undeterminedtrackheight=();
 my $total_trackheight=0;
 foreach my $idvblock (@blockorder) {
@@ -317,6 +357,8 @@ else {
 }
 %undeterminedtrackheight=();
 
+
+
 ###Final check \%alltrackheight
 if (0) {
 	print "\n\%alltrackheight\n";
@@ -336,20 +378,13 @@ foreach my $idvblock (@blockorder) {
 }
 
 
+
+### Drawable Y space
 my $horizontal_drawing_space=$confighash{'plot_width'}- 2 * $confighash{'plot_line_size'}-$confighash{'plot_margin_left'}-$confighash{'plot_margin_right'};
 
 
 
 ###starting drawing
-#%annotationhash %confighash
-#$annotationhash{$RACarr[0]}{$RACarr[6]}{$RACarr[4]}{'position'}="$RACarr[1]-$RACarr[2]";
-#			$annotationhash{$RACarr[0]}{$RACarr[6]}{$RACarr[4]}{'strand'}="$RACarr[3]";
-#			$annotationhash{$RACarr[0]}{$RACarr[6]}{$RACarr[4]}{'plot'}="$RACarr[7]";
-#			$annotationhash{$RACarr[0]}{$RACarr[6]}{$RACarr[4]}{'color'}="$RACarr[8]";
-#$annotationhash{$RACarr[0]}{'EXPRESSION'}{$RACarr[1]}{$RACarr[2]}{'value'}=$RACarr[5];
-#			$annotationhash{$RACarr[0]}{'EXPRESSION'}{$RACarr[1]}{$RACarr[2]}{'stdev'}=$RACarr[4];
-#			$annotationhash{$RACarr[0]}{'EXPRESSION'}{$RACarr[1]}{$RACarr[2]}{'color'}=$RACarr[8];
-
 my $vectorout=SVG->new(width=>$confighash{'plot_width'}, height=>$confighash{'plot_height'});
 ### draw plot
 $vectorout->rectangle(x => 0, y => 0, 
@@ -396,7 +431,6 @@ for (my $i=0; $i<scalar(@blockorder); $i++) {
 #						'stroke-width'   =>  $confighash{'plot_line_size'},#$confighash{'plot_line_size'},
 #						'stroke-opacity' => 1,
 #						});
-
 	$vectorout->rectangle(x => $starttingX, y => $starttingY, 
 						width  	=> $confighash{'plot_width'}-$confighash{'plot_margin_right'}-$confighash{'plot_margin_right'}, 
 						height => $block_total_height,
@@ -411,18 +445,21 @@ for (my $i=0; $i<scalar(@blockorder); $i++) {
 	my $inner1topXleft=$starttingX+$confighash{'plot_line_size'}/2;
 	my $inner1topXright=$confighash{'plot_width'}-$confighash{'plot_line_size'}/2-$confighash{'plot_margin_right'};
 	my $inner1topY=$starttingY+$confighash{'plot_line_size'}/2+$confighash{'plot_inner1_height'}/2;
-	$vectorout->line (   id=> "$idvblock-top-inner1",
-						x1 => $inner1topXleft,
-						y1 => $inner1topY, 
-						x2 => $inner1topXright, 
-						y2 => $inner1topY, 
-						stroke => $confighash{'plot_inner1_color'}, 
-						"stroke-width" => $confighash{'plot_inner1_height'}
+	unless ($confighash{'plot_inner1_height'}>0) {
+		$vectorout->line (   id=> "$idvblock-top-inner1",
+							x1 => $inner1topXleft,
+							y1 => $inner1topY, 
+							x2 => $inner1topXright, 
+							y2 => $inner1topY, 
+							stroke => $confighash{'plot_inner1_color'}, 
+							"stroke-width" => $confighash{'plot_inner1_height'}
 						
-					);
+						);
+	}
 	my $inner2topXleft=$starttingX+$confighash{'plot_line_size'}/2;
 	my $inner2topXright=$confighash{'plot_width'}-$confighash{'plot_line_size'}/2-$confighash{'plot_margin_right'};
 	my $inner2topY=$inner1topY+$confighash{'plot_inner1_height'}/2+$confighash{'plot_inner2_height'}/2;
+	unless ($confighash{'plot_inner2_height'}>0) {
 	$vectorout->line (   id=> "$idvblock-top-inner2",
 						x1 => $inner2topXleft,
 						y1 => $inner2topY, 
@@ -431,6 +468,7 @@ for (my $i=0; $i<scalar(@blockorder); $i++) {
 						stroke => $confighash{'plot_inner2_color'}, 
 						"stroke-width" => $confighash{'plot_inner2_height'}
 					);
+	}
 	my $inner1bottomXleft=$starttingX+$confighash{'plot_line_size'}/2;
 	my $inner1bottomXright=$confighash{'plot_width'}-$confighash{'plot_line_size'}/2-$confighash{'plot_margin_right'};
 	my $inner1bottomY=$starttingY+$block_total_height-$confighash{'plot_line_size'}/2-$confighash{'plot_inner1_height'}/2;
@@ -500,7 +538,7 @@ for (my $i=0; $i<scalar(@blockorder); $i++) {
 						"font-size"=>$confighash{'ruler_font_size'}, 
 						"-cdata" => "$scale_text");
 	}
-###Drawing non EXPRESSION tracks
+###Drawing tracks
 	my $gridline_drawed=0;
 	my $non_expression_startY=$starttingY+$block_total_height-$confighash{'plot_line_size'}/2-$confighash{'ruler_tick_length'};
 	for (my $j=(scalar(@trackoders)-1); $j>=0; $j--) {
@@ -965,140 +1003,215 @@ sub readUsrCfg {
 
 
 ### check default [plot]
-	unless (exists $confighash{"plot_height"} and $confighash{"plot_height"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default plot_height=$plot_height_default\n";
-		$confighash{"plot_height"}=$plot_height_default;
+	unless (exists $confighash{'plot_height'} and $confighash{'plot_height'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default plot_height=", $userdefault{'plot_height'}, "\n";
+		$confighash{'plot_height'}=$userdefault{"plot_height"};
 	}
-	unless (exists $confighash{"plot_width"} and $confighash{"plot_width"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default plot_width=$plot_width_default\n";
-		$confighash{"plot_width"}=$plot_width_default;
+	unless (exists $confighash{'plot_width'} and $confighash{'plot_width'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default plot_width=", $userdefault{'plot_width'}, "\n";
+		$confighash{'plot_width'}={'plot_width'};
 	}
-	unless (exists $confighash{"plot_margin_left"} and $confighash{"plot_margin_left"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default plot_margin_left=$plot_margin_left_default\n";
-		$confighash{"plot_margin_left"}=$plot_margin_left_default;
+	unless (exists $confighash{'plot_margin_left'} and $confighash{'plot_margin_left'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default plot_margin_left=", $userdefault{'plot_margin_left'}, "\n";
+		$confighash{"plot_margin_left"}=$userdefault{'plot_margin_left'};
 	}
-	unless (exists $confighash{"plot_margin_right"} and $confighash{"plot_margin_right"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default plot_margin_right=$plot_margin_right_default\n";
-		$confighash{"plot_margin_right"}=$plot_margin_right_default;
+	unless (exists $confighash{'plot_margin_right'} and $confighash{'plot_margin_right'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default plot_margin_right=", $userdefault{'plot_margin_right'}, "\n";
+		$confighash{'plot_margin_right'}=$userdefault{'plot_margin_right'};
 	}
-	unless (exists $confighash{"plot_margin_top"} and $confighash{"plot_margin_top"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default plot_margin_top=$plot_margin_top_default\n";
-		$confighash{"plot_margin_top"}=$plot_margin_top_default;
+	unless (exists $confighash{'plot_margin_top'} and $confighash{'plot_margin_top'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default plot_margin_top=", $userdefault{'plot_margin_top'}, "\n";
+		$confighash{'plot_margin_top'}=$userdefault{'plot_margin_top'};
 	}
-	unless (exists $confighash{"plot_margin_bottom"} and $confighash{"plot_margin_bottom"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default plot_margin_bottom=$plot_margin_bottom_default\n";
-		$confighash{"plot_margin_bottom"}=$plot_margin_bottom_default;
+	unless (exists $confighash{'plot_margin_bottom'} and $confighash{'plot_margin_bottom'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default plot_margin_bottom=", $userdefault{'plot_margin_bottom'}, "\n";
+		$confighash{'plot_margin_bottom'}=$userdefault{'plot_margin_bottom'};
 	}
-	unless (exists $confighash{"plot_line_size"} and $confighash{"plot_line_size"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default plot_line_size=$plot_line_size_default\n";
-		$confighash{"plot_line_size"}=$plot_line_size_default;
+	unless (exists $confighash{'plot_line_size'} and $confighash{'plot_line_size'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default plot_line_size=", $userdefault{'plot_line_size'}, "\n";
+		$confighash{'plot_line_size'}=$userdefault{'plot_line_size'};
 	}
-	unless (exists $confighash{"plot_background_color"} and $confighash{"plot_background_color"}=~/^\S+$/) {
-		print $RUCsubinfo, "Warnings: use default plot_background_color=$plot_background_color_default\n";
-		$confighash{"plot_background_color"}=$plot_background_color_default;
+	unless (exists $confighash{'plot_background_color'} and $confighash{'plot_background_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default plot_background_color=", $userdefault{'plot_background_color'}, "\n";
+		$confighash{'plot_background_color'}=$userdefault{'plot_background_color'};
 	}
 
 
 ### check default [synteny]
-	unless (exists $confighash{"synteny_height"} and $confighash{"synteny_height"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default synteny_height=$synteny_height_default\n";
-		$confighash{"synteny_height"}=$synteny_height_default;
+	unless (exists $confighash{'synteny_height'} and $confighash{'synteny_height'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default synteny_height=", $userdefault{'synteny_height'}, "\n";
+		$confighash{"synteny_height"}=$userdefault{'synteny_height'};
 	}
-	unless (exists $confighash{"synteny_line_color"} and $confighash{"synteny_line_color"}=~/^\S+$/) {
-		print $RUCsubinfo, "Warnings: use default synteny_line_color=$synteny_line_color_default\n";
-		$confighash{"synteny_line_color"}=$synteny_line_color_default;
+	unless (exists $confighash{'synteny_fillin_color'} and $confighash{'synteny_fillin_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default synteny_fillin_color=", $userdefault{'synteny_fillin_color'}, "\n";
+		$confighash{"synteny_fillin_color"}=$userdefault{'synteny_fillin_color'};
 	}
-	unless (exists $confighash{"synteny_order"} and $confighash{"synteny_order"}=~/^\S+$/) {
-		print $RUCsubinfo, "Warnings: use default synteny_order=$synteny_order_default\n";
-		$confighash{"synteny_order"}=$synteny_order_default;
+	unless (exists $confighash{'synteny_line_color'} and $confighash{'synteny_line_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default synteny_line_color=", $userdefault{'synteny_line_color'}, "\n";
+		$confighash{"synteny_line_color"}=$userdefault{'synteny_line_color'};
+	}
+	unless (exists $confighash{'synteny_line_width'} and $confighash{'synteny_line_width'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default synteny_line_width=", $userdefault{'synteny_line_width'}, "\n";
+		$confighash{"synteny_line_width"}=$userdefault{'synteny_line_width'};
+	}
+	unless (exists $confighash{'synteny_order'} and $confighash{'synteny_order'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default synteny_order=", $userdefault{'synteny_order'}, "\n";
+		$confighash{'synteny_order'}=$userdefault{'synteny_order'};
 	}
 
 
 
 ### check default [ruler]
-	unless (exists $confighash{"ruler_mark_interval"} and $confighash{"ruler_mark_interval"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default ruler_mark_interval=$ruler_mark_interval_default\n";
-		$confighash{"ruler_mark_interval"}=$ruler_mark_interval_default;
+	unless (exists $confighash{'ruler_mark_interval'} and $confighash{'ruler_mark_interval'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default ruler_mark_interval=", $userdefault{"ruler_mark_interval"}, "\n";
+		$confighash{'ruler_mark_interval'}=$userdefault{'ruler_mark_interval'};
 	}
-	unless (exists $confighash{"ruler_tick_length"} and $confighash{"ruler_tick_length"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default ruler_tick_length=$ruler_tick_length_default\n";
-		$confighash{"ruler_tick_length"}=$ruler_tick_length_default;
+	unless (exists $confighash{'ruler_tick_color'} and $confighash{'ruler_tick_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default ruler_tick_color=", $userdefault{'ruler_tick_color'}, "\n";
+		$confighash{'ruler_tick_color'}=$userdefault{'ruler_tick_color'};
 	}
-	unless (exists $confighash{"ruler_tick_width"} and $confighash{"ruler_tick_width"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default ruler_tick_width=$ruler_tick_width_default\n";
-		$confighash{"ruler_tick_width"}=$ruler_tick_width_default;
+	unless (exists $confighash{'ruler_tick_length'} and $confighash{'ruler_tick_length'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default ruler_tick_length=", $userdefault{'ruler_tick_length'}, "\n";
+		$confighash{'ruler_tick_length'}=$userdefault{'ruler_tick_length'};
 	}
-	unless (exists $confighash{"ruler_font_size"} and $confighash{"ruler_font_size"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default ruler_font_size=$ruler_font_size_default\n";
-		$confighash{"ruler_font_size"}=$ruler_font_size_default;
+	unless (exists $confighash{'ruler_font_size'} and $confighash{'ruler_font_size'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default ruler_font_size=", $confighash{'ruler_font_size'}, "\n";
+		$confighash{'ruler_font_size'}=$userdefault{'ruler_font_size'};
 	}
-	unless (exists $confighash{"ruler_text_color"} and $confighash{"ruler_text_color"}=~/^\S+$/) {
-		print $RUCsubinfo, "Warnings: use default ruler_text_color=$ruler_text_color_default\n";
-		$confighash{"ruler_text_color"}=$ruler_text_color_default;
+	unless (exists $confighash{'ruler_tick_width'} and $confighash{'ruler_tick_width'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default ruler_tick_width=", $userdefault{'ruler_tick_width'}, "\n";
+		$confighash{'ruler_tick_width'}=$userdefault{'ruler_tick_width'};
+	}
+	unless (exists $confighash{'ruler_font_distance'} and $confighash{'ruler_font_distance'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, 'Warnings: use default ruler_font_distance=', $userdefault{'ruler_font_distance'}, "\n";
+		$confighash{'ruler_font_distance'}=$userdefault{'ruler_font_distance'};
+	}
+	unless (exists $confighash{'ruler_text_color'} and $confighash{'ruler_text_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default ruler_text_color=", $userdefault{'ruler_text_color'}, "\n";
+		$confighash{'ruler_text_color'}=$userdefault{'ruler_text_color'};
 	}
 
 
 
 ### check default [track]
-	unless (exists $confighash{"track_height"} and $confighash{"track_height"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default track_height=$track_height_default\n";
-		$confighash{"track_height"}=$track_height_default;
+	unless (exists $confighash{'track_height'} and $confighash{'track_height'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default track_height=", $userdefault{'track_height'}, "\n";
+		$confighash{'track_height'}=$userdefault{'track_height'};
 	}
-	unless (exists $confighash{"track_space"} and $confighash{"track_space"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default track_space=$track_space_default\n";
-		$confighash{"track_space"}=$track_space_default;
+	unless (exists $confighash{'track_space'} and $confighash{'track_space'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default track_space=", $userdefault{'track_space'}, "\n";
+		$confighash{'track_space'}=$userdefault{'track_space'};
 	}
-	unless (exists $confighash{"track_color"} and $confighash{"track_color"}=~/^\S+$/) {
-		print $RUCsubinfo, "Warnings: use default track_color=$track_color_default\n";
-		$confighash{"track_color"}=$track_color_default;
+	unless (exists $confighash{'track_color'} and $confighash{'track_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default track_color=", $userdefault{'track_color'}, "\n";
+		$confighash{'track_color'}=$userdefault{'track_color'};
 	}
-	unless (exists $confighash{"track_arrow_add"} and $confighash{"track_arrow_add"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default track_arrow_add=$track_arrow_add_default\n";
-		$confighash{"track_arrow_add"}=$track_arrow_add_default;
+	unless (exists $confighash{'track_arrow_add'} and $confighash{'track_arrow_add'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default track_arrow_add=", $userdefault{'track_arrow_add'}, "\n";
+		$confighash{'track_arrow_add'}=$userdefault{'track_arrow_add'};
 	}
-	unless (exists $confighash{"track_arrow_length"} and $confighash{"track_arrow_length"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default track_arrow_length=$track_arrow_length_default\n";
-		$confighash{"track_arrow_length"}=$track_arrow_length_default;
+	unless (exists $confighash{'track_arrow_length'} and $confighash{'track_arrow_length'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default track_arrow_length=", $userdefault{'track_arrow_length'}, "\n";
+		$confighash{'track_arrow_length'}=$userdefault{'track_arrow_length'};
 	}
-	unless (exists $confighash{"track_order"} and $confighash{"track_order"}=~/^\S+$/) {
-		print $RUCsubinfo, "Warnings: use default track_order=$track_order_default\n";
-		$confighash{"track_order"}=$track_order_default;
+	unless (exists $confighash{'track_order'} and $confighash{'track_order'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default track_order=", $userdefault{'track_order'}, "\n";
+		$confighash{'track_order'}=$userdefault{'track_order'};
+	}
+	unless (exists $confighash{'track_subtrack_space_height'} and $confighash{'track_subtrack_space_height'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default track_subtrack_space_height=", $userdefault{'track_subtrack_space_height'}, "\n";
+		$confighash{'track_subtrack_space_height'}=$userdefault{'track_subtrack_space_height'};
 	}
 
 ### check default [expression]
-	unless (exists $confighash{"gridline_width"} and $confighash{"gridline_width"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default gridline_width=$gridline_width_default\n";
-		$confighash{"gridline_width"}=$gridline_width_default;
+### check default [expression][gridline]
+	unless (exists $confighash{'gridline_width'} and $confighash{'gridline_width'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridline_width=", $userdefault{'gridline_width'}, "\n";
+		$confighash{'gridline_width'}=$userdefault{'gridline_width'};
 	}
-	unless (exists $confighash{"gridline_color"} and $confighash{"gridline_color"}=~/^\S+$/) {
-		print $RUCsubinfo, "Warnings: use default gridline_color=$gridline_color_default\n";
-		$confighash{"gridline_color"}=$gridline_color_default;
+	unless (exists $confighash{'gridline_color'} and $confighash{'gridline_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridline_color=", $userdefault{'gridline_color'}, "\n";
+		$confighash{'gridline_color'}=$userdefault{'gridline_color'};
 	}
-	unless (exists $confighash{"gridline_left_margin"} and $confighash{"gridline_left_margin"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default gridline_left_margin=$gridline_left_margin_default\n";
-		$confighash{"gridline_left_margin"}=$gridline_left_margin_default;
+	unless (exists $confighash{'gridline_interval'} and $confighash{'gridline_interval'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridline_interval=", $userdefault{'gridline_interval'}, "\n";
+		$confighash{'gridline_interval'}=$userdefault{'gridline_interval'};
 	}
-	unless (exists $confighash{"gridline_right_margin"} and $confighash{"gridline_right_margin"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default gridline_right_margin=$gridline_right_margin_default\n";
-		$confighash{"gridline_right_margin"}=$gridline_right_margin_default;
+	unless (exists $confighash{'gridline_min'} and $confighash{'gridline_min'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridline_min=", $userdefault{'gridline_min'}, "\n";
+		$confighash{'gridline_min'}=$userdefault{'gridline_min'};
 	}
-	unless (exists $confighash{"error_line_width"} and $confighash{"error_line_width"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default error_line_width=$error_line_width_default\n";
-		$confighash{"error_line_width"}=$error_line_width_default;
+	unless (exists $confighash{'gridline_max'} and $confighash{'gridline_max'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridline_max=", $userdefault{'gridline_max'}, "\n";
+		$confighash{'gridline_max'}=$userdefault{'gridline_max'};
 	}
-	unless (exists $confighash{"error_line_length"} and $confighash{"error_line_length"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default error_line_length=$error_line_length_default\n";
-		$confighash{"error_line_length"}=$error_line_length_default;
+	unless (exists $confighash{'gridline_left_margin'} and $confighash{'gridline_left_margin'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridline_left_margin=", $userdefault{'gridline_left_margin'}, "\n";
+		$confighash{'gridline_left_margin'}=$userdefault{'gridline_left_margin'};
 	}
-	unless (exists $confighash{"bar_line_width"} and $confighash{"bar_line_width"}=~/^\d+$/) {
-		print $RUCsubinfo, "Warnings: use default bar_line_width=$bar_line_width_default\n";
-		$confighash{"bar_line_width"}=$bar_line_width_default;
+	unless (exists $confighash{'gridline_right_margin'} and $confighash{'gridline_right_margin'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridline_right_margin=", $userdefault{'gridline_right_margin'}, "\n";
+		$confighash{'gridline_right_margin'}=$userdefault{'gridline_right_margin'};
 	}
-	unless (exists $confighash{"barplot_order"} and $confighash{"barplot_order"}=~/^\S+$/) {
-		print $RUCsubinfo, "Warnings: use default barplot_order=$barplot_order_default\n";
-		$confighash{"barplot_order"}=$barplot_order_default;
+	unless (exists $confighash{'gridtext_color'} and $confighash{'gridtext_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridtext_color=", $userdefault{'gridtext_color'}, "\n";
+		$confighash{'gridtext_color'}=$userdefault{'gridtext_color'};
 	}
-
+	unless (exists $confighash{'gridtext_size'} and $confighash{'gridtext_size'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default gridtext_size=", $userdefault{'gridtext_size'}, "\n";
+		$confighash{'gridtext_size'}=$userdefault{'gridtext_size'};
+	}
+### check default [expression][barplot]
+	unless (exists $confighash{'barplot_order'} and $confighash{'barplot_order'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default barplot_order=", $userdefault{'barplot_order'}, "\n";
+		$confighash{'barplot_order'}=$userdefault{'barplot_order'};
+	}
+	unless (exists $confighash{'bar_line_width'} and $confighash{'bar_line_width'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default bar_line_width=", $userdefault{'bar_line_width'}, "\n";
+		$confighash{'bar_line_width'}=$userdefault{'bar_line_width'};
+	}
+	unless (exists $confighash{'bar_alignment'} and $confighash{'bar_alignment'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default bar_alignment=", $userdefault{'bar_alignment'}, "\n";
+		$confighash{'bar_alignment'}=$userdefault{'bar_alignment'};
+	}
+	unless (exists $confighash{'bar_fill_width'} and $confighash{'bar_fill_width'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default bar_fill_width=", $userdefault{'bar_fill_width'}, "\n";
+		$confighash{'bar_fill_width'}=$userdefault{'bar_fill_width'};
+	}
+### check default [expression][stdev]
+	unless (exists $confighash{'error_line_width'} and $confighash{'error_line_width'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default error_line_width=", $userdefault{'error_line_width'}, "\n";
+		$confighash{"error_line_width"}=$userdefault{'error_line_width'};
+	}
+	unless (exists $confighash{'error_line_length'} and $confighash{'error_line_length'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default error_line_length=", $userdefault{'error_line_length'}, "\n";
+		$confighash{'error_line_length'}=$userdefault{'error_line_length'};
+	}
+	unless (exists $confighash{'bar_line_width'} and $confighash{'bar_line_width'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default bar_line_width=", $userdefault{'bar_line_width'}, "\n";
+		$confighash{'bar_line_width'}=$userdefault{'bar_line_width'};
+	}
+### [expression][LEGEND]
+	unless (exists $confighash{'legend_plot_position'} and $confighash{'legend_plot_position'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default legend_plot_position=", $userdefault{'legend_plot_position'}, "\n";
+		$confighash{'legend_plot_position'}=$userdefault{'legend_plot_position'};
+	}
+	unless (exists $confighash{'legend_text_color'} and $confighash{'legend_text_color'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default legend_text_color=", $userdefault{'legend_text_color'}, "\n";
+		$confighash{'legend_text_color'}=$userdefault{'legend_text_color'};
+	}
+	unless (exists $confighash{'legend_text_size'} and $confighash{'legend_text_size'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default legend_text_size=", $userdefault{'legend_text_size'}, "\n";
+		$confighash{'legend_text_size'}=$userdefault{'legend_text_size'};
+	}
+	unless (exists $confighash{'legend_plot_aplignment'} and $confighash{'legend_plot_aplignment'}=~/^\S+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default legend_plot_aplignment=", $userdefault{'legend_plot_aplignment'}, "\n";
+		$confighash{'legend_plot_aplignment'}=$userdefault{'legend_plot_aplignment'};
+	}
+	unless (exists $confighash{'legend_between_interval'} and $confighash{'legend_between_interval'}=~/^\d+\.*\d*$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default legend_between_interval=", $userdefault{'legend_between_interval'}, "\n";
+		$confighash{'legend_between_interval'}=$userdefault{'legend_between_interval'};
+	}
 	return 1;
 }
 
@@ -1257,8 +1370,8 @@ sub readAnnotationCfg {
 		}
 	}
 	close RACCONFIG;
-	@trackoders=sort (keys %RACtracks);
-	
+	@trackoders=sort (keys %RACtracks) if ($use_defined_trackorder==0);
+
 	return 1;
 }
 
@@ -1452,5 +1565,3 @@ sub ReArrangeLoci {
 		return 1;
 	}
 }
-
-
