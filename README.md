@@ -8,7 +8,7 @@ Produce publishable vector-format synteny views using user-defined parameter and
 
 SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
-![Example](https://lufuhao.github.com/lufuhao/SyntenyPlot/blob/master/block4.svg?raw=true "Example")
+![Example](http://lufuhao.github.io/lufuhao/SyntenyPlot/blob/master/block4.svg?raw=true "Example")
 <img src="./block4.svg">
 
 
@@ -21,6 +21,9 @@ another method
         <img width="45%" src="./block4.svg" alt="Example" title="Example"</img>
 </div>
 
+<a href="https://github.com/lufuhao/SyntenyPlot/blob/master/block4.svg">
+  <img src="https://github.com/lufuhao/SyntenyPlot/blob/master/block4.svg" width="100%" height="144">
+</a>
 
 #Requirements: 
 	Perl Modules: SVG, Data::Dumper
