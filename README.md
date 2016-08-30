@@ -18,11 +18,11 @@ SVG format further improvement could be achieved using Adobe Illustrator on Wind
 another method
 
 <div align="center">
-        <img width="45%" src="./block4.svg" alt="Example" title="Example"</img>
+        <img width="30%" src="block4.svg" alt="Example" title="Example"</img>
 </div>
 
 <a href="./block4.svg">
-  <img src="./block4.svg" width="200" height="100">
+  <img src="block4.svg" width="200" height="100">
 </a>
 
 #Requirements: 
