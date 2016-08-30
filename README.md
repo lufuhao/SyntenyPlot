@@ -8,22 +8,7 @@ Produce publishable vector-format synteny views using user-defined parameter and
 
 SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
-![Example](http://lufuhao.github.io/lufuhao/SyntenyPlot/blob/master/block4.svg?raw=true "Example")
-<img src="./block4.svg">
-
-
-![Example2](https://github.com/lufuhao/SyntenyPlot/blob/master/block4.svg "Example2")
-
-
-another method
-
-<div align="center">
-        <img width="30%" src="block4.svg" alt="Example" title="Example"</img>
-</div>
-
-<a href="./block4.svg">
-  <img src="block4.svg" width="200" height="100">
-</a>
+Click block4.svg above for an example
 
 #Requirements: 
 	Perl Modules: SVG, Data::Dumper
