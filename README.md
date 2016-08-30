@@ -8,7 +8,7 @@ Produce publishable vector-format synteny views using user-defined parameter and
 
 SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
-![OutputExample](./block4.svg?raw=true "Example: block4")
+![Alt text](./block4.svg)<img src="./block4.svg">
 
 #Requirements: 
 	Perl Modules: SVG, Data::Dumper
@@ -56,5 +56,5 @@ anntation.config specifies the gene/feature/repeat locations
 
 >	Norwich NR4 7UH, United Kingdom
 
->	E-mail: Fu-Hao.Lu\@jic.ac.uk
+>	E-mail: Fu-Hao.Lu@jic.ac.uk
 ---------------------------------------------------------------------
