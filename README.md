@@ -6,9 +6,11 @@ usage: synteny_plot.pl global.config synteny.config annotation.config output.svg
 	Produce publishable vector-format synteny views using user-defined parameter and datasets
 	SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
+![alt text](./block4.svg "Example: block4")
+
 #Requirements: 
 	Perl Modules: SVG, Data::Dumper
-![alt text](./block4.svg "Example: block4")
+
 #HOW-TO
 ##1. **user.config**
 
