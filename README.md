@@ -8,12 +8,11 @@ Produce publishable vector-format synteny views using user-defined parameter and
 
 SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
-![Example](https://raw.github.com/lufuhao/SyntenyPlot}/master/block4.svg?raw=true "Example")
+![Example](https://raw.github.com/lufuhao/SyntenyPlot/master/block4.svg?raw=true "Example")
 <img src="./block4.svg">
 
 another method
 <div align="center">
-        <img height="50" width="100">
         <img width="45%" src="./block4.svg" alt="Example" title="Example"</img>
 </div>
 
