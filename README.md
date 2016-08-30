@@ -8,11 +8,11 @@ Produce publishable vector-format synteny views using user-defined parameter and
 
 SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
-![Example](/block4.svg?raw=true "Example")
+![Example](./block4.svg?raw=true "Example")
 <img src="./block4.svg">
 
 
-![Example2](/block4.svg?raw=true "Example2")
+![Example2](./block4.svg?raw=true "Example2")
 
 
 another method
