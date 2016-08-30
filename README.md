@@ -8,7 +8,7 @@ usage: synteny_plot.pl global.config synteny.config annotation.config output.svg
 
 #Requirements: 
 	Perl Modules: SVG, Data::Dumper
-
+![alt text](./block4.svg "Example: block4")
 #HOW-TO
 ##1. **user.config**
 
@@ -43,9 +43,14 @@ anntation.config specifies the gene/feature/repeat locations
 >	3. Avoid Tick marks out of main plot
 
 #Author:
-
+---------------------------------------------------------------------
 >	**Fu-Hao Lu**
+
 >	Post-Doctoral Scientist in Micheal Bevan laboratory
+
 >	Cell and Developmental Department, John Innes Centre
+
 >	Norwich NR4 7UH, United Kingdom
+
 >	E-mail: Fu-Hao.Lu\@jic.ac.uk
+---------------------------------------------------------------------
