@@ -8,7 +8,7 @@ Produce publishable vector-format synteny views using user-defined parameter and
 
 SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
-Click block4.svg for an example, to see what the output svg looks like
+>Click *block4.svg* for an example, to see what the output svg looks like.
 
 #Requirements: 
 	Perl Modules: SVG, Data::Dumper
