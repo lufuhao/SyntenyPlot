@@ -27,7 +27,7 @@ Version: 20160802
 Requirements:
 	fasta_splitter_by_numseq.pl
 	LAST: lastdb, lastal, maf-convert
-	UCSC: faSize, axtChain, chainMergeSort, chainPreNet
+	UCSC: faSize, axtChain, chainMergeSort, chainPreNet, pslSwap
 	
 Descriptions:
 	Detect synteny regions using LAST/ChainNet pipeline
@@ -44,6 +44,7 @@ Options:
   -m    Repeat mask GFF3 file
   -r    Fasta file for reference sequences
   -q    Fasta file for query sequences
+  -o    Output.filtered.synteny.file, default: ./out.axt.filter
   -t    Number of threads
 
   *Note specify (-i) or (-r and -q)
@@ -76,6 +77,7 @@ queryfasta=''
 gfffile=''
 repeatgff=''
 minisize=100
+finaloutput="$RunPath/out.axt.filter"
 #################### Parameters #####################################
 while [ -n "$1" ]; do
   case "$1" in
@@ -85,6 +87,7 @@ while [ -n "$1" ]; do
     -m) repeatgff=$2;shift 2;;
     -r) referencefasta=$2;shift 2;;
     -q) queryfasta=$2;shift 1;;
+    -o) finaloutput=$2;shift 1;;
     -t) threads=$2;shift 2;;
     --) shift;break;;
     -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 1;;
@@ -150,6 +153,10 @@ if [ $(CmdExists 'lastal') -ne 0 ]; then
 fi
 if [ $(CmdExists 'maf-convert') -ne 0 ]; then
 	echo "Error: CMD 'maf-convert' in program 'LAST' is required but not found.  Aborting..." >&2 
+	exit 127
+fi
+if [ $(CmdExists 'pslSwap') -ne 0 ]; then
+	echo "Error: CMD 'pslSwap' in program UCSC KENT is required but not found.  Aborting..." >&2 
 	exit 127
 fi
 if [ $(CmdExists 'faSize') -ne 0 ]; then
@@ -326,19 +333,41 @@ for maffile in `ls $lastrundir/*.maf`; do
 		exit 1
 	fi
 done
-#cat *.psl > all.psl
-#if [ $? -ne 0 ] || [ ! -s $maf2psldir/all.psl ]; then
-#	echo "Error: collect all psl: all.psl" >&2
-#	exit 1
-#fi
+cat *.psl > all.psl
+if [ $? -ne 0 ] || [ ! -s "all.psl" ]; then
+	echo "Error: collect all psl: all.psl" >&2
+	exit 1
+fi
+
+
+
+echo -e "\n"
+echo -e "\n" >&2
+echo "### Step5: PSL swap ..."
+echo "### Step5: PSL swap ..." >&2
+pslSwap $maf2psldir/all.psl all.swap.psl
+if [ $? -ne 0 ] || [ ! -s "all.swap.psl" ]; then
+	echo "Error: pslSwap" >&2
+	exit 1
+fi
+
+if [ -d "$maf2psldir.swap" ]; then
+	rm -rf "$maf2psldir.swap"
+fi
+mkdir -p "$maf2psldir.swap"
+pslSplitOnTarget all.swap.psl "$maf2psldir.swap"/ -lump
+if [ $? -ne 0 ]; then
+	echo "Error: pslSplitOnTarget" >&2
+	exit 1
+fi
 
 
 
 ### chain
 echo -e "\n"
 echo -e "\n" >&2
-echo "### Step5: chaining ..."
-echo "### Step5: chaining ..." >&2
+echo "### Step6: chaining ..."
+echo "### Step6: chaining ..." >&2
 if [ -d $chaindir ]; then
 	rm -rf $chaindir
 fi
@@ -355,23 +384,27 @@ if [ $? -ne 0 ] || [ ! -s $chaindir/query.size ]; then
 	echo "Error: faSize reference: $queryfasta" >&2
 	exit 1
 fi
-for pslfile in `ls $maf2psldir/*.psl`; do
+for pslfile in `ls "$maf2psldir.swap"/*.psl`; do
 	pslname=${pslfile##*/}
 	pslbase=${pslname%.*}
-	axtChain -psl -faQ -faT -linearGap=loose $pslfile $referencefasta $queryfasta $pslbase.chain
+	axtChain -psl -faQ -faT -linearGap=loose $pslfile $queryfasta $referencefasta $pslbase.chain
 	if [ $? -ne 0 ] || [ ! -s $pslbase.chain ]; then
 		echo "Error: axtChain: $pslfile" >&2
 		exit 1
 	fi
 done
+echo "### Step6: chainMergeSort ..."
+echo "### Step6: chainMergeSort ..." >&2
 chainMergeSort $chaindir/*.chain > all.chain
 if [ $? -ne 0 ] || [ ! -s $chaindir/all.chain ]; then
 	echo "Error: chainMergeSort: $chaindir/all.chain" >&2
 	exit 1
 fi
-chainPreNet $chaindir/all.chain $chaindir/reference.size $chaindir/query.size all.pre.chain
+echo "### Step6: chainPreNet ..."
+echo "### Step6: chainPreNet ..." >&2
+chainPreNet $chaindir/all.chain $chaindir/query.size $chaindir/reference.size  all.pre.chain
 if [ $? -ne 0 ] || [ ! -s $chaindir/all.pre.chain ]; then
-	echo "Error: chainMergeSort: $chaindir/all.chain" >&2
+	echo "Error: chainPreNet: $chaindir/all.chain" >&2
 	exit 1
 fi
 
@@ -380,14 +413,14 @@ fi
 ### Netting
 echo -e "\n"
 echo -e "\n" >&2
-echo "### Step6: neting ..."
-echo "### Step6: neting ..." >&2
+echo "### Step7: neting ..."
+echo "### Step7: neting ..." >&2
 if [ -d $netdir ]; then
 	rm -rf $netdir
 fi
 mkdir -p $netdir
 cd $netdir
-chainNet -minSpace=1 $chaindir/all.pre.chain $chaindir/reference.size $chaindir/query.size stdout /dev/null | netSyntenic stdin noClass.net
+chainNet -minSpace=1 $chaindir/all.pre.chain $chaindir/query.size $chaindir/reference.size stdout /dev/null | netSyntenic stdin noClass.net
 if [ $? -ne 0 ] || [ ! -s $netdir/noClass.net ]; then
 	echo "Error:chainNet: $netdir/noClass.net" >&2
 	exit 1
@@ -395,32 +428,35 @@ fi
 #netClass -noAr noClass.net ci2 cioSav2 cioSav2.net
 faToTwoBit $referencefasta reference.2bit
 faToTwoBit $queryfasta query.2bit
-netToAxt noClass.net $chaindir/all.pre.chain $netdir/reference.2bit $netdir/query.2bit out.axt
+echo "### Step7: netToAxt ..."
+echo "### Step7: netToAxt ..." >&2
+netToAxt noClass.net $chaindir/all.pre.chain $netdir/query.2bit $netdir/reference.2bit out.axt
 if [ $? -ne 0 ] || [ ! -s $netdir/out.axt ]; then
 	echo "Error: netToAxt: $netdir/out.axt" >&2
 	exit 1
 fi
 
-### Netting
+### filter
 echo -e "\n"
 echo -e "\n" >&2
-echo "### Step6: Preparing Final synteny file ..."
-echo "### Step6: Preparing Final synteny file ..." >&2
+echo "### Step8: Preparing Final synteny file ..."
+echo "### Step8: Preparing Final synteny file ..." >&2
 
 perl -e 'print "#org1\torg1_start\torg1_end\torg2\torg2_start\torg2_end\tscore\tevalue\n"' > $netdir/out.axt.filter
-perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $netdir/out.axt >> $netdir/out.axt.filter
-if [ $? -ne 0 ] || [ ! -s $netdir/out.axt.filter ]; then
-	echo "Error: final axt: $netdir/out.axt.filter" >&2
+perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $netdir/out.axt >> $finaloutput
+if [ $? -ne 0 ] || [ ! -s $finaloutput ]; then
+	echo "Error: final axt: $finaloutput" >&2
 	exit 1
 fi
 
 
 ### Annotation
-echo -e "\n\n\n"
-echo -e "\n\n\n" >&2
-echo "### Step6: Preparing gene annotation ..."
-echo "### Step6: Preparing gene annotation ..." >&2
+
 if [ ! -z "$gfffile" ] && [ -s $gfffile ]; then
+	echo -e "\n\n\n"
+	echo -e "\n\n\n" >&2
+	echo "### Step9: Preparing gene annotation ..."
+	echo "### Step9: Preparing gene annotation ..." >&2
 	echo "### Detect Gene annotation GFF files: $gfffile"
 	perl -e 'print "#org_id\tstart\tend\tstrand\tfeature_name\tfeature_value\ttrack_name\ttrack_shape\ttrack_color\n";' > anntation.txt
 	perl -ne 'chomp;next if (/^#/);@arr=split(/\t/);$arr[8]=~s/^.*ID=//;$arr[8]=~s/;.*$//; print "$arr[0]\t$arr[3]\t$arr[4]\t$arr[6]\t$arr[8]\t.\tgene\tarrow\tbrown\n";' $gfffile >> anntation.txt
@@ -433,7 +469,7 @@ fi
 if [ ! -z "$repeatgff" ] && [ -s "$repeatgff" ]; then
 	echo "### Detect repeatmask GFF files: $repeatgff"
 	#perl -MFuhaoPerl5Lib::MiscKit=MergeRanges -MData::Dumper=Dumper -ne 'BEGIN{%hash=();} chomp; next if (/^#/); @arr=split(/\t/);print "Tewst: @arr\n"; $hash{$arr[0]}{$arr[3]}=$arr[4]; END {print Dumer $hash{$seq};foreach $seq (sort (keys %hash)){($test, $id)=MergeRanges($hash{$seq}); print STDERR "Test: $seq\t$test\n"; foreach $j (sort {$a<=>$b} keys %{$id}) {print $seq, "\t", $j, "\t", ${$id}{$j}, "\n";}}}' $repeatgff
-perl -MFuhaoPerl5Lib::MiscKit=MergeRanges -ne 'BEGIN{%hash=();} chomp; next if (/^#/); @arr=split(/\t/);$hash{$arr[0]}{$arr[3]}=$arr[4]; END {foreach $seq (sort (keys %hash)){($test, $id)=MergeRanges($hash{$seq}); print STDERR "Test: $seq\t$test\n"; foreach $j (sort {$a<=>$b} keys %{$id}) {print $seq, "\t", $j, "\t", ${$id}{$j}, "\t.\t.\t.\trepeat\tbox\tblack\n";}}}' $repeatgff >> anntation.txt
+	perl -MFuhaoPerl5Lib::MiscKit=MergeRanges -ne 'BEGIN{%hash=();} chomp; next if (/^#/); @arr=split(/\t/);$hash{$arr[0]}{$arr[3]}=$arr[4]; END {foreach $seq (sort (keys %hash)){($test, $id)=MergeRanges($hash{$seq}); print STDERR "Test: $seq\t$test\n"; foreach $j (sort {$a<=>$b} keys %{$id}) {print $seq, "\t", $j, "\t", ${$id}{$j}, "\t.\t.\t.\trepeat\tbox\tblack\n";}}}' $repeatgff >> anntation.txt
 else
 	echo "### Repeatmask GFF files NOT detected, skip..."
 fi
