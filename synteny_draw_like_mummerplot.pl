@@ -115,30 +115,33 @@ print "\n\nLENGTH SUMMARY\n\tTotal sequences: $linenum\n\tTotal hash: ", scalar(
 
 open (SYNTENY, "< $inputconfig") || die "Error: can not open synteny config file\n";
 $linenum=0;
-my %hash_x=();
-my %hash_y=();
+my %hash_a=();
+my %hash_b=();
 while (my $line=<SYNTENY>) {
 	chomp $line;
 	next if ($line=~/^#/);
 	my @arr=split(/\t/, $line);
-	unless (exists $hash_x{$arr[0]}) {
+	unless (exists $hash_a{$arr[0]}) {
 		unless (exists $seqlength{$arr[0]}) {
 			die "Error: sequence in X no length: $arr[0]\n";
 		}
-		push (@xorder, $arr[0]);
+		push (@yorder, $arr[0]);
 	}
-	$hash_x{$arr[0]}++;
-	unless (exists $hash_y{$arr[3]}) {
+	$hash_a{$arr[0]}++;
+	unless (exists $hash_b{$arr[3]}) {
 		unless (exists $seqlength{$arr[3]}) {
 			die "Error: sequence in Y no length: $arr[3]\n";
 		}
-		push (@yorder, $arr[3]);
+		push (@xorder, $arr[3]);
 	}
-	$hash_y{$arr[3]}++;
+	$hash_b{$arr[3]}++;
 }
+%hash_a=();
+%hash_b=();
 close SYNTENY;
 die "Error: empty X axis sequences\n" unless (scalar(@xorder)>0);
 die "Error: empty Y axis sequences\n" unless (scalar(@yorder)>0);
+
 
 
 
@@ -235,10 +238,10 @@ while (my $line=<SYNTENY>) {
 	next if ($line=~/^#/);
 	my @arr=split(/\t/, $line);
 	$vectorout->line (   id => "$linenum-$arr[0]-$arr[3]",
-						x1 => $confighash{'plot_left_margin'}+($starting_x{$arr[0]}+$arr[1])*$x_factor,
-						y1 => $confighash{'plot_height'}-($starting_y{$arr[3]}+$arr[4])*$y_factor,
-						x2 => $confighash{'plot_left_margin'}+($starting_x{$arr[0]}+$arr[2])*$x_factor,
-						y2 => $confighash{'plot_height'}-($starting_y{$arr[3]}+$arr[5])*$y_factor,
+						x1 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+$arr[4])*$x_factor,
+						y1 => $confighash{'plot_height'}-($starting_y{$arr[0]}+$arr[1])*$y_factor-$confighash{'plot_bottom_margin'},
+						x2 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+$arr[5])*$x_factor,
+						y2 => $confighash{'plot_height'}-($starting_y{$arr[0]}+$arr[2])*$y_factor-$confighash{'plot_bottom_margin'},
 						stroke => $confighash{'synteny_forward_line_color'}, 
 						"stroke-width" => $confighash{'synteny_line_width'}
 	);
