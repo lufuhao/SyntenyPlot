@@ -16,6 +16,8 @@ echo "ProgName: $ProgramName"
 RunPath=$PWD
 echo "RunDir: $RunPath"
 
+
+
 ################# help message ######################################
 help() {
 cat<<HELP
@@ -43,14 +45,16 @@ Options:
   -g    Annotation GFF3 file only for genes
   -m    Repeat mask GFF3 file
   -r    Fasta file for reference sequences
+  -db   lastdb indexed by lastdb using -r reference.fa
   -q    Fasta file for query sequences
   -o    Output.filtered.synteny.file, default: ./out.axt.filter
   -t    Number of threads
+  -d    delete temporary files
 
   *Note specify (-i) or (-r and -q)
 
 Example:
-  $0 -i all.sequences.fa -g gene.gff3 -m repeatmask.gff3
+  $0 -i all.sequences.fa -g gene.gff3 -m repeatmask.gff3 -o ./my.synteny
   $0 -r reference.sequences.fa -q query.sequences.fa -g gene.gff3 -m repeatmask.gff3
 
 Author:
@@ -78,6 +82,8 @@ gfffile=''
 repeatgff=''
 minisize=100
 finaloutput="$RunPath/out.axt.filter"
+cleantemporary=0
+lastdbindex=''
 #################### Parameters #####################################
 while [ -n "$1" ]; do
   case "$1" in
@@ -86,9 +92,11 @@ while [ -n "$1" ]; do
     -g) gfffile=$2;shift 2;;
     -m) repeatgff=$2;shift 2;;
     -r) referencefasta=$2;shift 2;;
-    -q) queryfasta=$2;shift 1;;
-    -o) finaloutput=$2;shift 1;;
+    -db) lastdbindex=$2;shift 2;;
+    -q) queryfasta=$2;shift 2;;
+    -o) finaloutput=$2;shift 2;;
     -t) threads=$2;shift 2;;
+    -d) cleantemporary=1;shift 1;;
     --) shift;break;;
     -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 1;;
     *) break;;
@@ -188,6 +196,9 @@ chaindir="$RunPath/5.chain"
 netdir="$RunPath/6.net"
 
 #################### Input and Output ###############################
+if [ ! -z "$lastdbindex" ]; then
+	lastdbindex=$(cd "$(dirname "$lastdbindex")"; pwd)/$(basename "$lastdbindex")
+fi
 echo -e "\n\n\n"
 echo -e "\n\n\n" >&2
 echo "### INPUT and OUTPUT checking..."
@@ -225,6 +236,39 @@ repeatgff=$(cd "$(dirname "$repeatgff")"; pwd)/$(basename "$repeatgff")
 if [ -z "$repeatgff" ] || [ ! -s "$repeatgff" ]; then
 	echo "### Repeatmask GFF files NOT detected, skip..."
 fi
+
+
+
+#################### Cleaning ###############################
+CleanTemporary () {
+	echo "Info: Cleanning Temporary files"
+	if [ -d $splitdirref ]; then
+		rm -rf $splitdirref
+	fi
+	if [ -d $splitdirquery ]; then
+		rm -rf $splitdirquery
+	fi
+	if [ -d $lastrundir ]; then
+		rm -rf $lastrundir
+	fi
+	if [ -d $maf2psldir ]; then
+		rm -rf $maf2psldir
+	fi
+	if [ -d "$maf2psldir.swap" ]; then
+		rm -rf "$maf2psldir.swap"
+	fi
+	if [ -d $chaindir ]; then
+		rm -rf $chaindir
+	fi
+	if [ -d $netdir ]; then
+		rm -rf $netdir
+	fi
+}
+
+CleanTemporary
+
+
+
 
 
 #################### Main ###########################################
@@ -282,12 +326,20 @@ fi
 mkdir -p $lastrundir
 cd $lastrundir
 for refseq in `ls $splitdirref/sequence.*.fa`; do
-	rm -rf ${lastdb_index}* > /dev/null 2>&1
-	lastdb -c -R10 -Q 0 -P $threads $lastdb_index $refseq
-	if [ $? -ne 0 ]; then
-		echo "Error: index LAST DB failed: $refseq" >&2
-		exit 1
+	if [ ! -z "$lastdbindex" ]; then
+		echo "Info: using existing lastdb index: $lastdbindex"
+	else
+		rm -rf ${lastdb_index}* > /dev/null 2>&1
+		lastdb -c -R10 -Q 0 -P $threads $lastdb_index $refseq
+		if [ $? -ne 0 ]; then
+			echo "Error: index LAST DB failed: $refseq" >&2
+			exit 1
+		fi
+		lastdbindex="$lastrundir/$lastdb_index"
+		echo "Info: using generated lastdb index: $lastdbindex"
 	fi
+	
+	
 	for queryseq in `ls $splitdirquery/sequence.*.fa`; do
 		seqname01=${refseq##*/}
 		seqname02=${queryseq##*/}
@@ -302,13 +354,12 @@ for refseq in `ls $splitdirref/sequence.*.fa`; do
 			echo "Error: last output exists: ref.$seqbase01.query.$seqbase02.maf" >&2
 			exit 1
 		fi
-		lastal -f MAF -Q 0 -pHOXD70 $lastrundir/$lastdb_index $queryseq > ref.$seqbase01.query.$seqbase02.maf
+		lastal -f MAF -Q 0 -pHOXD70 $lastdbindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
 		if [ $? -ne 0 ] || [ ! -s ref.$seqbase01.query.$seqbase02.maf ]; then
 			echo "Error: lastal failed: ref $refseq, query $queryseq" >&2
 			exit 1
 		fi
 	done
-	rm -rf ${lastdb_index}* > /dev/null 2>&1
 done
 
 
@@ -436,6 +487,8 @@ if [ $? -ne 0 ] || [ ! -s $netdir/out.axt ]; then
 	exit 1
 fi
 
+
+
 ### filter
 echo -e "\n"
 echo -e "\n" >&2
@@ -451,7 +504,7 @@ fi
 
 
 ### Annotation
-
+cd $RunPath
 if [ ! -z "$gfffile" ] && [ -s $gfffile ]; then
 	echo -e "\n\n\n"
 	echo -e "\n\n\n" >&2
@@ -475,3 +528,11 @@ else
 fi
 
 
+
+if [ $cleantemporary -eq 1 ]; then
+	CleanTemporary
+fi
+
+
+
+exit 0;
