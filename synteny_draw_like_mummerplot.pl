@@ -40,8 +40,8 @@ my $linenum=0;
 
 
 ### Configure
-%confighash=(   'plot_width' => 2000,
-				'plot_height' => 2000,
+%confighash=(   'plot_width' => 200,
+				'plot_height' => 200,
 				'plot_left_margin' => 10,
 				'plot_right_margin' => 10,
 				'plot_top_margin' => 10,
@@ -54,6 +54,7 @@ my $linenum=0;
 				'x_mark_size' => 5, ### 0 = no marks
 				'x_legend_font' => 'Arial',
 				'x_legend_size' => 5, ### 0 = no marks
+				'x_legend_color' => 'black',
 				
 				'y_line_width' => 2,
 				'y_line_color' => 'black',
@@ -62,6 +63,7 @@ my $linenum=0;
 				'y_mark_size' => 5, ### 0 = no marks
 				'y_legend_font' => 'Arial',
 				'y_legend_size' => 5, ### 0 = no marks
+				'y_legend_color' => 'black',
 				
 				'grid_line_width' => 1,
 				'grid_line_color' => 'grey',
@@ -205,18 +207,38 @@ $vectorout->line (   id=> "yaxis",
 
 
 ### Draw grid
+print "Info: Drawing grid lines\n";
 foreach (keys %starting_y) {
+	$vectorout->text(x => $confighash{'plot_left_margin'}-2,
+					y => $confighash{'plot_height'}-$confighash{'plot_bottom_margin'}-($starting_y{$_}+$seqlength{$_}-1)*$y_factor, 
+					"width" => $confighash{'y_legend_size'},
+					"height" => $confighash{'y_legend_size'},
+					"font-family"=>$confighash{'y_legend_font'},
+					"text-anchor"=>"start",
+					"text-color"=>$confighash{'y_legend_color'},
+					"font-size"=>$confighash{'y_legend_size'},
+					"style"=> "writing-mode: tb; glyph-orientation-vertical: 1;",
+					"-cdata" => "$_");
 	next unless (exists $starting_y{$_} and $starting_y{$_}>1);
 	$vectorout->line (   id=> "y_grid_$starting_y{$_}",
 					x1 => $confighash{'plot_left_margin'},
 					y1 => $confighash{'plot_height'}-$confighash{'plot_bottom_margin'}-($starting_y{$_}-1)*$y_factor, 
 					x2 => $confighash{'plot_width'}-$confighash{'plot_right_margin'},
 					y2 => $confighash{'plot_height'}-$confighash{'plot_bottom_margin'}-($starting_y{$_}-1)*$y_factor,, 
-					stroke => $confighash{'grid_line_color'}, 
+					stroke => $confighash{'grid_line_color'},
 					"stroke-width" => $confighash{'grid_line_width'}
 	);
 }
 foreach (keys %starting_x) {
+	$vectorout->text(x => $starting_x{$_}*$x_factor+$confighash{'plot_left_margin'},
+					y => $confighash{'plot_height'}-$confighash{'plot_bottom_margin'}+$confighash{'x_legend_size'}, 
+					"width" => $confighash{'x_legend_size'},
+					"height" => $confighash{'x_legend_size'},
+					"font-family"=>$confighash{'x_legend_font'},
+					"text-anchor"=>"start",
+					"text-color"=>$confighash{'x_legend_color'},
+					"font-size"=>$confighash{'x_legend_size'},
+					"-cdata" => "$_");
 	next unless (exists $starting_x{$_} and $starting_x{$_}>1);
 	$vectorout->line (   id=> "x_grid_$starting_y{$_}",
 						x1 => $confighash{'plot_left_margin'}+($starting_x{$_}-1)*$x_factor,
@@ -229,7 +251,8 @@ foreach (keys %starting_x) {
 }
 
 
-
+### Draw synteny lines
+print "Info: Draw synteny lines\n";
 open (SYNTENY, "< $inputconfig") || die "Error: can not open synteny config file\n";
 $linenum=0;
 while (my $line=<SYNTENY>) {
@@ -237,14 +260,29 @@ while (my $line=<SYNTENY>) {
 	$linenum++;
 	next if ($line=~/^#/);
 	my @arr=split(/\t/, $line);
-	$vectorout->line (   id => "$linenum-$arr[0]-$arr[3]",
+	if ($arr[7] eq '+') {
+		$vectorout->line (   id => "$linenum-$arr[0]-$arr[3]",
 						x1 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+$arr[4])*$x_factor,
 						y1 => $confighash{'plot_height'}-($starting_y{$arr[0]}+$arr[1])*$y_factor-$confighash{'plot_bottom_margin'},
 						x2 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+$arr[5])*$x_factor,
 						y2 => $confighash{'plot_height'}-($starting_y{$arr[0]}+$arr[2])*$y_factor-$confighash{'plot_bottom_margin'},
 						stroke => $confighash{'synteny_forward_line_color'}, 
 						"stroke-width" => $confighash{'synteny_line_width'}
-	);
+		);
+	}
+	elsif ($arr[7] eq '-') {
+		$vectorout->line (   id => "$linenum-$arr[0]-$arr[3]",
+						x1 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+$arr[4])*$x_factor,
+						y1 => $confighash{'plot_height'}-($starting_y{$arr[0]}+$arr[2])*$y_factor-$confighash{'plot_bottom_margin'},
+						x2 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+$arr[5])*$x_factor,
+						y2 => $confighash{'plot_height'}-($starting_y{$arr[0]}+$arr[1])*$y_factor-$confighash{'plot_bottom_margin'},
+						stroke => $confighash{'synteny_reverse_line_color'}, 
+						"stroke-width" => $confighash{'synteny_line_width'}
+		);
+	}
+	else{
+		die "Error: invalid senteny line: $line\n";
+	}
 }
 close SYNTENY;
 my $finalout = $vectorout->xmlify;
