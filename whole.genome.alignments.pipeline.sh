@@ -269,8 +269,6 @@ CleanTemporary
 
 
 
-
-
 #################### Main ###########################################
 echo -e "\n\n\n"
 echo -e "\n\n\n" >&2
@@ -354,7 +352,7 @@ for refseq in `ls $splitdirref/sequence.*.fa`; do
 			echo "Error: last output exists: ref.$seqbase01.query.$seqbase02.maf" >&2
 			exit 1
 		fi
-		lastal -f MAF -Q 0 -pHOXD70 $lastdbindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
+		lastal -f MAF -Q 0 -pHOXD70 -M $lastdbindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
 		if [ $? -ne 0 ] || [ ! -s ref.$seqbase01.query.$seqbase02.maf ]; then
 			echo "Error: lastal failed: ref $refseq, query $queryseq" >&2
 			exit 1
@@ -496,7 +494,10 @@ echo "### Step8: Preparing Final synteny file ..."
 echo "### Step8: Preparing Final synteny file ..." >&2
 
 perl -e 'print "#org1\torg1_start\torg1_end\torg2\torg2_start\torg2_end\tscore\tevalue\n"' > $netdir/out.axt.filter
-perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $netdir/out.axt >> $finaloutput
+#perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $netdir/out.axt >> $finaloutput
+perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); next unless (($arr[3]-$arr[2])>=$minisize or ($arr[6]-$arr[5])>=$minisize); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", $arr[7], "\n";' $netdir/out.axt >> $finaloutput
+
+
 if [ $? -ne 0 ] || [ ! -s $finaloutput ]; then
 	echo "Error: final axt: $finaloutput" >&2
 	exit 1
