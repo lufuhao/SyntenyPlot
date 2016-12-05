@@ -36,8 +36,8 @@ Descriptions:
 	Output mGSV format: http://cas-bioinfo.cas.unt.edu/mgsv/
 
 Output
-	./6.net/out.axt.filter
-	./6.net/anntation.txt
+	$o.axt
+	$o
 
 Options:
   -h    Print this help message
@@ -50,6 +50,7 @@ Options:
   -o    Output.filtered.synteny.file, default: ./out.axt.filter
   -t    Number of threads
   -d    delete temporary files
+  -s    minspace for chainnet, default: 1500
 
   *Note specify (-i) or (-r and -q)
 
@@ -84,6 +85,7 @@ minisize=100
 finaloutput="$RunPath/out.axt.filter"
 cleantemporary=0
 lastdbindex=''
+minspace=1500
 #################### Parameters #####################################
 while [ -n "$1" ]; do
   case "$1" in
@@ -97,6 +99,7 @@ while [ -n "$1" ]; do
     -o) finaloutput=$2;shift 2;;
     -t) threads=$2;shift 2;;
     -d) cleantemporary=1;shift 1;;
+    -s) minspace=$2;shift 2;;
     --) shift;break;;
     -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 1;;
     *) break;;
@@ -228,13 +231,17 @@ else
 	echo "Error: invalid threads number (INT): $threads" >&2
 	exit 1
 fi
-gfffile=$(cd "$(dirname "$gfffile")"; pwd)/$(basename "$gfffile")
+
 if [ -z "$gfffile" ] || [ ! -s "$gfffile" ]; then
 	echo "### Gene annotation GFF files NOT detected, skip..."
+else
+	gfffile=$(cd "$(dirname "$gfffile")"; pwd)/$(basename "$gfffile")
 fi
-repeatgff=$(cd "$(dirname "$repeatgff")"; pwd)/$(basename "$repeatgff")
+
 if [ -z "$repeatgff" ] || [ ! -s "$repeatgff" ]; then
 	echo "### Repeatmask GFF files NOT detected, skip..."
+else
+	repeatgff=$(cd "$(dirname "$repeatgff")"; pwd)/$(basename "$repeatgff")
 fi
 
 
@@ -336,8 +343,7 @@ for refseq in `ls $splitdirref/sequence.*.fa`; do
 		lastdbindex="$lastrundir/$lastdb_index"
 		echo "Info: using generated lastdb index: $lastdbindex"
 	fi
-	
-	
+
 	for queryseq in `ls $splitdirquery/sequence.*.fa`; do
 		seqname01=${refseq##*/}
 		seqname02=${queryseq##*/}
@@ -469,7 +475,7 @@ if [ -d $netdir ]; then
 fi
 mkdir -p $netdir
 cd $netdir
-chainNet -minSpace=1 $chaindir/all.pre.chain $chaindir/query.size $chaindir/reference.size stdout /dev/null | netSyntenic stdin noClass.net
+chainNet -minSpace=$minspace $chaindir/all.pre.chain $chaindir/query.size $chaindir/reference.size stdout /dev/null | netSyntenic stdin noClass.net
 if [ $? -ne 0 ] || [ ! -s $netdir/noClass.net ]; then
 	echo "Error:chainNet: $netdir/noClass.net" >&2
 	exit 1
@@ -479,9 +485,9 @@ faToTwoBit $referencefasta reference.2bit
 faToTwoBit $queryfasta query.2bit
 echo "### Step7: netToAxt ..."
 echo "### Step7: netToAxt ..." >&2
-netToAxt noClass.net $chaindir/all.pre.chain $netdir/query.2bit $netdir/reference.2bit out.axt
-if [ $? -ne 0 ] || [ ! -s $netdir/out.axt ]; then
-	echo "Error: netToAxt: $netdir/out.axt" >&2
+netToAxt noClass.net $chaindir/all.pre.chain $netdir/query.2bit $netdir/reference.2bit $finaloutput.axt
+if [ $? -ne 0 ] || [ ! -s $finaloutput.axt ]; then
+	echo "Error: netToAxt: $finaloutput.axt" >&2
 	exit 1
 fi
 
@@ -493,9 +499,9 @@ echo -e "\n" >&2
 echo "### Step8: Preparing Final synteny file ..."
 echo "### Step8: Preparing Final synteny file ..." >&2
 
-perl -e 'print "#org1\torg1_start\torg1_end\torg2\torg2_start\torg2_end\tscore\tevalue\n"' > $netdir/out.axt.filter
-#perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $netdir/out.axt >> $finaloutput
-perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); next unless (($arr[3]-$arr[2])>=$minisize or ($arr[6]-$arr[5])>=$minisize); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", $arr[7], "\n";' $netdir/out.axt >> $finaloutput
+perl -e 'print "#org1\torg1_start\torg1_end\torg2\torg2_start\torg2_end\tscore\tevalue\n"' > $finaloutput
+#perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $finaloutput.axt >> $finaloutput
+perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); next unless (($arr[3]-$arr[2])>=$minisize or ($arr[6]-$arr[5])>=$minisize); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", $arr[7], "\n";' $finaloutput.axt >> $finaloutput
 
 
 if [ $? -ne 0 ] || [ ! -s $finaloutput ]; then
@@ -512,8 +518,8 @@ if [ ! -z "$gfffile" ] && [ -s $gfffile ]; then
 	echo "### Step9: Preparing gene annotation ..."
 	echo "### Step9: Preparing gene annotation ..." >&2
 	echo "### Detect Gene annotation GFF files: $gfffile"
-	perl -e 'print "#org_id\tstart\tend\tstrand\tfeature_name\tfeature_value\ttrack_name\ttrack_shape\ttrack_color\n";' > anntation.txt
-	perl -ne 'chomp;next if (/^#/);@arr=split(/\t/);$arr[8]=~s/^.*ID=//;$arr[8]=~s/;.*$//; print "$arr[0]\t$arr[3]\t$arr[4]\t$arr[6]\t$arr[8]\t.\tgene\tarrow\tbrown\n";' $gfffile >> anntation.txt
+	perl -e 'print "#org_id\tstart\tend\tstrand\tfeature_name\tfeature_value\ttrack_name\ttrack_shape\ttrack_color\n";' > $finaloutput.annot.gff3
+	perl -ne 'chomp;next if (/^#/);@arr=split(/\t/);$arr[8]=~s/^.*ID=//;$arr[8]=~s/;.*$//; print "$arr[0]\t$arr[3]\t$arr[4]\t$arr[6]\t$arr[8]\t.\tgene\tarrow\tbrown\n";' $gfffile >> $finaloutput.annot.gff3
 else
 	echo "### Gene annotation GFF files NOT detected, skip..."
 fi
@@ -523,7 +529,7 @@ fi
 if [ ! -z "$repeatgff" ] && [ -s "$repeatgff" ]; then
 	echo "### Detect repeatmask GFF files: $repeatgff"
 	#perl -MFuhaoPerl5Lib::MiscKit=MergeRanges -MData::Dumper=Dumper -ne 'BEGIN{%hash=();} chomp; next if (/^#/); @arr=split(/\t/);print "Tewst: @arr\n"; $hash{$arr[0]}{$arr[3]}=$arr[4]; END {print Dumer $hash{$seq};foreach $seq (sort (keys %hash)){($test, $id)=MergeRanges($hash{$seq}); print STDERR "Test: $seq\t$test\n"; foreach $j (sort {$a<=>$b} keys %{$id}) {print $seq, "\t", $j, "\t", ${$id}{$j}, "\n";}}}' $repeatgff
-	perl -MFuhaoPerl5Lib::MiscKit=MergeRanges -ne 'BEGIN{%hash=();} chomp; next if (/^#/); @arr=split(/\t/);$hash{$arr[0]}{$arr[3]}=$arr[4]; END {foreach $seq (sort (keys %hash)){($test, $id)=MergeRanges($hash{$seq}); print STDERR "Test: $seq\t$test\n"; foreach $j (sort {$a<=>$b} keys %{$id}) {print $seq, "\t", $j, "\t", ${$id}{$j}, "\t.\t.\t.\trepeat\tbox\tblack\n";}}}' $repeatgff >> anntation.txt
+	perl -MFuhaoPerl5Lib::MiscKit=MergeRanges -ne 'BEGIN{%hash=();} chomp; next if (/^#/); @arr=split(/\t/);$hash{$arr[0]}{$arr[3]}=$arr[4]; END {foreach $seq (sort (keys %hash)){($test, $id)=MergeRanges($hash{$seq}); print STDERR "Test: $seq\t$test\n"; foreach $j (sort {$a<=>$b} keys %{$id}) {print $seq, "\t", $j, "\t", ${$id}{$j}, "\t.\t.\t.\trepeat\tbox\tblack\n";}}}' $repeatgff >> $finaloutput.annot.gff3
 else
 	echo "### Repeatmask GFF files NOT detected, skip..."
 fi
