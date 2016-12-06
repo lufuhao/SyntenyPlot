@@ -122,6 +122,7 @@ my %hash_b=();
 while (my $line=<SYNTENY>) {
 	chomp $line;
 	next if ($line=~/^#/);
+	$linenum=0;
 	my @arr=split(/\t/, $line);
 	unless (exists $hash_a{$arr[0]}) {
 		unless (exists $seqlength{$arr[0]}) {
@@ -141,6 +142,10 @@ while (my $line=<SYNTENY>) {
 %hash_a=();
 %hash_b=();
 close SYNTENY;
+if ($linenum==0) {
+	print STDERR "Warnings: empty synteny file\n";
+	exit 0;
+}
 die "Error: empty X axis sequences\n" unless (scalar(@xorder)>0);
 die "Error: empty Y axis sequences\n" unless (scalar(@yorder)>0);
 
