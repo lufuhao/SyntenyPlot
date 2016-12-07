@@ -24,7 +24,7 @@ cat<<HELP
 
 $0 --- Brief Introduction
 
-Version: 20160802
+Version: 20161207
 
 Requirements:
 	fasta_splitter_by_numseq.pl
@@ -50,7 +50,8 @@ Options:
   -o    Output.filtered.synteny.file, default: ./out.axt.filter
   -t    Number of threads
   -d    delete temporary files
-  -s    minspace for chainnet, default: 1500
+  -s    Maximum gap to link for netToAxt, default: 1500
+  -x    Lastal score metrix preset, default: HOXD70
 
   *Note specify (-i) or (-r and -q)
 
@@ -85,7 +86,22 @@ minisize=100
 finaloutput="$RunPath/out.axt.filter"
 cleantemporary=0
 lastdbindex=''
-minspace=1500
+minspace=25
+maxgap=1500
+#lastal score metrix http://last.cbrc.jp/doc/last-matrices.html
+#HOXD70 is medium. HoxD55 is far. human-chimp.v2 is close.
+#Availble:
+#	AT77		for weakly-similar AT-rich DNA (~27% substitutions and ~77% A+T) (MC Frith, NAR 2011 39(4):e23)
+#	ATMAP		for strongly-similar AT-rich DNA (~4% substitutions and ~76% A+T)
+#				for sequences with more than 4% substitution errors, if the excess error rate is explained by quality scores
+#	BISF		for aligning bisulfite-converted DNA forward strands to a closely-related genome (MC Frith, R Mori, K Asai, NAR 2012 40(13):e100)
+#	BISR		for aligning bisulfite-converted DNA reverse strands to a closely-related genome (MC Frith, R Mori, K Asai, NAR 2012 40(13):e100)
+#	BL62 or BLOSUM62	protein scoring scheme is quite good at finding long-and-weak similarities, and not terrible at short-and-strong similarities (S Henikoff & JG Henikoff, PNAS 1992 89(22):10915-9)
+#	BL80 or BLOSUM80	protein scoring scheme is good at finding somewhat short-and-strong similarities. (S Henikoff & JG Henikoff, PNAS 1992 89(22):10915-9)
+#	HOXD70		often used for weak DNA similarities (F Chiaromonte, VB Yap, W Miller, PSB 2002:115-126)
+#	MIQS		finding remote protein homologs (K Yamada & K Tomii, Bioinformatics 2014 30(3):317-25)
+#	PAM30		good for finding short-and-strong similarities (MO Dayhoff et al. 1978)
+scoremetrix='HOXD70'
 #################### Parameters #####################################
 while [ -n "$1" ]; do
   case "$1" in
@@ -99,7 +115,8 @@ while [ -n "$1" ]; do
     -o) finaloutput=$2;shift 2;;
     -t) threads=$2;shift 2;;
     -d) cleantemporary=1;shift 1;;
-    -s) minspace=$2;shift 2;;
+    -s) maxgap=$2;shift 2;;
+    -x) scoremetrix=$2;shift 2;;
     --) shift;break;;
     -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 1;;
     *) break;;
@@ -358,7 +375,7 @@ for refseq in `ls $splitdirref/sequence.*.fa`; do
 			echo "Error: last output exists: ref.$seqbase01.query.$seqbase02.maf" >&2
 			exit 1
 		fi
-		lastal -f MAF -Q 0 -pHOXD70 -M $lastdbindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
+		lastal -f MAF -Q 0 -p $scoremetrix -M $lastdbindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
 		if [ $? -ne 0 ] || [ ! -s ref.$seqbase01.query.$seqbase02.maf ]; then
 			echo "Error: lastal failed: ref $refseq, query $queryseq" >&2
 			exit 1
@@ -485,7 +502,7 @@ faToTwoBit $referencefasta reference.2bit
 faToTwoBit $queryfasta query.2bit
 echo "### Step7: netToAxt ..."
 echo "### Step7: netToAxt ..." >&2
-netToAxt noClass.net $chaindir/all.pre.chain $netdir/query.2bit $netdir/reference.2bit $finaloutput.axt
+netToAxt -maxGap=$maxgap noClass.net $chaindir/all.pre.chain $netdir/query.2bit $netdir/reference.2bit $finaloutput.axt
 if [ $? -ne 0 ] || [ ! -s $finaloutput.axt ]; then
 	echo "Error: netToAxt: $finaloutput.axt" >&2
 	exit 1
@@ -498,10 +515,10 @@ echo -e "\n"
 echo -e "\n" >&2
 echo "### Step8: Preparing Final synteny file ..."
 echo "### Step8: Preparing Final synteny file ..." >&2
-
+export MINISIZE=$minisize
 perl -e 'print "#org1\torg1_start\torg1_end\torg2\torg2_start\torg2_end\tscore\tevalue\n"' > $finaloutput
 #perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $finaloutput.axt >> $finaloutput
-perl -ne 'BEGIN{$minisize=100;}chomp; next unless (/^\d+/); @arr=split(/\s+/); next unless (($arr[3]-$arr[2])>=$minisize or ($arr[6]-$arr[5])>=$minisize); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", $arr[7], "\n";' $finaloutput.axt >> $finaloutput
+perl -ne 'BEGIN{$minisize=$ENV{'MINISIZE'};}chomp; next unless (/^\d+/); @arr=split(/\s+/); next unless (($arr[3]-$arr[2])>=$minisize or ($arr[6]-$arr[5])>=$minisize); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", $arr[7], "\n";' $finaloutput.axt >> $finaloutput
 
 
 if [ $? -ne 0 ] || [ ! -s $finaloutput ]; then
