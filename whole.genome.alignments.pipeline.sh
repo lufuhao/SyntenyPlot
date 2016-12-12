@@ -396,7 +396,7 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 				echo "Error: last output exists: ref.$seqbase01.query.$seqbase02.maf" >&2
 				exit 1
 			fi
-			lastal -f MAF -Q 0 -p $scoremetrix -M $lastdbindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
+			lastal -f MAF -Q 0 -p $scoremetrix -M -P $threads $lastdbindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
 			if [ $? -ne 0 ] || [ ! -s ref.$seqbase01.query.$seqbase02.maf ]; then
 				echo "Error: lastal failed: ref $refseq, query $queryseq" >&2
 				exit 1
