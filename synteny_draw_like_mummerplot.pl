@@ -122,7 +122,7 @@ my %hash_b=();
 while (my $line=<SYNTENY>) {
 	chomp $line;
 	next if ($line=~/^#/);
-	$linenum=0;
+	$linenum++;
 	my @arr=split(/\t/, $line);
 	unless (exists $hash_a{$arr[0]}) {
 		unless (exists $seqlength{$arr[0]}) {
