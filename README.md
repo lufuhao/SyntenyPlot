@@ -45,6 +45,7 @@ anntation.config specifies the gene/feature/repeat locations
 + [ ] 1. Support CDS TRACKs
 + [ ] 2. Make delicate legends.
 + [ ] 3. Avoid Tick marks out of main plot
++ [ ] 4. Regenerate examples
 
 #Citation:
 
