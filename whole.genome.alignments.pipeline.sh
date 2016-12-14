@@ -53,6 +53,7 @@ Options:
   -s    Maximum gap to link for netToAxt, default: 1500
   -x    Lastal score metrix preset, default: HOXD70
   -psl  PSL file before doing pslSwap
+  -l    Minimum alignment length to filter
 
   *Note specify (-i) or (-r and -q)
 
@@ -83,7 +84,7 @@ referencefasta=''
 queryfasta=''
 gfffile=''
 repeatgff=''
-minisize=100
+min_align_length=100
 finaloutput="$RunPath/out.axt.filter"
 cleantemporary=0
 lastdbindex=''
@@ -120,6 +121,7 @@ while [ -n "$1" ]; do
     -s) maxgap=$2;shift 2;;
     -x) scoremetrix=$2;shift 2;;
     -psl) pslfile=$2;shift 2;;
+    -l) min_align_length==$2;shift 2;;
     --) shift;break;;
     -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 1;;
     *) break;;
@@ -270,6 +272,13 @@ if [ -z "$repeatgff" ] || [ ! -s "$repeatgff" ]; then
 else
 	repeatgff=$(cd "$(dirname "$repeatgff")"; pwd)/$(basename "$repeatgff")
 fi
+if [[ $min_align_length =~ ^[0-9]+$ ]]; then
+	echo "Parameter -l : $min_align_length" >/dev/null
+else
+	echo "Error: invalid INT -l parameter" >&2
+	exit 10;
+fi
+
 
 
 
@@ -559,9 +568,9 @@ echo -e "\n"
 echo -e "\n" >&2
 echo "### Step8: Preparing Final synteny file ..."
 echo "### Step8: Preparing Final synteny file ..." >&2
-export MINISIZE=$minisize
+export MINISIZE=$min_align_length
 perl -e 'print "#org1\torg1_start\torg1_end\torg2\torg2_start\torg2_end\tscore\tevalue\n"' > $finaloutput
-#perl -ne 'BEGIN{$minisize=$ENV{"MINISIZE"};}chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $finaloutput.axt >> $finaloutput
+#perl -ne 'BEGIN{$minisize=$ENV{"MINISIZE"};; print STDERR "Info: Min_alignment_length: $minisize\n";} chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $finaloutput.axt >> $finaloutput
 perl -ne 'BEGIN{$minisize=$ENV{"MINISIZE"}; print STDERR "Info: Min_alignment_length: $minisize\n";} chomp; next unless (/^\d+/); @arr=split(/\s+/); next unless (($arr[3]-$arr[2])>=$minisize or ($arr[6]-$arr[5])>=$minisize); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", $arr[7], "\n";' $finaloutput.axt >> $finaloutput
 
 
