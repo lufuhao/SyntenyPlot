@@ -1287,11 +1287,11 @@ sub readSyntenyCfg {
 			$RSCorder_hash{$RSCarr[3]}++;
 		}
 		
-		if ($RSCarr[7] eq '+') {
+		if ($RSCarr[7] eq '+') {### Map to forward
 			push (@{$syntenyhash{"$RSCarr[3]-$RSCarr[0]"}}, [$RSCarr[4], $RSCarr[5], $RSCarr[1], $RSCarr[2]]);
 			push (@{$syntenyhash{"$RSCarr[0]-$RSCarr[3]"}}, [$RSCarr[1], $RSCarr[2], $RSCarr[4], $RSCarr[5]]);
 		}
-		elsif ($RSCarr[7] eq '-') {
+		elsif ($RSCarr[7] eq '-') {### Map to reverse complement
 			my $RSCindex="ruler_".$RSCarr[3]."_length";
 			unless (exists $confighash{$RSCindex} and $confighash{$RSCindex}=~/^\d+$/) {
 				print STDERR $RSCsubinfo, "Error: invalid seq length for seqID $RSCarr[3]; check $RSCindex parameter in global config\n";
@@ -1299,8 +1299,9 @@ sub readSyntenyCfg {
 			}
 			$RSCarr[4]=$confighash{$RSCindex}-$RSCarr[4]+1;
 			$RSCarr[5]=$confighash{$RSCindex}-$RSCarr[5]+1;
-			push (@{$syntenyhash{"$RSCarr[3]-$RSCarr[0]"}}, [$RSCarr[4], $RSCarr[5], $RSCarr[1], $RSCarr[2]]);
-			push (@{$syntenyhash{"$RSCarr[0]-$RSCarr[3]"}}, [$RSCarr[1], $RSCarr[2], $RSCarr[4], $RSCarr[5]]);
+			##COMMENT: change order for $RSCarr[5] and $RSCarr[4] to display different
+			push (@{$syntenyhash{"$RSCarr[3]-$RSCarr[0]"}}, [$RSCarr[5], $RSCarr[4], $RSCarr[1], $RSCarr[2]]);
+			push (@{$syntenyhash{"$RSCarr[0]-$RSCarr[3]"}}, [$RSCarr[1], $RSCarr[2], $RSCarr[5], $RSCarr[4]]);
 		}
 		else {
 			print STDERR $RSCsubinfo, "Error: unknown strand at line $RSCnumline\n";
