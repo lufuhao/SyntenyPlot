@@ -277,9 +277,9 @@ while (my $line=<SYNTENY>) {
 	}
 	elsif ($arr[7] eq '-') {
 		$vectorout->line (   id => "$linenum-$arr[0]-$arr[3]",
-						x1 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+$arr[4])*$x_factor,
+						x1 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+($seqlength{$arr[3]}-$arr[5]+1))*$x_factor,
 						y1 => $confighash{'plot_height'}-($starting_y{$arr[0]}+$arr[2])*$y_factor-$confighash{'plot_bottom_margin'},
-						x2 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+$arr[5])*$x_factor,
+						x2 => $confighash{'plot_left_margin'}+($starting_x{$arr[3]}+($seqlength{$arr[3]}-$arr[4]+1))*$x_factor,
 						y2 => $confighash{'plot_height'}-($starting_y{$arr[0]}+$arr[1])*$y_factor-$confighash{'plot_bottom_margin'},
 						stroke => $confighash{'synteny_reverse_line_color'}, 
 						"stroke-width" => $confighash{'synteny_line_width'}
