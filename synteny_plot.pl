@@ -28,24 +28,20 @@ die USAGE if (scalar(@ARGV) !=4 or $ARGV[0] eq '-h' or $ARGV[0] eq '--help');
 
 
 
-my ($userconfig, $syntenyconfig, $annotationconfig, $outputsvg);
-unless (defined $ARGV[0] and -s $ARGV[0]) {
+my ($userconfig, $syntenyconfig, $annotationconfig, $outputsvg)=@ARGV;
+unless (defined $userconfig and -s $userconfig) {
 	die "Error: invalid global.config file\n";
 }
-$userconfig=$ARGV[0];
-unless (defined $ARGV[1] and -s $ARGV[1]) {
+unless (defined $syntenyconfig and -s $syntenyconfig) {
 	die "Error: invalid synteny.config file\n";
 }
-$syntenyconfig=$ARGV[1];
-unless (defined $ARGV[2] and -s $ARGV[2]) {
+unless (defined $annotationconfig and -s $annotationconfig) {
 	die "Error: invalid annotation.config file\n";
 }
-$annotationconfig=$ARGV[2];
-unless (defined $ARGV[3] and $ARGV[3]=~/^\S+$/) {
+unless (defined $outputsvg and $outputsvg=~/^\S+$/) {
 	die "Error: invalid output.svg file\n";
 }
-unlink "$ARGV[3]" if (-e $ARGV[3]);
-$outputsvg=$ARGV[3];
+unlink "$outputsvg" if (-e "$outputsvg");
 
 
 
@@ -90,6 +86,7 @@ my $expression_top_space=3;
 	'synteny_line_color' => 'black',
 	'synteny_line_width' => 1,
 	'synteny_order' => 'ToBeDetected',
+	'synteny_min_length' => 0,
 ##[ruler]
 	'ruler_mark_interval' => 5000,
 	'ruler_tick_color' => 'black',
@@ -187,20 +184,19 @@ print "\n\n\n";
 
 
 ### Estimate track height
-foreach my $thisblock (keys %seqlength) {
+foreach my $thisblock (@blockorder) {
 	if (exists $confighash{"ruler_${thisblock}_length"}) {
 		unless ($confighash{"ruler_${thisblock}_length"}=~/^\d+$/) {
-			print STDERR "Warnings: invalid ruler_${thisblock}_length parameter in user.config file, use autodetected in synteny and annotation files: $seqlength{$thisblock}\n";
-			$confighash{"ruler_${thisblock}_length"}=$seqlength{$thisblock};
+			die "Warnings: invalid ruler_${thisblock}_length parameter in user.config file\n";
 		}
 		else {
 			if ($confighash{"ruler_${thisblock}_length"}< $seqlength{$thisblock}) {
-				print STDERR "Warnings: There is BLOCK $thisblock POSITION $seqlength{$thisblock} larger than the length defined in user.config ruler_${thisblock}_length=", $confighash{"ruler_${thisblock}_length"}, "\n";
+				print STDERR "Warnings: There is a BLOCK $thisblock POSITION $seqlength{$thisblock} larger than the length defined in user.config ruler_${thisblock}_length=", $confighash{"ruler_${thisblock}_length"}, "\n";
 			}
 		}
 	}
 	else {
-		$confighash{"ruler_${thisblock}_length"}=$seqlength{$thisblock};
+		die "Error: ruler_${thisblock}_length NOT specified\n";
 	}
 }
 %seqlength=();
@@ -1058,6 +1054,10 @@ sub readUsrCfg {
 		print STDERR $RUCsubinfo, "Warnings: use default synteny_order=", $userdefault{'synteny_order'}, "\n";
 		$confighash{'synteny_order'}=$userdefault{'synteny_order'};
 	}
+	unless (exists $confighash{'synteny_min_length'} and $confighash{'synteny_min_length'}=~/^\d+$/) {
+		print STDERR $RUCsubinfo, "Warnings: use default synteny_min_length=", $userdefault{'synteny_min_length'}, "\n";
+		$confighash{'synteny_min_length'}=$userdefault{'synteny_min_length'};
+	}
 
 
 
@@ -1219,7 +1219,7 @@ sub readUsrCfg {
 
 ### read synteny config
 ### &readSyntenyCfg($synteny_config)
-### Global: %syntenyhash, @blockorder, %seqlength; $use_defined_order
+### Global: %syntenyhash, @blockorder, %seqlength; $use_defined_order, %confighash
 ### Dependencies: 
 ### Note:
 sub readSyntenyCfg {
@@ -1245,8 +1245,8 @@ sub readSyntenyCfg {
 		next if ($RSCline=~/(^#)|(^\s*$)/);
 		my @RSCarr=split(/\t/, $RSCline);
 		###check format
-		unless (scalar(@RSCarr)>=6) {
-			print STDERR $RSCsubinfo, "Error: invalid synteny line($RSCnumline): less than 6 column: $RSCline\n";
+		unless (scalar(@RSCarr)==8) {
+			print STDERR $RSCsubinfo, "Error: invalid synteny line($RSCnumline): NOT 8 columns: $RSCline\n";
 			return 0;
 		}
 		$RSCarr[1]=~s/^\s+//;$RSCarr[1]=~s/\s+$//;
@@ -1274,6 +1274,11 @@ sub readSyntenyCfg {
 		else {
 			$seqlength{$RSCarr[3]}=$RSCarr[5];
 		}
+		
+		if ((($RSCarr[2]-$RSCarr[1])<$confighash{'synteny_min_length'}) or (($RSCarr[5]-$RSCarr[4])<$confighash{'synteny_min_length'})) {### ignore those alignments less that INT length
+			print $RSCsubinfo, "Info: ignore line $RSCnumline due to < synteny_min_length ", $confighash{'synteny_min_length'}, "\n";
+			next;
+		}
 		###load order
 		if ($use_defined_order==0) {
 			push (@blockorder, $RSCarr[0]) unless (exists $RSCorder_hash{$RSCarr[0]});
@@ -1281,8 +1286,27 @@ sub readSyntenyCfg {
 			push (@blockorder, $RSCarr[3]) unless (exists $RSCorder_hash{$RSCarr[3]});
 			$RSCorder_hash{$RSCarr[3]}++;
 		}
-		push (@{$syntenyhash{"$RSCarr[3]-$RSCarr[0]"}}, [$RSCarr[4], $RSCarr[5], $RSCarr[1], $RSCarr[2]]);
-		push (@{$syntenyhash{"$RSCarr[0]-$RSCarr[3]"}}, [$RSCarr[1], $RSCarr[2], $RSCarr[4], $RSCarr[5]]);
+		
+		if ($RSCarr[7] eq '+') {
+			push (@{$syntenyhash{"$RSCarr[3]-$RSCarr[0]"}}, [$RSCarr[4], $RSCarr[5], $RSCarr[1], $RSCarr[2]]);
+			push (@{$syntenyhash{"$RSCarr[0]-$RSCarr[3]"}}, [$RSCarr[1], $RSCarr[2], $RSCarr[4], $RSCarr[5]]);
+		}
+		elsif ($RSCarr[7] eq '-') {
+			my $RSCindex="ruler_".$RSCarr[3]."_length";
+			unless (exists $confighash{$RSCindex} and $confighash{$RSCindex}=~/^\d+$/) {
+				print STDERR $RSCsubinfo, "Error: invalid seq length for seqID $RSCarr[3]; check $RSCindex parameter in global config\n";
+				return 0;
+			}
+			$RSCarr[4]=$confighash{$RSCindex}-$RSCarr[4]+1;
+			$RSCarr[5]=$confighash{$RSCindex}-$RSCarr[5]+1;
+			push (@{$syntenyhash{"$RSCarr[3]-$RSCarr[0]"}}, [$RSCarr[4], $RSCarr[5], $RSCarr[1], $RSCarr[2]]);
+			push (@{$syntenyhash{"$RSCarr[0]-$RSCarr[3]"}}, [$RSCarr[1], $RSCarr[2], $RSCarr[4], $RSCarr[5]]);
+		}
+		else {
+			print STDERR $RSCsubinfo, "Error: unknown strand at line $RSCnumline\n";
+			return 0;
+		}
+		
 	}
 	close RSCCONFIG;
 	
