@@ -20,9 +20,9 @@ echo "RunDir: $RunPath"
 help() {
 cat<<HELP
 
-$0 --- Brief Introduction
+$0 --- Align large genome to reference by spliting into parts and merge back
 
-Version: 20161215
+Version: 20161216
 
 Requirements:
 	perl && File::Spec
@@ -102,17 +102,8 @@ CmdExists () {
   if command -v $1 >/dev/null 2>&1; then
     echo 0
   else
-#    echo "I require $1 but it's not installed.  Aborting." >&2
     echo 1
   fi
-#  local cmd=$1
-#  if command -v $cmd >/dev/null 2>&1;then
-#    echo >&2 $cmd "  :  "`command -v $cmd`
-#    exit 0
-#  else
-#    echo >&2 "Error: require $cmd but it's not installed.  Exiting..."
-#    exit 1
-#  fi
 }
 
 ###Usage: array=(`split delimiter string`)
