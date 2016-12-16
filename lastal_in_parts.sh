@@ -50,7 +50,9 @@ Options:
   -a    Start position for interrupted jobs, default: 1
 
 Example:
-  $0 -i ./chr1.fa -t 10
+  lastal_in_parts.sh -x $rundir/$lastdb_index -l 10000000 -i $queryseq \
+      -o chr3Bbac.last.chr3Bnegene.psl -a 10000001\
+      -p "-f MAF -Q 0 -p $scoremetrix -P $threads -M" 
 
 Author:
   Fu-Hao Lu
@@ -88,7 +90,7 @@ while [ -n "$1" ]; do
     -g) overhang=$2; shift 2;;
     -a) startpos=$2; shift 2;;
     --) shift;break;;
-    -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 1;;
+    -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 100;;
     *) break;;
   esac
 done
@@ -145,7 +147,7 @@ RunLastal () {
 		return 1;
 	fi
 	maf-convert psl $RLquery.maf > $RLoutput
-	if [ $? -ne 0]; then
+	if [ $? -ne 0 ]; then
 		echo "${RLsubinfo}Error: maf2psl running failed" >&2
 		echo "CMD used: maf-convert psl $RLquery.maf > $RLoutput" >&2
 		return 1;
@@ -189,7 +191,7 @@ if [ -z "$fastainput" ] || [ ! -s "$fastainput" ]; then
 	echo "Error: invalid query sequence" >&2
 	exit 100;
 fi
-if [ -e "$finalout"]; then
+if [ -e "$finalout" ]; then
 	rm -rf "$finalout" > /dev/null 2>&1
 fi
 	
