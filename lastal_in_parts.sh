@@ -47,6 +47,7 @@ Options:
   -p    lastal options
   -x    index of lastdb
   -o    Final output in PSL format
+  -a    Start position for interrupted jobs, default: 1
 
 Example:
   $0 -i ./chr1.fa -t 10
@@ -74,7 +75,7 @@ lastaloption=''
 lastalindex=''
 finalout=''
 overhang=0;
-
+startpos=1;
 #################### Parameters #####################################
 while [ -n "$1" ]; do
   case "$1" in
@@ -85,6 +86,7 @@ while [ -n "$1" ]; do
     -x) lastalindex=$2;shift 2;;
     -o) finalout=$2; shift 2;;
     -g) overhang=$2; shift 2;;
+    -a) startpos=$2; shift 2;;
     --) shift;break;;
     -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 1;;
     *) break;;
@@ -133,7 +135,7 @@ RunLastal () {
 	local RLsubinfo="SH(RunLastal)"
 	
 	lastal $lastaloption $lastalindex $RLquery > $RLquery.maf
-	if [ $? -ne 0]; then
+	if [ $? -ne 0 ]; then
 		echo "${RLsubinfo}Error: lastal running failed" >&2
 		echo "CMD used: lastal $lastaloption $lastalindex $RLquery > $RLquery.maf" >&2
 		return 1;
@@ -220,8 +222,8 @@ declare -a seqnamelen=($(perl -lane 'print "$F[0]::::$F[1]";' "$fastainput.fai")
 for indseq in "${seqnamelen[@]}"; do
 	echo "Seq: ${indseq%%::::*} length ${indseq##*::::}";
 	i=1;
-	rm query*.fa
-	for ((start=1; start<=${indseq##*::::}; start+=steplen)); do
+	rm query*.fa > /dev/null 2>&1
+	for ((start=$startpos; start<=${indseq##*::::}; start+=steplen)); do
 		let end=$start+$steplen-1
 		if [[ $end -gt ${indseq##*::::} ]]; then
 			end=${indseq##*::::}
@@ -251,7 +253,7 @@ for indseq in "${seqnamelen[@]}"; do
 			break
 		fi
 	done
-	rm query*.fa
+	rm query*.fa > /dev/null 2>&1
 done
 
 
