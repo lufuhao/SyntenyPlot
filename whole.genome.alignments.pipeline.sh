@@ -24,20 +24,21 @@ cat<<HELP
 
 $0 --- Brief Introduction
 
-Version: 20161207
+Version: 20170110
 
 Requirements:
-	fasta_splitter_by_numseq.pl
-	LAST: lastdb, lastal, maf-convert
-	UCSC: faSize, axtChain, chainMergeSort, chainPreNet, pslSwap
-	
+    fasta_splitter_by_numseq.pl
+    LAST: lastdb, lastal, maf-convert
+    UCSC: faSize, axtChain, chainMergeSort, chainPreNet, pslSwap,
+          pslSplitOnTarget, faToTwoBit, netToAxt
+    
 Descriptions:
-	Detect synteny regions using LAST/ChainNet pipeline
-	Output mGSV format: http://cas-bioinfo.cas.unt.edu/mgsv/
+    Detect synteny regions using LAST/ChainNet pipeline
+    Output mGSV format: http://cas-bioinfo.cas.unt.edu/mgsv/
 
 Output
-	$o.axt
-	$o
+    \$o.axt
+    \$o
 
 Options:
   -h    Print this help message
@@ -50,10 +51,15 @@ Options:
   -o    Output.filtered.synteny.file, default: ./out.axt.filter
   -t    Number of threads
   -d    delete temporary files
-  -s    Maximum gap to link for netToAxt, default: 1500
+  -s    Maximum gap to link for netToAxt, default: 100
   -x    Lastal score metrix preset, default: HOXD70
   -psl  PSL file before doing pslSwap
-  -l    Minimum alignment length to filter
+  -l    Minimum alignment length to filter, default: 100
+  -LG   axtChain -linearGap option, default: medium
+        <medium|loose|filename> Specify type of linearGap to use.
+        loose is chicken/human linear gap costs.
+        medium is mouse/human linear gap costs.
+        Or specify a piecewise linearGap tab delimited file.
 
   *Note specify (-i) or (-r and -q)
 
@@ -89,8 +95,9 @@ finaloutput="$RunPath/out.axt.filter"
 cleantemporary=0
 lastdbindex=''
 minspace=25
-maxgap=1500
+maxgap=100
 pslfile=''
+linearGap='medium'
 #lastal score metrix http://last.cbrc.jp/doc/last-matrices.html
 #HOXD70 is medium. HoxD55 is far. human-chimp.v2 is close.
 #Availble:
@@ -121,7 +128,8 @@ while [ -n "$1" ]; do
     -s) maxgap=$2;shift 2;;
     -x) scoremetrix=$2;shift 2;;
     -psl) pslfile=$2;shift 2;;
-    -l) min_align_length==$2;shift 2;;
+    -l) min_align_length=$2;shift 2;;
+    -LG) linearGap=$2;shift 2;;
     --) shift;break;;
     -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 1;;
     *) break;;
@@ -167,6 +175,28 @@ join () {
 
 abs2rel () { perl -MFile::Spec -e 'print(File::Spec->abs2rel($ARGV[1], $ARGV[0]), "\n")' "$@"; }
 #echo $(cd "$(dirname "$param")"; pwd)/$(basename "$param")
+File2Fullpath () {
+	local FFinput=$1
+	local FFsubinfo="SUF(File2Fullpath)"
+	
+#	echo "#Test1: $FFinput #" >&2
+	if [[ "$FFinput" =~ .*\/.* ]]; then
+		if [[ "$FFinput" =~ ^\/ ]]; then
+#			echo "#Test2: $FFinput #" >&2
+			echo $FFinput
+		else
+#			echo "#Test3: $FFinput #" >&2
+			echo $(cd $(dirname "$FFinput"); pwd)/$(basename "$FFinput")
+		fi
+	elif [[ "$FFinput" =~ ^[-0-9a-zA-Z\._]+$ ]]; then
+#		echo "#Test4: $FFinput #" >&2
+		echo $(pwd)/$(basename "$FFinput")
+	else
+#		echo "#Test5: $FFinput #" >&2
+		echo ''
+	fi
+#	echo "#Test6: $FFinput #" >&2
+}
 #################### Command test ###################################
 echo -e "\n\n\n"
 echo -e "\n\n\n" >&2
@@ -212,10 +242,15 @@ if [ $(CmdExists 'pslSplitOnTarget') -ne 0 ]; then
 	echo "Error: CMD 'pslSplitOnTarget' in program UCSC KENT is required but not found.  Aborting..." >&2 
 	exit 127
 fi
-if [ $(CmdExists 'pslSplitOnTarget') -ne 0 ]; then
-	echo "Error: CMD 'pslSplitOnTarget' in program UCSC KENT is required but not found.  Aborting..." >&2 
+if [ $(CmdExists 'faToTwoBit') -ne 0 ]; then
+	echo "Error: CMD 'faToTwoBit' in program UCSC KENT is required but not found.  Aborting..." >&2 
 	exit 127
 fi
+if [ $(CmdExists 'netToAxt') -ne 0 ]; then
+	echo "Error: CMD 'netToAxt' in program UCSC KENT is required but not found.  Aborting..." >&2 
+	exit 127
+fi
+
 
 
 #################### Defaults #######################################
@@ -226,6 +261,18 @@ lastdb_index='lastdb'
 maf2psldir="$RunPath/4.maf2psl"
 chaindir="$RunPath/5.chain"
 netdir="$RunPath/6.net"
+finaloutput=$(File2Fullpath $finaloutput)
+if [ ! -z "$pslfile" ]; then
+	pslfile=$(File2Fullpath $pslfile)
+	if [ ! -s "$pslfile" ]; then
+		echo "Error: invalid PSL file" >&2
+		exit 100
+	else
+		echo "Info: PSL file detected: $pslfile"
+	fi
+fi
+
+
 
 #################### Input and Output ###############################
 if [ ! -z "$lastdbindex" ]; then
@@ -278,6 +325,17 @@ else
 	echo "Error: invalid INT -l parameter" >&2
 	exit 10;
 fi
+if [[ "$linearGap" == "medium" ]]; then
+	echo "Info: axtChain -linearGap was set to $linearGap"
+elif [[ "$linearGap" == "loose" ]]; then
+	echo "Info: axtChain -linearGap was set to $linearGap"
+elif [ -s "$linearGap" ]; then
+	echo "Info: axtChain -linearGap was set to file $linearGap"
+	linearGap=$(File2Fullpath $linearGap)
+else
+	echo "Error: invalid -LG option for axtChain -linearGap" >&2
+	exit 100;
+fi
 
 
 
@@ -286,28 +344,31 @@ fi
 CleanTemporary () {
 	echo "Info: Cleanning Temporary files"
 	if [ -d $splitdirref ]; then
-		rm -rf $splitdirref
+		rm -rf $splitdirref > /dev/null 2>&1
 	fi
 	if [ -d $splitdirquery ]; then
-		rm -rf $splitdirquery
+		rm -rf $splitdirquery > /dev/null 2>&1
 	fi
 	if [ -d $lastrundir ]; then
-		rm -rf $lastrundir
+		rm -rf $lastrundir > /dev/null 2>&1
 	fi
 	if [ -d $maf2psldir ]; then
-		rm -rf $maf2psldir
+		rm -rf $maf2psldir > /dev/null 2>&1
 	fi
 	if [ -d "$maf2psldir.swap" ]; then
-		rm -rf "$maf2psldir.swap"
+		rm -rf "$maf2psldir.swap" > /dev/null 2>&1
 	fi
 	if [ -d $chaindir ]; then
-		rm -rf $chaindir
+		rm -rf $chaindir > /dev/null 2>&1
 	fi
 	if [ -d $netdir ]; then
-		rm -rf $netdir
+		rm -rf $netdir > /dev/null 2>&1
 	fi
 }
 
+
+
+### Clean previous folder and files
 CleanTemporary
 
 
@@ -327,7 +388,7 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 	echo "### Step1: split reference ..."
 	echo "### Step1: split reference ..." >&2
 	if [ -d "$splitdirref" ]; then
-		rm -rf $splitdirref
+		rm -rf $splitdirref > /dev/null 2>&1
 	fi
 	mkdir -p $splitdirref
 	cd $splitdirref
@@ -350,13 +411,14 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 	echo "### Step2: split query ..."
 	echo "### Step2: split query ..." >&2
 	if [ -d "$splitdirquery" ]; then
-		rm -rf $splitdirquery
+		rm -rf $splitdirquery > /dev/null 2>&1
 	fi
 	mkdir -p $splitdirquery
 	cd $splitdirquery
 	fasta_splitter_by_numseq.pl $queryfasta 1 'sequence'
 	if [ $? -ne 0 ]; then
 		echo "Error: split query failed: $queryfasta" >&2
+		echo "CMD used: fasta_splitter_by_numseq.pl $queryfasta 1 'sequence'" >&2
 		exit 1
 	fi
 else
@@ -373,24 +435,26 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 	echo "### Step3: running LAST to detect syntonic region ..."
 	echo "### Step3: running LAST to detect syntonic region ..." >&2
 	if [ -d $lastrundir ]; then
-		rm -rf $lastrundir
+		rm -rf $lastrundir > /dev/null 2>&1
 	fi
 	mkdir -p $lastrundir
 	cd $lastrundir
 	for refseq in `ls $splitdirref/sequence.*.fa`; do
+		finalindex=''
 		if [ ! -z "$lastdbindex" ]; then
 			echo "Info: using existing lastdb index: $lastdbindex"
+			finalindex=$lastdbindex
 		else
 			rm -rf ${lastdb_index}* > /dev/null 2>&1
 			lastdb -c -R10 -Q 0 -P $threads $lastdb_index $refseq
 			if [ $? -ne 0 ]; then
 				echo "Error: index LAST DB failed: $refseq" >&2
+				echo "CMD used: lastdb -c -R10 -Q 0 -P $threads $lastdb_index $refseq" >&2
 				exit 1
 			fi
-			lastdbindex="$lastrundir/$lastdb_index"
-			echo "Info: using generated lastdb index: $lastdbindex"
+			finalindex="$lastrundir/$lastdb_index"
+			echo "Info: using generated lastdb index: $finalindex"
 		fi
-
 		for queryseq in `ls $splitdirquery/sequence.*.fa`; do
 			seqname01=${refseq##*/}
 			seqname02=${queryseq##*/}
@@ -405,9 +469,10 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 				echo "Error: last output exists: ref.$seqbase01.query.$seqbase02.maf" >&2
 				exit 1
 			fi
-			lastal -f MAF -Q 0 -p $scoremetrix -M -P $threads $lastdbindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
-			if [ $? -ne 0 ] || [ ! -s ref.$seqbase01.query.$seqbase02.maf ]; then
+			lastal -f MAF -Q 0 -p $scoremetrix -M -P $threads $finalindex $queryseq > ref.$seqbase01.query.$seqbase02.maf
+			if [ $? -ne 0 ]; then
 				echo "Error: lastal failed: ref $refseq, query $queryseq" >&2
+				echo "CMD used: lastal -f MAF -Q 0 -p $scoremetrix -M -P $threads $finalindex $queryseq > ref.$seqbase01.query.$seqbase02.maf" >&2
 				exit 1
 			fi
 		done
@@ -426,7 +491,7 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 	echo "### Step4: convert MAF to PSL ..."
 	echo "### Step4: convert MAF to PSL ..." >&2
 	if [ -d $maf2psldir ]; then
-		rm -rf $maf2psldir
+		rm -rf $maf2psldir > /dev/null 2>&1
 	fi
 	mkdir -p $maf2psldir
 	cd $maf2psldir
@@ -435,8 +500,9 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 		mafname=${maffile##*/}
 		mafbase=${mafname%.*}
 		maf-convert psl $maffile > $mafbase.psl
-		if [ $? -ne 0 ] || [ ! -s $mafbase.psl ]; then
+		if [ $? -ne 0 ]; then
 			echo "Error: maf2psl: $maffile -> $mafbase.psl" >&2
+			echo "CMD used: maf-convert psl $maffile > $mafbase.psl" >&2
 			exit 1
 		fi
 	done
@@ -457,6 +523,10 @@ echo -e "\n"
 echo -e "\n" >&2
 echo "### Step5: PSL swap ..."
 echo "### Step5: PSL swap ..." >&2
+if [ ! -d $maf2psldir ]; then
+	mkdir -p $maf2psldir
+fi
+cd $maf2psldir
 pslSwap $pslfile all.swap.psl
 if [ $? -ne 0 ] || [ ! -s "all.swap.psl" ]; then
 	echo "Error: pslSwap" >&2
@@ -470,6 +540,7 @@ mkdir -p "$maf2psldir.swap"
 pslSplitOnTarget all.swap.psl "$maf2psldir.swap"/ -lump
 if [ $? -ne 0 ]; then
 	echo "Error: pslSplitOnTarget" >&2
+	echo "CMD used: pslSplitOnTarget all.swap.psl $maf2psldir.swap/ -lump" >&2
 	exit 1
 fi
 
@@ -481,7 +552,7 @@ echo -e "\n" >&2
 echo "### Step6: chaining ..."
 echo "### Step6: chaining ..." >&2
 if [ -d $chaindir ]; then
-	rm -rf $chaindir
+	rm -rf $chaindir > /dev/null 2>&1
 fi
 mkdir -p $chaindir
 cd $chaindir
@@ -489,32 +560,37 @@ reference2bit=$chaindir/reference.2bit
 faToTwoBit $referencefasta $reference2bit
 if [ $? -ne 0 ] || [ ! -s $reference2bit ]; then
 	echo "Error: faToTwoBit reference: $referencefasta" >&2
+	echo "CMD used: faToTwoBit $referencefasta $reference2bit" >&2
 	exit 1
 fi
 query2bit=$chaindir/query.2bit
 faToTwoBit $queryfasta $query2bit
 if [ $? -ne 0 ] || [ ! -s $query2bit ]; then
 	echo "Error: faToTwoBit query: $queryfasta" >&2
+	echo "CMD used: faToTwoBit $queryfasta $query2bit" >&2
 	exit 1
 fi
 
 faSize -detailed $referencefasta > reference.size
 if [ $? -ne 0 ] || [ ! -s $chaindir/reference.size ]; then
 	echo "Error: faSize reference: $referencefasta" >&2
+	echo "CMD used: faSize -detailed $referencefasta > reference.size" >&2
 	exit 1
 fi
 faSize -detailed $queryfasta > query.size
 if [ $? -ne 0 ] || [ ! -s $chaindir/query.size ]; then
 	echo "Error: faSize query: $queryfasta" >&2
+	echo "CMD used: faSize -detailed $queryfasta > query.size" >&2
 	exit 1
 fi
 for pslfile in `ls "$maf2psldir.swap"/*.psl`; do
 	pslname=${pslfile##*/}
 	pslbase=${pslname%.*}
-#	axtChain -psl -faQ -faT -linearGap=loose $pslfile $queryfasta $referencefasta $pslbase.chain
-	axtChain -psl -linearGap=loose $pslfile $query2bit $reference2bit $pslbase.chain
+#	axtChain -psl -faQ -faT -linearGap=$linearGap $pslfile $queryfasta $referencefasta $pslbase.chain
+	axtChain -psl -linearGap=$linearGap $pslfile $query2bit $reference2bit $pslbase.chain
 	if [ $? -ne 0 ] || [ ! -s $pslbase.chain ]; then
 		echo "Error: axtChain: $pslfile" >&2
+		echo "CMD used: axtChain -psl -linearGap=loose $pslfile $query2bit $reference2bit $pslbase.chain" >&2
 		exit 1
 	fi
 done
@@ -523,6 +599,7 @@ echo "### Step6: chainMergeSort ..." >&2
 chainMergeSort $chaindir/*.chain > all.chain
 if [ $? -ne 0 ] || [ ! -s $chaindir/all.chain ]; then
 	echo "Error: chainMergeSort: $chaindir/all.chain" >&2
+	echo "CMD used: chainMergeSort $chaindir/*.chain > all.chain" >&2
 	exit 1
 fi
 echo "### Step6: chainPreNet ..."
@@ -530,6 +607,7 @@ echo "### Step6: chainPreNet ..." >&2
 chainPreNet $chaindir/all.chain $chaindir/query.size $chaindir/reference.size  all.pre.chain
 if [ $? -ne 0 ] || [ ! -s $chaindir/all.pre.chain ]; then
 	echo "Error: chainPreNet: $chaindir/all.chain" >&2
+	echo "CMD used: chainPreNet $chaindir/all.chain $chaindir/query.size $chaindir/reference.size  all.pre.chain" >&2
 	exit 1
 fi
 
@@ -541,7 +619,7 @@ echo -e "\n" >&2
 echo "### Step7: neting ..."
 echo "### Step7: neting ..." >&2
 if [ -d $netdir ]; then
-	rm -rf $netdir
+	rm -rf $netdir > /dev/null 2>&1
 fi
 mkdir -p $netdir
 cd $netdir
@@ -554,10 +632,10 @@ fi
 
 echo "### Step7: netToAxt ..."
 echo "### Step7: netToAxt ..." >&2
-#netToAxt -maxGap=$maxgap noClass.net $chaindir/all.pre.chain $query2bit $reference2bit $finaloutput.axt
-netToAxt -maxGap=$maxgap noClass.net $chaindir/all.pre.chain $query2bit $reference2bit stdout | axtSort stdin $finaloutput.axt
-if [ $? -ne 0 ] || [ ! -s $finaloutput.axt ]; then
-	echo "Error: netToAxt: $finaloutput.axt" >&2
+#netToAxt -maxGap=$maxgap noClass.net $chaindir/all.pre.chain $query2bit $reference2bit ${finaloutput%.*}.ORIGIN.axt
+netToAxt -maxGap=$maxgap noClass.net $chaindir/all.pre.chain $query2bit $reference2bit stdout | axtSort stdin ${finaloutput%.*}.ORIGIN.axt
+if [ $? -ne 0 ] || [ ! -s "${finaloutput%.*}.ORIGIN.axt" ]; then
+	echo "Error: netToAxt: ${finaloutput%.*}.ORIGIN.axt" >&2
 	exit 1
 fi
 
@@ -570,8 +648,8 @@ echo "### Step8: Preparing Final synteny file ..."
 echo "### Step8: Preparing Final synteny file ..." >&2
 export MINISIZE=$min_align_length
 perl -e 'print "#org1\torg1_start\torg1_end\torg2\torg2_start\torg2_end\tscore\tevalue\n"' > $finaloutput
-#perl -ne 'BEGIN{$minisize=$ENV{"MINISIZE"};; print STDERR "Info: Min_alignment_length: $minisize\n";} chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' $finaloutput.axt >> $finaloutput
-perl -ne 'BEGIN{$minisize=$ENV{"MINISIZE"}; print STDERR "Info: Min_alignment_length: $minisize\n";} chomp; next unless (/^\d+/); @arr=split(/\s+/); next unless (($arr[3]-$arr[2])>=$minisize or ($arr[6]-$arr[5])>=$minisize); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", $arr[7], "\n";' $finaloutput.axt >> $finaloutput
+#perl -ne 'BEGIN{$minisize=$ENV{"MINISIZE"};; print STDERR "Info: Min_alignment_length: $minisize\n";} chomp; next unless (/^\d+/); @arr=split(/\s+/); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", 0, "\n" if(($arr[3]-$arr[2])>=$minisize and ($arr[6]-$arr[5])>=$minisize);' ${finaloutput%.*}.ORIGIN.axt >> $finaloutput
+perl -ne 'BEGIN{$minisize=$ENV{"MINISIZE"}; print STDERR "Info: Min_alignment_length: $minisize\n";} chomp; next unless (/^\d+/); @arr=split(/\s+/); next unless (($arr[3]-$arr[2])>=$minisize or ($arr[6]-$arr[5])>=$minisize); print $arr[1], "\t", $arr[2], "\t", $arr[3], "\t", $arr[4], "\t", $arr[5], "\t", $arr[6], "\t", $arr[8], "\t", $arr[7], "\n";' ${finaloutput%.*}.ORIGIN.axt >> $finaloutput
 
 
 if [ $? -ne 0 ] || [ ! -s $finaloutput ]; then
