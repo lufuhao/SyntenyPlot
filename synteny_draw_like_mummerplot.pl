@@ -14,7 +14,7 @@ Requirements:
 	perl Modules: SVG, Data::Dumper, FuhaoPerl5Lib::FastaKit
 	samtools
 
-v20160929
+v20170110
 
 EOH
 die USAGE if (scalar(@ARGV) !=3 or $ARGV[0] eq '-h' or $ARGV[0] eq '--help');
@@ -22,9 +22,9 @@ die USAGE if (scalar(@ARGV) !=3 or $ARGV[0] eq '-h' or $ARGV[0] eq '--help');
 
 
 ### Input and Output
-die "Error: invalid input file\n" unless (defined $ARGV[0] and -s $ARGV[0]);
+die "Error: invalid input synteny file\n" unless (defined $ARGV[0] and -s $ARGV[0]);
 my $inputconfig=$ARGV[0];
-die "Error: invalid input file\n" unless (defined $ARGV[1] and -s $ARGV[1]);
+die "Error: invalid input fasta.fai file\n" unless (defined $ARGV[1] and -s $ARGV[1]);
 my $inputfasta=$ARGV[1];
 die "Error: invalid output file\n" unless (defined $ARGV[2]);
 die "Error: output should have a extension name: svg/SVG\n" unless ($ARGV[2]=~/\.svg$/i);
@@ -40,46 +40,41 @@ my $linenum=0;
 
 
 ### Configure
-%confighash=(   'plot_width' => 200,
-				'plot_height' => 200,
-				'plot_left_margin' => 10,
-				'plot_right_margin' => 10,
-				'plot_top_margin' => 10,
-				'plot_bottom_margin' => 10,
-				
-				'x_line_height' => 2,
-				'x_line_color' => 'black',
-				'x_tick_height' => 5,
-				'x_mark_font' => 'Arial',
-				'x_mark_size' => 5, ### 0 = no marks
-				'x_legend_font' => 'Arial',
-				'x_legend_size' => 5, ### 0 = no marks
-				'x_legend_color' => 'black',
-				
-				'y_line_width' => 2,
-				'y_line_color' => 'black',
-				'y_tick_height' => 5,
-				'y_mark_font' => 'Arial',
-				'y_mark_size' => 5, ### 0 = no marks
-				'y_legend_font' => 'Arial',
-				'y_legend_size' => 5, ### 0 = no marks
-				'y_legend_color' => 'black',
-				
-				'grid_line_width' => 1,
-				'grid_line_color' => 'grey',
-				
-				'synteny_line_width' => 2,
-				'synteny_forward_line_color' => 'red',
-				'synteny_reverse_line_color' => 'blue',
+%confighash=(
+	'plot_width' => 1000, #Default: 200
+	'plot_height' => 1000, #Default: 200
+	'plot_left_margin' => 10, #Default: 10
+	'plot_right_margin' => 10, #Default: 10
+	'plot_top_margin' => 10, #Default: 10
+	'plot_bottom_margin' => 10, #Default: 10
+	
+	'x_line_height' => 2, #Default: 2
+	'x_line_color' => 'black', #Default: 'black'
+	'x_tick_height' => 5, #Default: 5
+	'x_mark_font' => 'Arial', #Default: 'Arial'
+	'x_mark_size' => 5, ### 0 = no marks #Default: 5
+	'x_legend_font' => 'Arial', #Default: 'Arial'
+	'x_legend_size' => 5, ### 0 = no marks #Default: 5
+	'x_legend_color' => 'black', #Default: 'black'
+	
+	'y_line_width' => 2, #Default: 2
+	'y_line_color' => 'black', #Default: 'black'
+	'y_tick_height' => 5, #Default: 5
+	'y_mark_font' => 'Arial', #Default: 'Arial'
+	'y_mark_size' => 5, ### 0 = no marks #Default: 
+	'y_legend_font' => 'Arial', #Default: 'Arial'
+	'y_legend_size' => 5, ### 0 = no marks #Default: 5
+	'y_legend_color' => 'black', #Default: 'black'
+	
+	'grid_line_width' => 1, #Default: 1
+	'grid_line_color' => 'grey', #Default: 'grey'
+	
+	'synteny_line_width' => 5, #Default: 2
+	'synteny_forward_line_color' => 'red', #Default: 'red'
+	'synteny_reverse_line_color' => 'blue', # Default: 'blue'
 );
-
-
-
 ### X axis order
 my @xorder=();
-
-
-
 ### Y axis order
 my @yorder=();
 
@@ -245,7 +240,7 @@ foreach (keys %starting_x) {
 					"font-size"=>$confighash{'x_legend_size'},
 					"-cdata" => "$_");
 	next unless (exists $starting_x{$_} and $starting_x{$_}>1);
-	$vectorout->line (   id=> "x_grid_$starting_y{$_}",
+	$vectorout->line (   id=> "x_grid_$starting_x{$_}",
 						x1 => $confighash{'plot_left_margin'}+($starting_x{$_}-1)*$x_factor,
 						y1 => $confighash{'plot_top_margin'}, 
 						x2 => $confighash{'plot_left_margin'}+($starting_x{$_}-1)*$x_factor, 
