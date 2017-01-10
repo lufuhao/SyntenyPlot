@@ -48,6 +48,7 @@ Options:
   -x    index of lastdb
   -o    Final output in PSL format
   -a    Start position for interrupted jobs, default: 1
+  -b    Stop position for interrupted jobs
 
 Example:
   lastal_in_parts.sh -x $rundir/$lastdb_index -l 10000000 -i $queryseq \
@@ -78,6 +79,7 @@ lastalindex=''
 finalout=''
 overhang=0;
 startpos=1;
+stoppos=0;
 #################### Parameters #####################################
 while [ -n "$1" ]; do
   case "$1" in
@@ -89,6 +91,7 @@ while [ -n "$1" ]; do
     -o) finalout=$2; shift 2;;
     -g) overhang=$2; shift 2;;
     -a) startpos=$2; shift 2;;
+    -b) stoppos=$2; shift 2;;
     --) shift;break;;
     -*) echo "error: no such option $1. -h for help" > /dev/stderr;exit 100;;
     *) break;;
@@ -147,6 +150,7 @@ RunLastal () {
 		echo "CMD used: maf-convert psl $RLquery.maf > $RLoutput" >&2
 		return 1;
 	fi
+	rm $RLquery.maf  > /dev/null 2>&1
 	return 0;
 }
 #abs2rel () { perl -MFile::Spec -e 'print(File::Spec->abs2rel($ARGV[1], $ARGV[0]), "\n")' "$@"; }
@@ -161,6 +165,15 @@ if [ $(CmdExists 'lastal') -ne 0 ]; then
 	echo "Error: CMD 'lastal' in PROGRAM 'LAST' is required but not found.  Aborting..." >&2 
 	exit 127
 fi
+if [ $(CmdExists 'maf-convert') -ne 0 ]; then
+	echo "Error: CMD 'maf-convert' in PROGRAM 'LAST' is required but not found.  Aborting..." >&2 
+	exit 127
+fi
+if [ $(CmdExists 'psl_part_to_intact.pl') -ne 0 ]; then
+	echo "Error: Script 'psl_part_to_intact.pl' is required but not found.  Aborting..." >&2 
+	exit 127
+fi
+
 
 
 
@@ -216,6 +229,7 @@ for indseq in "${seqnamelen[@]}"; do
 	echo "Seq: ${indseq%%::::*} length ${indseq##*::::}";
 	i=1;
 	rm query*.fa > /dev/null 2>&1
+	export SEQFULLLENGTH=${indseq##*::::}
 	for ((start=$startpos; start<=${indseq##*::::}; start+=steplen)); do
 		let end=$start+$steplen-1
 		if [[ $end -gt ${indseq##*::::} ]]; then
@@ -223,6 +237,7 @@ for indseq in "${seqnamelen[@]}"; do
 		elif [[ $((${indseq##*::::}-$overhang)) -le $end ]];then
 			end=${indseq##*::::}
 		fi
+
 		echo "${indseq%%::::*}:$start-$end"
 		samtools faidx "$fastainput" ${indseq%%::::*}:$start-$end > query$start-$end.fa
 		if [ $? -ne 0 ]; then
@@ -237,11 +252,26 @@ for indseq in "${seqnamelen[@]}"; do
 		if `RunLastal query$start-$end.fa query$start-$end.psl`; then
 			echo "Info: lastal running succeeds: ${indseq%%::::*}:$start-$end"
 		else
-			echo "Info: lastal running failed: ${indseq%%::::*}:$start-$end" >&2
+			echo "Error: lastal running failed: ${indseq%%::::*}:$start-$end" >&2
 			exit 100;
 		fi
-		export MAFSTARTNUM=$(($start-1))
-		perl -ne 'BEGIN {$addnum=$ENV{"MAFSTARTNUM"};print STDERR "Info: Addnumber=$addnum\n"; $linenum=0;} if (/^#/) {print;} chomp; @arr=split(/\t/); die "Error: invalid PSL at line$linenum: $_\n" unless (scalar(@arr)==21); if ($arr[9]=~/:(\d+)-\d+$/) {die "Error: invalid addnumber $addnum, should be $1\n" unless ($addnum == ($1-1)); $arr[9]=~s/:\d+-\d+$//;}else {die "Error: invalid sequence name \n";} $arr[11]+=$addnum; $arr[12]+=$addnum; if ($arr[8] eq "+") {@arr2=split(/,/, $arr[19]); for ($i=0;$i<scalar(@arr2);$i++){$arr2[$i]+=$addnum if ($arr2[$i]=~/^\d+$/);} $arr[19]=join(",", @arr2)}; print join("\t", @arr), "\n";' query$start-$end.psl >> $finalout
+		if [ -s "query$start-$end.psl" ]; then
+#			export MAFSTARTNUM=$(($start-1))
+#			export MAFREVERSE=$((${indseq##*::::}-$end))
+#			perl -ne 'BEGIN {$addnum=$ENV{"MAFSTARTNUM"};$reverseadd=$ENV{"MAFREVERSE"}; $seqlength=$ENV{"SEQFULLLENGTH"}; print STDERR "Info: SeqLength: $seqlength\tAddnumber=$addnum\tREVERSE=$reverseadd\n"; $linenum=0;} if (/^#/) {print;} chomp; @arr=split(/\t/); die "Error: invalid PSL at line$linenum: $_\n" unless (scalar(@arr)==21); if ($arr[9]=~/:(\d+)-\d+$/) {die "Error: invalid addnumber $addnum, should be $1\n" unless ($addnum == ($1-1)); $arr[9]=~s/:\d+-\d+$//;}else {die "Error: invalid sequence name \n";} $arr[10]=$seqlength; $arr[11]+=$addnum; $arr[12]+=$addnum; if ($arr[8] eq "+") {@arr2=split(/,/, $arr[19]); for ($i=0;$i<scalar(@arr2);$i++){$arr2[$i]+=$addnum if ($arr2[$i]=~/^\d+$/);} $arr[19]=join(",", @arr2); } elsif ($arr[8] eq "-") {@arr2=split(/,/, $arr[19]); for ($i=0;$i<scalar(@arr2);$i++){$arr2[$i]+=$reverseadd if ($arr2[$i]=~/^\d+$/);} $arr[19]=join(",", @arr2); } else {die "Error: invalid strand\n";} print join("\t", @arr), "\n";' query$start-$end.psl > query$start-$end.mod.psl
+			
+			psl_part_to_intact.pl query$start-$end.psl "$fastainput.fai" query$start-$end.mod.psl
+			if [ $? -ne 0 ] || [ ! -s "$query$start-$end.mod.psl" ]; then
+				echo "Error: correct PSL coordinates failed" >&2
+				echo "CMD used: psl_part_to_intact.pl query$start-$end.psl "$fastainput.fai" query$start-$end.mod.psl" >&2
+				exit 100;
+			fi
+			
+			gzip -9 query$start-$end.psl
+			
+			gzip -9 query$start-$end.mod.psl
+		fi
+		
 		if [[ $end -eq ${indseq##*::::} ]]; then
 			break
 		fi
