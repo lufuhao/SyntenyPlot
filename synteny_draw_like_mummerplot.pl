@@ -52,18 +52,18 @@ my $linenum=0;
 	'x_line_color' => 'black', #Default: 'black'
 	'x_tick_height' => 5, #Default: 5
 	'x_mark_font' => 'Arial', #Default: 'Arial'
-	'x_mark_size' => 5, ### 0 = no marks #Default: 5
+	'x_mark_size' => 10, ### 0 = no marks #Default: 5
 	'x_legend_font' => 'Arial', #Default: 'Arial'
-	'x_legend_size' => 5, ### 0 = no marks #Default: 5
+	'x_legend_size' => 10, ### 0 = no marks #Default: 5
 	'x_legend_color' => 'black', #Default: 'black'
 	
 	'y_line_width' => 2, #Default: 2
 	'y_line_color' => 'black', #Default: 'black'
 	'y_tick_height' => 5, #Default: 5
 	'y_mark_font' => 'Arial', #Default: 'Arial'
-	'y_mark_size' => 5, ### 0 = no marks #Default: 
+	'y_mark_size' => 10, ### 0 = no marks #Default: 
 	'y_legend_font' => 'Arial', #Default: 'Arial'
-	'y_legend_size' => 5, ### 0 = no marks #Default: 5
+	'y_legend_size' => 10, ### 0 = no marks #Default: 5
 	'y_legend_color' => 'black', #Default: 'black'
 	
 	'grid_line_width' => 1, #Default: 1
