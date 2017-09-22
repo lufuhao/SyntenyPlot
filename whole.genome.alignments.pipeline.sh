@@ -439,7 +439,7 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 	fi
 	mkdir -p $lastrundir
 	cd $lastrundir
-	for refseq in `ls $splitdirref/sequence.*.fa`; do
+	for refseq in `find $splitdirref -type f -name sequence.*.fa`; do
 		finalindex=''
 		if [ ! -z "$lastdbindex" ]; then
 			echo "Info: using existing lastdb index: $lastdbindex"
@@ -455,7 +455,7 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 			finalindex="$lastrundir/$lastdb_index"
 			echo "Info: using generated lastdb index: $finalindex"
 		fi
-		for queryseq in `ls $splitdirquery/sequence.*.fa`; do
+		for queryseq in `find $splitdirquery -type f -name sequence.*.fa`; do
 			seqname01=${refseq##*/}
 			seqname02=${queryseq##*/}
 			seqbase01=${seqname01%.*}
@@ -495,23 +495,31 @@ if [ -z "$pslfile" ] || [ ! -s "$pslfile" ]; then
 	fi
 	mkdir -p $maf2psldir
 	cd $maf2psldir
+	pslfile=$(File2Fullpath "$finaloutput.psl")
+	if [ -e "$pslfile" ]; then
+		rm -rf $pslfile > /dev/null 2>&1
+	fi
+	touch "$pslfile"
 
-	for maffile in `ls $lastrundir/*.maf`; do
+	for maffile in `find $lastrundir -type f -name *.maf`; do
 		mafname=${maffile##*/}
 		mafbase=${mafname%.*}
 		maf-convert psl $maffile > $mafbase.psl
 		if [ $? -ne 0 ]; then
 			echo "Error: maf2psl: $maffile -> $mafbase.psl" >&2
 			echo "CMD used: maf-convert psl $maffile > $mafbase.psl" >&2
-			exit 1
+			exit 100
+		fi
+		if [ -s "$mafbase.psl" ]; then
+			cat "$mafbase.psl" >> "$pslfile"
+			rm -f $maffile "$mafbase.psl" > /dev/null 2>&1
 		fi
 	done
-	cat *.psl > $finaloutput.psl
-	if [ $? -ne 0 ] || [ ! -s "$finaloutput.psl" ]; then
-		echo "Error: collect all psl: $finaloutput.psl" >&2
-		exit 1
+	if [ $? -ne 0 ] || [ ! -s "$pslfile" ]; then
+		echo "Error: collect all psl: $pslfile" >&2
+		exit 100
 	fi
-	pslfile=$(echo $(cd $(dirname "$finaloutput.psl"); pwd)/$(basename "$finaloutput.psl"))
+	
 else
 	echo "### Step4: convert MAF to PSL skiped as PSL file specified: -psl $pslfile"
 	echo "### Step4: convert MAF to PSL skiped as PSL file specified: -psl $pslfile" >&2
@@ -583,7 +591,7 @@ if [ $? -ne 0 ] || [ ! -s $chaindir/query.size ]; then
 	echo "CMD used: faSize -detailed $queryfasta > query.size" >&2
 	exit 1
 fi
-for pslfile in `ls "$maf2psldir.swap"/*.psl`; do
+for pslfile in `find "$maf2psldir.swap" -type f -name *.psl`; do
 	pslname=${pslfile##*/}
 	pslbase=${pslname%.*}
 #	axtChain -psl -faQ -faT -linearGap=$linearGap $pslfile $queryfasta $referencefasta $pslbase.chain
@@ -691,3 +699,24 @@ fi
 
 
 exit 0;
+
+
+
+#1. Generate PSL alignments (e.g., with BLAT or lastz).
+#2. Turn those alignments into chains with axtChain.
+#3. Merge the short chains using chainMergeSort, chainSplit, and chainSort.
+#4. You may wish to filter your chains at this point with chainPreNet, to remove chains that don't have a chance of being part of the final file.
+#5. Create a net from the chains using the chainNet program, pass that to netSyntenic to add synteny information, use netChainSubset to create a liftOver file, and finally (optionally) join chain fragments with chainStitchId (this is skipped on the wiki page).
+#
+#The result is a liftOver chain file of the sort used to begin the reciprocal best pipeline.
+#
+#Here is an example segment from the scripts that created hg38.oviAri3.over.chain.gz. This corresponds to steps 4 and 5 above.
+#
+# Make nets ("noClass", i.e. without rmsk/class stats which are added later):
+#chainPreNet  hg38.oviAri3.all.chain.gz /hive/data/genomes/hg38/chrom.sizes /hive/data/genomes/oviAri3/chrom.sizes stdout \
+#| chainNet  stdin -minSpace=1 /hive/data/genomes/hg38/chrom.sizes /hive/data/genomes/oviAri3/chrom.sizes stdout /dev/null \
+#| netSyntenic stdin noClass.net
+#
+# Make liftOver chains:
+#netChainSubset -verbose=0 noClass.net hg38.oviAri3.all.chain.gz stdout \
+#| chainStitchId stdin stdout | gzip -c > hg38.oviAri3.over.chain.gz
