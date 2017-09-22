@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="500" width="1000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect height="500" id="background" style="fill: white; fill-opacity: 1; stroke: rgb(225, 225, 225); stroke-opacity: 0; stroke-width: 0" width="1000" x="0" y="0" />
+	<rect height="121" id="AA-frame" style="fill: rgb(240, 248, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="980" x="10" y="30" />
+	<line id="AA-bottom-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="149" y2="149" />
+	<line id="AA-bottom-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="148" y2="148" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="15" y="147.5">AA</text>
+	<line id="AA-top-tick-5000" stroke="black" stroke-width="1" x1="281.837979574938" x2="281.837979574938" y1="31.5" y2="38.5" />
+	<line id="AA-bottom-tick-5000" stroke="black" stroke-width="1" x1="281.837979574938" x2="281.837979574938" y1="149.5" y2="135.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="283.837979574938" y="147.5">5K</text>
+	<line id="AA-top-tick-10000" stroke="black" stroke-width="1" x1="550.675959149876" x2="550.675959149876" y1="31.5" y2="38.5" />
+	<line id="AA-bottom-tick-10000" stroke="black" stroke-width="1" x1="550.675959149876" x2="550.675959149876" y1="149.5" y2="135.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="552.675959149876" y="147.5">10K</text>
+	<line id="AA-top-tick-15000" stroke="black" stroke-width="1" x1="819.513938724814" x2="819.513938724814" y1="31.5" y2="38.5" />
+	<line id="AA-bottom-tick-15000" stroke="black" stroke-width="1" x1="819.513938724814" x2="819.513938724814" y1="149.5" y2="135.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="821.513938724814" y="147.5">15K</text>
+	<rect height="5" id="AA-REPEAT-AA_repeat1" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="4.14010488545409" x="654.554954457632" y="127.5" />
+	<rect height="5" id="AA-REPEAT-AA_repeat2" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="4.08633728953907" x="813.97587634557" y="127.5" />
+	<rect height="5" id="AA-REPEAT-AA_repeat3" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="7.31239304443829" x="942.964338945625" y="127.5" />
+	<rect height="5" id="AA-REPEAT-AA_repeat4" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="17.098095500966" x="963.449792989235" y="127.5" />
+	<polygon points="809.620701076456,117.5 918.232404085012,117.5 918.232404085012,115.5 933.232404085012,120 918.232404085012,124.5 918.232404085012,122.5 809.620701076456,122.5 " style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="622.401932100469,108 637.401932100469,103.5 637.401932100469,105.5 833.224675683136,105.5 833.224675683136,110.5 637.401932100469,110.5 637.401932100469,112.5 " style="fill: darkslategray; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="396.416726469776,105.5 599.766933480541,105.5 599.766933480541,103.5 614.766933480541,108 599.766933480541,112.5 599.766933480541,110.5 396.416726469776,110.5 " style="fill: blue; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="337.003532983715,108 352.003532983715,103.5 352.003532983715,105.5 389.910847364063,105.5 389.910847364063,110.5 352.003532983715,110.5 352.003532983715,112.5 " style="fill: darkcyan; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="13.053767595915,105.5 304.959205078664,105.5 304.959205078664,103.5 319.959205078664,108 304.959205078664,112.5 304.959205078664,110.5 13.053767595915,110.5 " style="fill: brown; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<line id="AA-EXPRESSION0" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="100.5" y2="100.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="103.5">0</text>
+	<line id="AA-EXPRESSION2" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="80.8333333333333" y2="80.8333333333333" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="83.8333333333333">2</text>
+	<line id="AA-EXPRESSION4" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="61.1666666666667" y2="61.1666666666667" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="64.1666666666667">4</text>
+	<line id="AA-EXPRESSION6" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="41.5" y2="41.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="44.5">6</text>
+	<rect height="31.3868401091667" id="AA-EXPRESSION-AA0650090-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="135.00648633729" y="69.1131598908333" />
+	<line id="AA-EXPRESSION-AA0650090-Root24d-toperr" stroke="black" stroke-width="1" x1="145.00648633729" x2="140.00648633729" y1="66.6923935193333" y2="66.6923935193333" />
+	<line id="AA-EXPRESSION-AA0650090-Root24d-miderr" stroke="black" stroke-width="1" x1="142.50648633729" x2="142.50648633729" y1="66.6923935193333" y2="71.5339262623333" />
+	<line id="AA-EXPRESSION-AA0650090-Root24d-boterr" stroke="black" stroke-width="1" x1="145.00648633729" x2="140.00648633729" y1="71.5339262623333" y2="71.5339262623333" />
+	<rect height="24.636533476" id="AA-EXPRESSION-AA0650090-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="150.00648633729" y="75.863466524" />
+	<line id="AA-EXPRESSION-AA0650090-Shoot24d-toperr" stroke="black" stroke-width="1" x1="160.00648633729" x2="155.00648633729" y1="73.6550799646667" y2="73.6550799646667" />
+	<line id="AA-EXPRESSION-AA0650090-Shoot24d-miderr" stroke="black" stroke-width="1" x1="157.50648633729" x2="157.50648633729" y1="73.6550799646667" y2="78.0718530833333" />
+	<line id="AA-EXPRESSION-AA0650090-Shoot24d-boterr" stroke="black" stroke-width="1" x1="160.00648633729" x2="155.00648633729" y1="78.0718530833333" y2="78.0718530833333" />
+	<rect height="5.19209387883333" id="AA-EXPRESSION-AA0650090-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="165.00648633729" y="95.3079061211667" />
+	<line id="AA-EXPRESSION-AA0650090-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="175.00648633729" x2="170.00648633729" y1="94.5877137416667" y2="94.5877137416667" />
+	<line id="AA-EXPRESSION-AA0650090-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="172.50648633729" x2="172.50648633729" y1="94.5877137416667" y2="96.0280985006667" />
+	<line id="AA-EXPRESSION-AA0650090-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="175.00648633729" x2="170.00648633729" y1="96.0280985006667" y2="96.0280985006667" />
+	<rect height="7.2335652885" id="AA-EXPRESSION-AA0650090-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="180.00648633729" y="93.2664347115" />
+	<line id="AA-EXPRESSION-AA0650090-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="190.00648633729" x2="185.00648633729" y1="90.9773478145" y2="90.9773478145" />
+	<line id="AA-EXPRESSION-AA0650090-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="187.50648633729" x2="187.50648633729" y1="90.9773478145" y2="95.5555216085" />
+	<line id="AA-EXPRESSION-AA0650090-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="190.00648633729" x2="185.00648633729" y1="95.5555216085" y2="95.5555216085" />
+	<rect height="1.68064660433333" id="AA-EXPRESSION-AA0650080-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="331.957190173889" y="98.8193533956667" />
+	<line id="AA-EXPRESSION-AA0650080-Root24d-toperr" stroke="black" stroke-width="1" x1="341.957190173889" x2="336.957190173889" y1="95.9083880906667" y2="95.9083880906667" />
+	<line id="AA-EXPRESSION-AA0650080-Root24d-miderr" stroke="black" stroke-width="1" x1="339.457190173889" x2="339.457190173889" y1="95.9083880906667" y2="101.730318700667" />
+	<line id="AA-EXPRESSION-AA0650080-Root24d-boterr" stroke="black" stroke-width="1" x1="341.957190173889" x2="336.957190173889" y1="101.730318700667" y2="101.730318700667" />
+	<rect height="37.0083515836667" id="AA-EXPRESSION-AA0650080-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="346.957190173889" y="63.4916484163333" />
+	<line id="AA-EXPRESSION-AA0650080-Shoot24d-toperr" stroke="black" stroke-width="1" x1="356.957190173889" x2="351.957190173889" y1="60.6179424176667" y2="60.6179424176667" />
+	<line id="AA-EXPRESSION-AA0650080-Shoot24d-miderr" stroke="black" stroke-width="1" x1="354.457190173889" x2="354.457190173889" y1="60.6179424176667" y2="66.365354415" />
+	<line id="AA-EXPRESSION-AA0650080-Shoot24d-boterr" stroke="black" stroke-width="1" x1="356.957190173889" x2="351.957190173889" y1="66.365354415" y2="66.365354415" />
+	<rect height="32.528641277" id="AA-EXPRESSION-AA0650070-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="474.091829975159" y="67.971358723" />
+	<line id="AA-EXPRESSION-AA0650070-Root24d-toperr" stroke="black" stroke-width="1" x1="484.091829975159" x2="479.091829975159" y1="64.7052212158333" y2="64.7052212158333" />
+	<line id="AA-EXPRESSION-AA0650070-Root24d-miderr" stroke="black" stroke-width="1" x1="481.591829975159" x2="481.591829975159" y1="64.7052212158333" y2="71.2374962301667" />
+	<line id="AA-EXPRESSION-AA0650070-Root24d-boterr" stroke="black" stroke-width="1" x1="484.091829975159" x2="479.091829975159" y1="71.2374962301667" y2="71.2374962301667" />
+	<rect height="23.1260801301667" id="AA-EXPRESSION-AA0650070-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="489.091829975159" y="77.3739198698333" />
+	<line id="AA-EXPRESSION-AA0650070-Shoot24d-toperr" stroke="black" stroke-width="1" x1="499.091829975159" x2="494.091829975159" y1="76.3287027345" y2="76.3287027345" />
+	<line id="AA-EXPRESSION-AA0650070-Shoot24d-miderr" stroke="black" stroke-width="1" x1="496.591829975159" x2="496.591829975159" y1="76.3287027345" y2="78.4191370051667" />
+	<line id="AA-EXPRESSION-AA0650070-Shoot24d-boterr" stroke="black" stroke-width="1" x1="499.091829975159" x2="494.091829975159" y1="78.4191370051667" y2="78.4191370051667" />
+	<rect height="15.7048904756667" id="AA-EXPRESSION-AA0650070-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="504.091829975159" y="84.7951095243333" />
+	<line id="AA-EXPRESSION-AA0650070-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="514.091829975159" x2="509.091829975159" y1="83.8390154093333" y2="83.8390154093333" />
+	<line id="AA-EXPRESSION-AA0650070-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="511.591829975159" x2="511.591829975159" y1="83.8390154093333" y2="85.7512036393333" />
+	<line id="AA-EXPRESSION-AA0650070-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="514.091829975159" x2="509.091829975159" y1="85.7512036393333" y2="85.7512036393333" />
+	<rect height="12.679816437" id="AA-EXPRESSION-AA0650070-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="519.091829975159" y="87.820183563" />
+	<line id="AA-EXPRESSION-AA0650070-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="529.091829975159" x2="524.091829975159" y1="86.0201108696667" y2="86.0201108696667" />
+	<line id="AA-EXPRESSION-AA0650070-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="526.591829975159" x2="526.591829975159" y1="86.0201108696667" y2="89.6202562563333" />
+	<line id="AA-EXPRESSION-AA0650070-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="529.091829975159" x2="524.091829975159" y1="89.6202562563333" y2="89.6202562563333" />
+	<rect height="29.2409790555" id="AA-EXPRESSION-AA0650060-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="696.313303891802" y="71.2590209445" />
+	<line id="AA-EXPRESSION-AA0650060-Root24d-toperr" stroke="black" stroke-width="1" x1="706.313303891802" x2="701.313303891802" y1="68.8332244493333" y2="68.8332244493333" />
+	<line id="AA-EXPRESSION-AA0650060-Root24d-miderr" stroke="black" stroke-width="1" x1="703.813303891802" x2="703.813303891802" y1="68.8332244493333" y2="73.6848174396667" />
+	<line id="AA-EXPRESSION-AA0650060-Root24d-boterr" stroke="black" stroke-width="1" x1="706.313303891802" x2="701.313303891802" y1="73.6848174396667" y2="73.6848174396667" />
+	<rect height="20.9789806271667" id="AA-EXPRESSION-AA0650060-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="711.313303891802" y="79.5210193728333" />
+	<line id="AA-EXPRESSION-AA0650060-Shoot24d-toperr" stroke="black" stroke-width="1" x1="721.313303891802" x2="716.313303891802" y1="77.8558345838333" y2="77.8558345838333" />
+	<line id="AA-EXPRESSION-AA0650060-Shoot24d-miderr" stroke="black" stroke-width="1" x1="718.813303891802" x2="718.813303891802" y1="77.8558345838333" y2="81.1862041618333" />
+	<line id="AA-EXPRESSION-AA0650060-Shoot24d-boterr" stroke="black" stroke-width="1" x1="721.313303891802" x2="716.313303891802" y1="81.1862041618333" y2="81.1862041618333" />
+	<rect height="17.566222928" id="AA-EXPRESSION-AA0650060-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="726.313303891802" y="82.933777072" />
+	<line id="AA-EXPRESSION-AA0650060-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="736.313303891802" x2="731.313303891802" y1="79.8344781226667" y2="79.8344781226667" />
+	<line id="AA-EXPRESSION-AA0650060-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="733.813303891802" x2="733.813303891802" y1="79.8344781226667" y2="86.0330760213333" />
+	<line id="AA-EXPRESSION-AA0650060-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="736.313303891802" x2="731.313303891802" y1="86.0330760213333" y2="86.0330760213333" />
+	<rect height="12.2294381965" id="AA-EXPRESSION-AA0650060-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="741.313303891802" y="88.2705618035" />
+	<line id="AA-EXPRESSION-AA0650060-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="751.313303891802" x2="746.313303891802" y1="85.4004030225" y2="85.4004030225" />
+	<line id="AA-EXPRESSION-AA0650060-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="748.813303891802" x2="748.813303891802" y1="85.4004030225" y2="91.1407205845" />
+	<line id="AA-EXPRESSION-AA0650060-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="751.313303891802" x2="746.313303891802" y1="91.1407205845" y2="91.1407205845" />
+	<rect height="43.1265700456667" id="AA-EXPRESSION-AA0650040-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="839.926552580734" y="57.3734299543333" />
+	<line id="AA-EXPRESSION-AA0650040-Root24d-toperr" stroke="black" stroke-width="1" x1="849.926552580734" x2="844.926552580734" y1="57.1079678126667" y2="57.1079678126667" />
+	<line id="AA-EXPRESSION-AA0650040-Root24d-miderr" stroke="black" stroke-width="1" x1="847.426552580734" x2="847.426552580734" y1="57.1079678126667" y2="57.638892096" />
+	<line id="AA-EXPRESSION-AA0650040-Root24d-boterr" stroke="black" stroke-width="1" x1="849.926552580734" x2="844.926552580734" y1="57.638892096" y2="57.638892096" />
+	<rect height="36.9990683073333" id="AA-EXPRESSION-AA0650040-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="854.926552580734" y="63.5009316926667" />
+	<line id="AA-EXPRESSION-AA0650040-Shoot24d-toperr" stroke="black" stroke-width="1" x1="864.926552580734" x2="859.926552580734" y1="61.1313870955" y2="61.1313870955" />
+	<line id="AA-EXPRESSION-AA0650040-Shoot24d-miderr" stroke="black" stroke-width="1" x1="862.426552580734" x2="862.426552580734" y1="61.1313870955" y2="65.8704762898333" />
+	<line id="AA-EXPRESSION-AA0650040-Shoot24d-boterr" stroke="black" stroke-width="1" x1="864.926552580734" x2="859.926552580734" y1="65.8704762898333" y2="65.8704762898333" />
+	<rect height="20.5448247021667" id="AA-EXPRESSION-AA0650040-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="869.926552580734" y="79.9551752978333" />
+	<line id="AA-EXPRESSION-AA0650040-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="879.926552580734" x2="874.926552580734" y1="76.4608888518333" y2="76.4608888518333" />
+	<line id="AA-EXPRESSION-AA0650040-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="877.426552580734" x2="877.426552580734" y1="76.4608888518333" y2="83.4494617438333" />
+	<line id="AA-EXPRESSION-AA0650040-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="879.926552580734" x2="874.926552580734" y1="83.4494617438333" y2="83.4494617438333" />
+	<rect height="29.8209789586667" id="AA-EXPRESSION-AA0650040-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="884.926552580734" y="70.6790210413333" />
+	<line id="AA-EXPRESSION-AA0650040-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="894.926552580734" x2="889.926552580734" y1="67.9790884015" y2="67.9790884015" />
+	<line id="AA-EXPRESSION-AA0650040-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="892.426552580734" x2="892.426552580734" y1="67.9790884015" y2="73.3789536811667" />
+	<line id="AA-EXPRESSION-AA0650040-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="894.926552580734" x2="889.926552580734" y1="73.3789536811667" y2="73.3789536811667" />
+	<rect height="121" id="DD-frame" style="fill: rgb(240, 248, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="980" x="10" y="204" />
+	<line id="DD-bottom-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="323" y2="323" />
+	<line id="DD-bottom-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="322" y2="322" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="15" y="321.5">DD</text>
+	<line id="DD-top-tick-5000" stroke="black" stroke-width="1" x1="191.453646024185" x2="191.453646024185" y1="205.5" y2="212.5" />
+	<line id="DD-bottom-tick-5000" stroke="black" stroke-width="1" x1="191.453646024185" x2="191.453646024185" y1="323.5" y2="309.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="193.453646024185" y="321.5">5K</text>
+	<line id="DD-top-tick-10000" stroke="black" stroke-width="1" x1="369.907292048369" x2="369.907292048369" y1="205.5" y2="212.5" />
+	<line id="DD-bottom-tick-10000" stroke="black" stroke-width="1" x1="369.907292048369" x2="369.907292048369" y1="323.5" y2="309.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="371.907292048369" y="321.5">10K</text>
+	<line id="DD-top-tick-15000" stroke="black" stroke-width="1" x1="548.360938072554" x2="548.360938072554" y1="205.5" y2="212.5" />
+	<line id="DD-bottom-tick-15000" stroke="black" stroke-width="1" x1="548.360938072554" x2="548.360938072554" y1="323.5" y2="309.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="550.360938072554" y="321.5">15K</text>
+	<line id="DD-top-tick-20000" stroke="black" stroke-width="1" x1="726.814584096739" x2="726.814584096739" y1="205.5" y2="212.5" />
+	<line id="DD-bottom-tick-20000" stroke="black" stroke-width="1" x1="726.814584096739" x2="726.814584096739" y1="323.5" y2="309.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="728.814584096739" y="321.5">20K</text>
+	<line id="DD-top-tick-25000" stroke="black" stroke-width="1" x1="905.268230120923" x2="905.268230120923" y1="205.5" y2="212.5" />
+	<line id="DD-bottom-tick-25000" stroke="black" stroke-width="1" x1="905.268230120923" x2="905.268230120923" y1="323.5" y2="309.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="907.268230120923" y="321.5">25K</text>
+	<rect height="5" id="DD-REPEAT-DD_repeat1" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="17.3813851227556" x="24.4567240747527" y="301.5" />
+	<rect height="5" id="DD-REPEAT-DD_repeat2" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="3.10509344082084" x="573.308757786735" y="301.5" />
+	<rect height="5" id="DD-REPEAT-DD_repeat3" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="16.5961890802491" x="813.935654085746" y="301.5" />
+	<rect height="5" id="DD-REPEAT-DD_repeat4" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="17.9881275192379" x="965.442799560278" y="301.5" />
+	<polygon points="48.7264199340418,279.5 518.013924514474,279.5 518.013924514474,277.5 533.013924514474,282 518.013924514474,286.5 518.013924514474,284.5 48.7264199340418,284.5 " style="fill: brown; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="531.407841700257,294 546.407841700257,289.5 546.407841700257,291.5 568.347746427263,291.5 568.347746427263,296.5 546.407841700257,296.5 546.407841700257,298.5 " style="fill: darkcyan; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="568.276364968853,279.5 701.856870648589,279.5 701.856870648589,277.5 716.856870648589,282 701.856870648589,286.5 701.856870648589,284.5 568.276364968853,284.5 " style="fill: blue; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="717.320850128252,282 732.320850128252,277.5 732.320850128252,279.5 851.732136313668,279.5 851.732136313668,284.5 732.320850128252,284.5 732.320850128252,286.5 " style="fill: darkslategray; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="855.336899963357,279.5 936.309270795163,279.5 936.309270795163,277.5 951.309270795163,282 936.309270795163,286.5 936.309270795163,284.5 855.336899963357,284.5 " style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<line id="DD-EXPRESSION0" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="274.5" y2="274.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="277.5">0</text>
+	<line id="DD-EXPRESSION2" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="254.833333333333" y2="254.833333333333" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="257.833333333333">2</text>
+	<line id="DD-EXPRESSION4" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="235.166666666667" y2="235.166666666667" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="238.166666666667">4</text>
+	<line id="DD-EXPRESSION6" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="215.5" y2="215.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="218.5">6</text>
+	<rect height="31.182634865" id="DD-EXPRESSION-AA0860630-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="259.370172224258" y="243.317365135" />
+	<line id="DD-EXPRESSION-AA0860630-Root24d-toperr" stroke="black" stroke-width="1" x1="269.370172224258" x2="264.370172224258" y1="240.931692632167" y2="240.931692632167" />
+	<line id="DD-EXPRESSION-AA0860630-Root24d-miderr" stroke="black" stroke-width="1" x1="266.870172224258" x2="266.870172224258" y1="240.931692632167" y2="245.703037637833" />
+	<line id="DD-EXPRESSION-AA0860630-Root24d-boterr" stroke="black" stroke-width="1" x1="269.370172224258" x2="264.370172224258" y1="245.703037637833" y2="245.703037637833" />
+	<rect height="21.7076490351667" id="DD-EXPRESSION-AA0860630-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="274.370172224258" y="252.792350964833" />
+	<line id="DD-EXPRESSION-AA0860630-Shoot24d-toperr" stroke="black" stroke-width="1" x1="284.370172224258" x2="279.370172224258" y1="248.206813951167" y2="248.206813951167" />
+	<line id="DD-EXPRESSION-AA0860630-Shoot24d-miderr" stroke="black" stroke-width="1" x1="281.870172224258" x2="281.870172224258" y1="248.206813951167" y2="257.3778879785" />
+	<line id="DD-EXPRESSION-AA0860630-Shoot24d-boterr" stroke="black" stroke-width="1" x1="284.370172224258" x2="279.370172224258" y1="257.3778879785" y2="257.3778879785" />
+	<rect height="4.75556238766667" id="DD-EXPRESSION-AA0860630-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="289.370172224258" y="269.744437612333" />
+	<line id="DD-EXPRESSION-AA0860630-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="299.370172224258" x2="294.370172224258" y1="267.508454334" y2="267.508454334" />
+	<line id="DD-EXPRESSION-AA0860630-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="296.870172224258" x2="296.870172224258" y1="267.508454334" y2="271.980420890667" />
+	<line id="DD-EXPRESSION-AA0860630-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="299.370172224258" x2="294.370172224258" y1="271.980420890667" y2="271.980420890667" />
+	<rect height="0.954637159166667" id="DD-EXPRESSION-AA0860630-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="304.370172224258" y="273.545362840833" />
+	<line id="DD-EXPRESSION-AA0860630-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="314.370172224258" x2="309.370172224258" y1="272.714504082667" y2="272.714504082667" />
+	<line id="DD-EXPRESSION-AA0860630-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="311.870172224258" x2="311.870172224258" y1="272.714504082667" y2="274.376221599" />
+	<line id="DD-EXPRESSION-AA0860630-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="314.370172224258" x2="309.370172224258" y1="274.376221599" y2="274.376221599" />
+	<rect height="5.7267063505" id="DD-EXPRESSION-AA0860640-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="518.37779406376" y="268.7732936495" />
+	<line id="DD-EXPRESSION-AA0860640-Root24d-toperr" stroke="black" stroke-width="1" x1="528.37779406376" x2="523.37779406376" y1="266.195486604333" y2="266.195486604333" />
+	<line id="DD-EXPRESSION-AA0860640-Root24d-miderr" stroke="black" stroke-width="1" x1="525.87779406376" x2="525.87779406376" y1="266.195486604333" y2="271.351100694667" />
+	<line id="DD-EXPRESSION-AA0860640-Root24d-boterr" stroke="black" stroke-width="1" x1="528.37779406376" x2="523.37779406376" y1="271.351100694667" y2="271.351100694667" />
+	<rect height="35.909608724" id="DD-EXPRESSION-AA0860640-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="533.37779406376" y="238.590391276" />
+	<line id="DD-EXPRESSION-AA0860640-Shoot24d-toperr" stroke="black" stroke-width="1" x1="543.37779406376" x2="538.37779406376" y1="235.995800609" y2="235.995800609" />
+	<line id="DD-EXPRESSION-AA0860640-Shoot24d-miderr" stroke="black" stroke-width="1" x1="540.87779406376" x2="540.87779406376" y1="235.995800609" y2="241.184981943" />
+	<line id="DD-EXPRESSION-AA0860640-Shoot24d-boterr" stroke="black" stroke-width="1" x1="543.37779406376" x2="538.37779406376" y1="241.184981943" y2="241.184981943" />
+	<rect height="0.192903568" id="DD-EXPRESSION-AA0860640-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="563.37779406376" y="274.307096432" />
+	<line id="DD-EXPRESSION-AA0860640-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="573.37779406376" x2="568.37779406376" y1="273.921289296" y2="273.921289296" />
+	<line id="DD-EXPRESSION-AA0860640-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="570.87779406376" x2="570.87779406376" y1="273.921289296" y2="274.692903568" />
+	<line id="DD-EXPRESSION-AA0860640-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="573.37779406376" x2="568.37779406376" y1="274.692903568" y2="274.692903568" />
+	<rect height="14.4148391031667" id="DD-EXPRESSION-AA0860650-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="611.066617808721" y="260.085160896833" />
+	<line id="DD-EXPRESSION-AA0860650-Root24d-toperr" stroke="black" stroke-width="1" x1="621.066617808721" x2="616.066617808721" y1="253.199094014833" y2="253.199094014833" />
+	<line id="DD-EXPRESSION-AA0860650-Root24d-miderr" stroke="black" stroke-width="1" x1="618.566617808721" x2="618.566617808721" y1="253.199094014833" y2="266.971227778833" />
+	<line id="DD-EXPRESSION-AA0860650-Root24d-boterr" stroke="black" stroke-width="1" x1="621.066617808721" x2="616.066617808721" y1="266.971227778833" y2="266.971227778833" />
+	<rect height="18.2902474755" id="DD-EXPRESSION-AA0860650-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="626.066617808721" y="256.2097525245" />
+	<line id="DD-EXPRESSION-AA0860650-Shoot24d-toperr" stroke="black" stroke-width="1" x1="636.066617808721" x2="631.066617808721" y1="253.010469884" y2="253.010469884" />
+	<line id="DD-EXPRESSION-AA0860650-Shoot24d-miderr" stroke="black" stroke-width="1" x1="633.566617808721" x2="633.566617808721" y1="253.010469884" y2="259.409035165" />
+	<line id="DD-EXPRESSION-AA0860650-Shoot24d-boterr" stroke="black" stroke-width="1" x1="636.066617808721" x2="631.066617808721" y1="259.409035165" y2="259.409035165" />
+	<rect height="12.5152190236667" id="DD-EXPRESSION-AA0860650-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="641.066617808721" y="261.984780976333" />
+	<line id="DD-EXPRESSION-AA0860650-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="651.066617808721" x2="646.066617808721" y1="257.306130015167" y2="257.306130015167" />
+	<line id="DD-EXPRESSION-AA0860650-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="648.566617808721" x2="648.566617808721" y1="257.306130015167" y2="266.6634319375" />
+	<line id="DD-EXPRESSION-AA0860650-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="651.066617808721" x2="646.066617808721" y1="266.6634319375" y2="266.6634319375" />
+	<rect height="9.24758559116667" id="DD-EXPRESSION-AA0860650-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="656.066617808721" y="265.252414408833" />
+	<line id="DD-EXPRESSION-AA0860650-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="666.066617808721" x2="661.066617808721" y1="261.554297368667" y2="261.554297368667" />
+	<line id="DD-EXPRESSION-AA0860650-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="663.566617808721" x2="663.566617808721" y1="261.554297368667" y2="268.950531449" />
+	<line id="DD-EXPRESSION-AA0860650-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="666.066617808721" x2="661.066617808721" y1="268.950531449" y2="268.950531449" />
+	<rect height="27.8725150015" id="DD-EXPRESSION-AA0860660-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="753.02649322096" y="246.6274849985" />
+	<line id="DD-EXPRESSION-AA0860660-Root24d-toperr" stroke="black" stroke-width="1" x1="763.02649322096" x2="758.02649322096" y1="242.920815229833" y2="242.920815229833" />
+	<line id="DD-EXPRESSION-AA0860660-Root24d-miderr" stroke="black" stroke-width="1" x1="760.52649322096" x2="760.52649322096" y1="242.920815229833" y2="250.334154767167" />
+	<line id="DD-EXPRESSION-AA0860660-Root24d-boterr" stroke="black" stroke-width="1" x1="763.02649322096" x2="758.02649322096" y1="250.334154767167" y2="250.334154767167" />
+	<rect height="16.1248412165" id="DD-EXPRESSION-AA0860660-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="768.02649322096" y="258.3751587835" />
+	<line id="DD-EXPRESSION-AA0860660-Shoot24d-toperr" stroke="black" stroke-width="1" x1="778.02649322096" x2="773.02649322096" y1="255.649546275667" y2="255.649546275667" />
+	<line id="DD-EXPRESSION-AA0860660-Shoot24d-miderr" stroke="black" stroke-width="1" x1="775.52649322096" x2="775.52649322096" y1="255.649546275667" y2="261.100771291333" />
+	<line id="DD-EXPRESSION-AA0860660-Shoot24d-boterr" stroke="black" stroke-width="1" x1="778.02649322096" x2="773.02649322096" y1="261.100771291333" y2="261.100771291333" />
+	<rect height="16.1762284268333" id="DD-EXPRESSION-AA0860660-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="783.02649322096" y="258.323771573167" />
+	<line id="DD-EXPRESSION-AA0860660-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="793.02649322096" x2="788.02649322096" y1="255.116042453333" y2="255.116042453333" />
+	<line id="DD-EXPRESSION-AA0860660-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="790.52649322096" x2="790.52649322096" y1="255.116042453333" y2="261.531500693" />
+	<line id="DD-EXPRESSION-AA0860660-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="793.02649322096" x2="788.02649322096" y1="261.531500693" y2="261.531500693" />
+	<rect height="10.3725722605" id="DD-EXPRESSION-AA0860660-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="798.02649322096" y="264.1274277395" />
+	<line id="DD-EXPRESSION-AA0860660-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="808.02649322096" x2="803.02649322096" y1="263.102328611" y2="263.102328611" />
+	<line id="DD-EXPRESSION-AA0860660-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="805.52649322096" x2="805.52649322096" y1="263.102328611" y2="265.152526868" />
+	<line id="DD-EXPRESSION-AA0860660-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="808.02649322096" x2="803.02649322096" y1="265.152526868" y2="265.152526868" />
+	<rect height="49.7524503496667" id="DD-EXPRESSION-AA0860670-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="871.82308537926" y="224.747549650333" />
+	<line id="DD-EXPRESSION-AA0860670-Root24d-toperr" stroke="black" stroke-width="1" x1="881.82308537926" x2="876.82308537926" y1="222.4931056555" y2="222.4931056555" />
+	<line id="DD-EXPRESSION-AA0860670-Root24d-miderr" stroke="black" stroke-width="1" x1="879.32308537926" x2="879.32308537926" y1="222.4931056555" y2="227.001993645167" />
+	<line id="DD-EXPRESSION-AA0860670-Root24d-boterr" stroke="black" stroke-width="1" x1="881.82308537926" x2="876.82308537926" y1="227.001993645167" y2="227.001993645167" />
+	<rect height="40.9117177648333" id="DD-EXPRESSION-AA0860670-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="886.82308537926" y="233.588282235167" />
+	<line id="DD-EXPRESSION-AA0860670-Shoot24d-toperr" stroke="black" stroke-width="1" x1="896.82308537926" x2="891.82308537926" y1="231.402376750667" y2="231.402376750667" />
+	<line id="DD-EXPRESSION-AA0860670-Shoot24d-miderr" stroke="black" stroke-width="1" x1="894.32308537926" x2="894.32308537926" y1="231.402376750667" y2="235.774187719667" />
+	<line id="DD-EXPRESSION-AA0860670-Shoot24d-boterr" stroke="black" stroke-width="1" x1="896.82308537926" x2="891.82308537926" y1="235.774187719667" y2="235.774187719667" />
+	<rect height="28.0029187386667" id="DD-EXPRESSION-AA0860670-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="901.82308537926" y="246.497081261333" />
+	<line id="DD-EXPRESSION-AA0860670-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="911.82308537926" x2="906.82308537926" y1="243.435498652" y2="243.435498652" />
+	<line id="DD-EXPRESSION-AA0860670-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="909.32308537926" x2="909.32308537926" y1="243.435498652" y2="249.558663870667" />
+	<line id="DD-EXPRESSION-AA0860670-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="911.82308537926" x2="906.82308537926" y1="249.558663870667" y2="249.558663870667" />
+	<rect height="34.604906442" id="DD-EXPRESSION-AA0860670-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="916.82308537926" y="239.895093558" />
+	<line id="DD-EXPRESSION-AA0860670-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="926.82308537926" x2="921.82308537926" y1="238.357491686667" y2="238.357491686667" />
+	<line id="DD-EXPRESSION-AA0860670-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="924.32308537926" x2="924.32308537926" y1="238.357491686667" y2="241.432695429333" />
+	<line id="DD-EXPRESSION-AA0860670-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="926.82308537926" x2="921.82308537926" y1="241.432695429333" y2="241.432695429333" />
+	<rect height="109" id="BB-frame" style="fill: rgb(240, 248, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="980" x="10" y="378" />
+	<line id="BB-bottom-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="485" y2="485" />
+	<line id="BB-bottom-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="484" y2="484" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="15" y="483.5">BB</text>
+	<line id="BB-top-tick-5000" stroke="black" stroke-width="1" x1="265.475504173363" x2="265.475504173363" y1="379.5" y2="386.5" />
+	<line id="BB-bottom-tick-5000" stroke="black" stroke-width="1" x1="265.475504173363" x2="265.475504173363" y1="485.5" y2="471.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="267.475504173363" y="483.5">5K</text>
+	<line id="BB-top-tick-10000" stroke="black" stroke-width="1" x1="517.951008346726" x2="517.951008346726" y1="379.5" y2="386.5" />
+	<line id="BB-bottom-tick-10000" stroke="black" stroke-width="1" x1="517.951008346726" x2="517.951008346726" y1="485.5" y2="471.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="519.951008346726" y="483.5">10K</text>
+	<line id="BB-top-tick-15000" stroke="black" stroke-width="1" x1="770.426512520089" x2="770.426512520089" y1="379.5" y2="386.5" />
+	<line id="BB-bottom-tick-15000" stroke="black" stroke-width="1" x1="770.426512520089" x2="770.426512520089" y1="485.5" y2="471.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="772.426512520089" y="483.5">15K</text>
+	<rect height="5" id="BB-REPEAT-BB_repeat1" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="7.47327492353156" x="717.91160765203" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_repeat2" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="11.6138731919747" x="949.17916947483" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_repeat3" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="11.3109025869667" x="963.065322204365" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_repeat4" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="4.6960443776245" x="979.021774068122" y="463.5" />
+	<polygon points="63.5455959355073,453.5 333.034994038053,453.5 333.034994038053,451.5 348.034994038053,456 333.034994038053,460.5 333.034994038053,458.5 63.5455959355073,458.5 " style="fill: brown; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="351.266680491472,456 366.266680491472,451.5 366.266680491472,453.5 401.307325418632,453.5 401.307325418632,458.5 366.266680491472,458.5 366.266680491472,460.5 " style="fill: darkcyan; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="406.407330602934,453.5 593.589714344963,453.5 593.589714344963,451.5 608.589714344963,456 593.589714344963,460.5 593.589714344963,458.5 406.407330602934,458.5 " style="fill: blue; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="613.437244025092,456 628.437244025092,451.5 628.437244025092,453.5 791.634454870652,453.5 791.634454870652,458.5 628.437244025092,458.5 628.437244025092,460.5 " style="fill: darkslategray; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="796.734460054954,453.5 921.504899165327,453.5 921.504899165327,451.5 936.504899165327,456 921.504899165327,460.5 921.504899165327,458.5 796.734460054954,458.5 " style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<line id="BB-EXPRESSION0" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="448.5" y2="448.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="451.5">0</text>
+	<line id="BB-EXPRESSION2" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="428.833333333333" y2="428.833333333333" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="431.833333333333">2</text>
+	<line id="BB-EXPRESSION4" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="409.166666666667" y2="409.166666666667" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="412.166666666667">4</text>
+	<line id="BB-EXPRESSION6" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="389.5" y2="389.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="392.5">6</text>
+	<rect height="38.264346927" id="BB-EXPRESSION-AA0792530-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="174.29029498678" y="410.235653073" />
+	<line id="BB-EXPRESSION-AA0792530-Root24d-toperr" stroke="black" stroke-width="1" x1="184.29029498678" x2="179.29029498678" y1="408.456691641667" y2="408.456691641667" />
+	<line id="BB-EXPRESSION-AA0792530-Root24d-miderr" stroke="black" stroke-width="1" x1="181.79029498678" x2="181.79029498678" y1="408.456691641667" y2="412.014614504333" />
+	<line id="BB-EXPRESSION-AA0792530-Root24d-boterr" stroke="black" stroke-width="1" x1="184.29029498678" x2="179.29029498678" y1="412.014614504333" y2="412.014614504333" />
+	<rect height="35.4995064991667" id="BB-EXPRESSION-AA0792530-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="189.29029498678" y="413.000493500833" />
+	<line id="BB-EXPRESSION-AA0792530-Shoot24d-toperr" stroke="black" stroke-width="1" x1="199.29029498678" x2="194.29029498678" y1="411.820023497" y2="411.820023497" />
+	<line id="BB-EXPRESSION-AA0792530-Shoot24d-miderr" stroke="black" stroke-width="1" x1="196.79029498678" x2="196.79029498678" y1="411.820023497" y2="414.180963504667" />
+	<line id="BB-EXPRESSION-AA0792530-Shoot24d-boterr" stroke="black" stroke-width="1" x1="199.29029498678" x2="194.29029498678" y1="414.180963504667" y2="414.180963504667" />
+	<rect height="10.569710052" id="BB-EXPRESSION-AA0792530-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="204.29029498678" y="437.930289948" />
+	<line id="BB-EXPRESSION-AA0792530-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="214.29029498678" x2="209.29029498678" y1="435.165532700333" y2="435.165532700333" />
+	<line id="BB-EXPRESSION-AA0792530-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="211.79029498678" x2="211.79029498678" y1="435.165532700333" y2="440.695047195667" />
+	<line id="BB-EXPRESSION-AA0792530-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="214.29029498678" x2="209.29029498678" y1="440.695047195667" y2="440.695047195667" />
+	<rect height="16.8511120316667" id="BB-EXPRESSION-AA0792530-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="219.29029498678" y="431.648887968333" />
+	<line id="BB-EXPRESSION-AA0792530-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="229.29029498678" x2="224.29029498678" y1="428.931318999333" y2="428.931318999333" />
+	<line id="BB-EXPRESSION-AA0792530-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="226.79029498678" x2="226.79029498678" y1="428.931318999333" y2="434.366456937333" />
+	<line id="BB-EXPRESSION-AA0792530-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="229.29029498678" x2="224.29029498678" y1="434.366456937333" y2="434.366456937333" />
+	<rect height="9.33915349283333" id="BB-EXPRESSION-AA0792540-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="344.787002955052" y="439.160846507167" />
+	<line id="BB-EXPRESSION-AA0792540-Root24d-toperr" stroke="black" stroke-width="1" x1="354.787002955052" x2="349.787002955052" y1="436.649991432833" y2="436.649991432833" />
+	<line id="BB-EXPRESSION-AA0792540-Root24d-miderr" stroke="black" stroke-width="1" x1="352.287002955052" x2="352.287002955052" y1="436.649991432833" y2="441.6717015815" />
+	<line id="BB-EXPRESSION-AA0792540-Root24d-boterr" stroke="black" stroke-width="1" x1="354.787002955052" x2="349.787002955052" y1="441.6717015815" y2="441.6717015815" />
+	<rect height="38.0377037075" id="BB-EXPRESSION-AA0792540-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="359.787002955052" y="410.4622962925" />
+	<line id="BB-EXPRESSION-AA0792540-Shoot24d-toperr" stroke="black" stroke-width="1" x1="369.787002955052" x2="364.787002955052" y1="409.960326219833" y2="409.960326219833" />
+	<line id="BB-EXPRESSION-AA0792540-Shoot24d-miderr" stroke="black" stroke-width="1" x1="367.287002955052" x2="367.287002955052" y1="409.960326219833" y2="410.964266365167" />
+	<line id="BB-EXPRESSION-AA0792540-Shoot24d-boterr" stroke="black" stroke-width="1" x1="369.787002955052" x2="364.787002955052" y1="410.964266365167" y2="410.964266365167" />
+	<rect height="1.35646154633333" id="BB-EXPRESSION-AA0792540-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="374.787002955052" y="447.143538453667" />
+	<line id="BB-EXPRESSION-AA0792540-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="384.787002955052" x2="379.787002955052" y1="445.818543819833" y2="445.818543819833" />
+	<line id="BB-EXPRESSION-AA0792540-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="382.287002955052" x2="382.287002955052" y1="445.818543819833" y2="448.4685330875" />
+	<line id="BB-EXPRESSION-AA0792540-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="384.787002955052" x2="379.787002955052" y1="448.4685330875" y2="448.4685330875" />
+	<rect height="0.3637011635" id="BB-EXPRESSION-AA0792540-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="389.787002955052" y="448.1362988365" />
+	<line id="BB-EXPRESSION-AA0792540-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="399.787002955052" x2="394.787002955052" y1="447.716330002333" y2="447.716330002333" />
+	<line id="BB-EXPRESSION-AA0792540-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="397.287002955052" x2="397.287002955052" y1="447.716330002333" y2="448.556267670667" />
+	<line id="BB-EXPRESSION-AA0792540-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="399.787002955052" x2="394.787002955052" y1="448.556267670667" y2="448.556267670667" />
+	<rect height="27.071376274" id="BB-EXPRESSION-AA0792550-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="475.998522473949" y="421.428623726" />
+	<line id="BB-EXPRESSION-AA0792550-Root24d-toperr" stroke="black" stroke-width="1" x1="485.998522473949" x2="480.998522473949" y1="419.502688151833" y2="419.502688151833" />
+	<line id="BB-EXPRESSION-AA0792550-Root24d-miderr" stroke="black" stroke-width="1" x1="483.498522473949" x2="483.498522473949" y1="419.502688151833" y2="423.354559300167" />
+	<line id="BB-EXPRESSION-AA0792550-Root24d-boterr" stroke="black" stroke-width="1" x1="485.998522473949" x2="480.998522473949" y1="423.354559300167" y2="423.354559300167" />
+	<rect height="18.9589213008333" id="BB-EXPRESSION-AA0792550-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="490.998522473949" y="429.541078699167" />
+	<line id="BB-EXPRESSION-AA0792550-Shoot24d-toperr" stroke="black" stroke-width="1" x1="500.998522473949" x2="495.998522473949" y1="428.534048301" y2="428.534048301" />
+	<line id="BB-EXPRESSION-AA0792550-Shoot24d-miderr" stroke="black" stroke-width="1" x1="498.498522473949" x2="498.498522473949" y1="428.534048301" y2="430.548109097333" />
+	<line id="BB-EXPRESSION-AA0792550-Shoot24d-boterr" stroke="black" stroke-width="1" x1="500.998522473949" x2="495.998522473949" y1="430.548109097333" y2="430.548109097333" />
+	<rect height="16.1248784258333" id="BB-EXPRESSION-AA0792550-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="505.998522473949" y="432.375121574167" />
+	<line id="BB-EXPRESSION-AA0792550-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="515.998522473949" x2="510.998522473949" y1="430.393403909167" y2="430.393403909167" />
+	<line id="BB-EXPRESSION-AA0792550-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="513.498522473949" x2="513.498522473949" y1="430.393403909167" y2="434.356839239167" />
+	<line id="BB-EXPRESSION-AA0792550-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="515.998522473949" x2="510.998522473949" y1="434.356839239167" y2="434.356839239167" />
+	<rect height="10.0897926453333" id="BB-EXPRESSION-AA0792550-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="520.998522473949" y="438.410207354667" />
+	<line id="BB-EXPRESSION-AA0792550-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="530.998522473949" x2="525.998522473949" y1="437.310002042333" y2="437.310002042333" />
+	<line id="BB-EXPRESSION-AA0792550-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="528.498522473949" x2="528.498522473949" y1="437.310002042333" y2="439.510412667" />
+	<line id="BB-EXPRESSION-AA0792550-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="530.998522473949" x2="525.998522473949" y1="439.510412667" y2="439.510412667" />
+	<rect height="36.7091316283333" id="BB-EXPRESSION-AA0792560-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="671.035849447872" y="411.790868371667" />
+	<line id="BB-EXPRESSION-AA0792560-Root24d-toperr" stroke="black" stroke-width="1" x1="681.035849447872" x2="676.035849447872" y1="410.268856080167" y2="410.268856080167" />
+	<line id="BB-EXPRESSION-AA0792560-Root24d-miderr" stroke="black" stroke-width="1" x1="678.535849447872" x2="678.535849447872" y1="410.268856080167" y2="413.312880663167" />
+	<line id="BB-EXPRESSION-AA0792560-Root24d-boterr" stroke="black" stroke-width="1" x1="681.035849447872" x2="676.035849447872" y1="413.312880663167" y2="413.312880663167" />
+	<rect height="21.771338306" id="BB-EXPRESSION-AA0792560-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="686.035849447872" y="426.728661694" />
+	<line id="BB-EXPRESSION-AA0792560-Shoot24d-toperr" stroke="black" stroke-width="1" x1="696.035849447872" x2="691.035849447872" y1="426.386254289333" y2="426.386254289333" />
+	<line id="BB-EXPRESSION-AA0792560-Shoot24d-miderr" stroke="black" stroke-width="1" x1="693.535849447872" x2="693.535849447872" y1="426.386254289333" y2="427.071069098667" />
+	<line id="BB-EXPRESSION-AA0792560-Shoot24d-boterr" stroke="black" stroke-width="1" x1="696.035849447872" x2="691.035849447872" y1="427.071069098667" y2="427.071069098667" />
+	<rect height="32.0320897741667" id="BB-EXPRESSION-AA0792560-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="701.035849447872" y="416.467910225833" />
+	<line id="BB-EXPRESSION-AA0792560-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="711.035849447872" x2="706.035849447872" y1="412.024968434" y2="412.024968434" />
+	<line id="BB-EXPRESSION-AA0792560-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="708.535849447872" x2="708.535849447872" y1="412.024968434" y2="420.910852017667" />
+	<line id="BB-EXPRESSION-AA0792560-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="711.035849447872" x2="706.035849447872" y1="420.910852017667" y2="420.910852017667" />
+	<rect height="22.5200590243333" id="BB-EXPRESSION-AA0792560-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="716.035849447872" y="425.979940975667" />
+	<line id="BB-EXPRESSION-AA0792560-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="726.035849447872" x2="721.035849447872" y1="424.5317325905" y2="424.5317325905" />
+	<line id="BB-EXPRESSION-AA0792560-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="723.535849447872" x2="723.535849447872" y1="424.5317325905" y2="427.428149360833" />
+	<line id="BB-EXPRESSION-AA0792560-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="726.035849447872" x2="721.035849447872" y1="427.428149360833" y2="427.428149360833" />
+	<rect height="47.6882665458333" id="BB-EXPRESSION-AA0792570-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="835.11967961014" y="400.811733454167" />
+	<line id="BB-EXPRESSION-AA0792570-Root24d-toperr" stroke="black" stroke-width="1" x1="845.11967961014" x2="840.11967961014" y1="400.249343379333" y2="400.249343379333" />
+	<line id="BB-EXPRESSION-AA0792570-Root24d-miderr" stroke="black" stroke-width="1" x1="842.61967961014" x2="842.61967961014" y1="400.249343379333" y2="401.374123529" />
+	<line id="BB-EXPRESSION-AA0792570-Root24d-boterr" stroke="black" stroke-width="1" x1="845.11967961014" x2="840.11967961014" y1="401.374123529" y2="401.374123529" />
+	<rect height="38.8737664131667" id="BB-EXPRESSION-AA0792570-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="850.11967961014" y="409.626233586833" />
+	<line id="BB-EXPRESSION-AA0792570-Shoot24d-toperr" stroke="black" stroke-width="1" x1="860.11967961014" x2="855.11967961014" y1="408.461907674333" y2="408.461907674333" />
+	<line id="BB-EXPRESSION-AA0792570-Shoot24d-miderr" stroke="black" stroke-width="1" x1="857.61967961014" x2="857.61967961014" y1="408.461907674333" y2="410.790559499333" />
+	<line id="BB-EXPRESSION-AA0792570-Shoot24d-boterr" stroke="black" stroke-width="1" x1="860.11967961014" x2="855.11967961014" y1="410.790559499333" y2="410.790559499333" />
+	<rect height="28.4653647015" id="BB-EXPRESSION-AA0792570-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="865.11967961014" y="420.0346352985" />
+	<line id="BB-EXPRESSION-AA0792570-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="875.11967961014" x2="870.11967961014" y1="416.161110688" y2="416.161110688" />
+	<line id="BB-EXPRESSION-AA0792570-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="872.61967961014" x2="872.61967961014" y1="416.161110688" y2="423.908159909" />
+	<line id="BB-EXPRESSION-AA0792570-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="875.11967961014" x2="870.11967961014" y1="423.908159909" y2="423.908159909" />
+	<rect height="34.6156802451667" id="BB-EXPRESSION-AA0792570-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="880.11967961014" y="413.884319754833" />
+	<line id="BB-EXPRESSION-AA0792570-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="890.11967961014" x2="885.11967961014" y1="412.223960979" y2="412.223960979" />
+	<line id="BB-EXPRESSION-AA0792570-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="887.61967961014" x2="887.61967961014" y1="412.223960979" y2="415.544678530667" />
+	<line id="BB-EXPRESSION-AA0792570-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="890.11967961014" x2="885.11967961014" y1="415.544678530667" y2="415.544678530667" />
+	<polygon id="AA-DD-synteny-0" points="13.053767595915,152.5 16.8174993099641,152.5 250.236277024551,202.5 247.737925980213,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-1" points="16.8712669058791,152.5 535.943637869169,152.5 665.462220593624,202.5 328.398973983144,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-2" points="545.245431962462,152.5 611.863483301132,152.5 711.753096372298,202.5 665.497911322829,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-3" points="614.014187137731,152.5 768.48849020149,152.5 814.899303774276,202.5 711.788787101502,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-4" points="770.477891250345,152.5 814.459784708805,152.5 858.584756320997,202.5 829.425430560645,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-5" points="816.610488545404,152.5 839.354181617444,152.5 873.21795529498,202.5 858.620447050202,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-6" points="839.407949213359,152.5 897.261882417886,152.5 925.183657017222,202.5 886.173689996336,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-7" points="898.82114269942,152.5 960.653878001656,152.5 966.513521436424,202.5 925.219347746427,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-8" points="965.815567209495,152.5 979.580071763732,152.5 975.935873946501,202.5 966.549212165628,202.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<line id="AA-DD-synteny-0-left" stroke="black" stroke-width="1" x1="13.053767595915" x2="247.737925980213" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-0-right" stroke="black" stroke-width="1" x1="16.8174993099641" x2="250.236277024551" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-1-left" stroke="black" stroke-width="1" x1="16.8712669058791" x2="328.398973983144" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-1-right" stroke="black" stroke-width="1" x1="535.943637869169" x2="665.462220593624" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-2-left" stroke="black" stroke-width="1" x1="545.245431962462" x2="665.497911322829" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-2-right" stroke="black" stroke-width="1" x1="611.863483301132" x2="711.753096372298" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-3-left" stroke="black" stroke-width="1" x1="614.014187137731" x2="711.788787101502" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-3-right" stroke="black" stroke-width="1" x1="768.48849020149" x2="814.899303774276" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-4-left" stroke="black" stroke-width="1" x1="770.477891250345" x2="829.425430560645" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-4-right" stroke="black" stroke-width="1" x1="814.459784708805" x2="858.584756320997" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-5-left" stroke="black" stroke-width="1" x1="816.610488545404" x2="858.620447050202" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-5-right" stroke="black" stroke-width="1" x1="839.354181617444" x2="873.21795529498" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-6-left" stroke="black" stroke-width="1" x1="839.407949213359" x2="886.173689996336" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-6-right" stroke="black" stroke-width="1" x1="897.261882417886" x2="925.183657017222" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-7-left" stroke="black" stroke-width="1" x1="898.82114269942" x2="925.219347746427" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-7-right" stroke="black" stroke-width="1" x1="960.653878001656" x2="966.513521436424" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-8-left" stroke="black" stroke-width="1" x1="965.815567209495" x2="966.549212165628" y1="152.5" y2="202.5" />
+	<line id="AA-DD-synteny-8-right" stroke="black" stroke-width="1" x1="979.580071763732" x2="975.935873946501" y1="152.5" y2="202.5" />
+	<polygon id="DD-BB-synteny-0" points="210.262660315134,326.5 246.060461707585,326.5 63.8485665405153,376.5 13.0504951008347,376.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-1" points="248.915720043972,326.5 250.236277024551,326.5 70.8673855565348,376.5 68.9990668256519,376.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-2" points="328.398973983144,326.5 779.922389153536,326.5 705.792783451708,376.5 70.9178806573695,376.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-3" points="783.991132282888,326.5 791.02220593624,326.5 715.790813416973,376.5 705.843278552543,376.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-4" points="791.057896665445,326.5 814.792231586662,326.5 757.24729120224,376.5 723.264088340505,376.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-5" points="829.425430560645,326.5 956.984096738732,326.5 939.181139509565,376.5 759.267095235626,376.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-6" points="962.159252473434,326.5 972.009893733969,326.5 959.025714137591,376.5 940.443517030432,376.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<line id="DD-BB-synteny-0-left" stroke="black" stroke-width="1" x1="210.262660315134" x2="13.0504951008347" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-0-right" stroke="black" stroke-width="1" x1="246.060461707585" x2="63.8485665405153" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-1-left" stroke="black" stroke-width="1" x1="248.915720043972" x2="68.9990668256519" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-1-right" stroke="black" stroke-width="1" x1="250.236277024551" x2="70.8673855565348" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-2-left" stroke="black" stroke-width="1" x1="328.398973983144" x2="70.9178806573695" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-2-right" stroke="black" stroke-width="1" x1="779.922389153536" x2="705.792783451708" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-3-left" stroke="black" stroke-width="1" x1="783.991132282888" x2="705.843278552543" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-3-right" stroke="black" stroke-width="1" x1="791.02220593624" x2="715.790813416973" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-4-left" stroke="black" stroke-width="1" x1="791.057896665445" x2="723.264088340505" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-4-right" stroke="black" stroke-width="1" x1="814.792231586662" x2="757.24729120224" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-5-left" stroke="black" stroke-width="1" x1="829.425430560645" x2="759.267095235626" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-5-right" stroke="black" stroke-width="1" x1="956.984096738732" x2="939.181139509565" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-6-left" stroke="black" stroke-width="1" x1="962.159252473434" x2="940.443517030432" y1="326.5" y2="376.5" />
+	<line id="DD-BB-synteny-6-right" stroke="black" stroke-width="1" x1="972.009893733969" x2="959.025714137591" y1="326.5" y2="376.5" />
+	<rect height="14" id="LEGEND-Root24d-rectangular" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="14" x="486" y="13" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" text-color="black" width="126" x="503" y="27">Root24d</text>
+	<rect height="14" id="LEGEND-Shoot24d-rectangular" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="14" x="612" y="13" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" text-color="black" width="126" x="629" y="27">Shoot24d</text>
+	<rect height="14" id="LEGEND-Endosperm10d-rectangular" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="14" x="738" y="13" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" text-color="black" width="126" x="755" y="27">Endosperm10d</text>
+	<rect height="14" id="LEGEND-Endosperm20d-rectangular" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="14" x="864" y="13" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" text-color="black" width="126" x="881" y="27">Endosperm20d</text>
+	<!-- 
+	Generated using the Perl SVG Module V2.64
+	by Ronan Oger
+	Info: http://www.roitsystems.com/
+ -->
+</svg>
