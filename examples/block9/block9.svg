@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="500" width="1000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect height="500" id="background" style="fill: white; fill-opacity: 1; stroke: rgb(225, 225, 225); stroke-opacity: 0; stroke-width: 0" width="1000" x="0" y="0" />
+	<rect height="117" id="AA-frame" style="fill: rgb(240, 248, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="980" x="10" y="30" />
+	<line id="AA-top-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="32" y2="32" />
+	<line id="AA-top-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="33" y2="33" />
+	<line id="AA-bottom-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="145" y2="145" />
+	<line id="AA-bottom-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="144" y2="144" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="15" y="143.5">AA</text>
+	<line id="AA-top-tick-5000" stroke="black" stroke-width="1" x1="188.622069960332" x2="188.622069960332" y1="31.5" y2="38.5" />
+	<line id="AA-bottom-tick-5000" stroke="black" stroke-width="1" x1="188.622069960332" x2="188.622069960332" y1="145.5" y2="131.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="190.622069960332" y="143.5">5K</text>
+	<line id="AA-top-tick-10000" stroke="black" stroke-width="1" x1="364.244139920664" x2="364.244139920664" y1="31.5" y2="38.5" />
+	<line id="AA-bottom-tick-10000" stroke="black" stroke-width="1" x1="364.244139920664" x2="364.244139920664" y1="145.5" y2="131.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="366.244139920664" y="143.5">10K</text>
+	<line id="AA-top-tick-15000" stroke="black" stroke-width="1" x1="539.866209880995" x2="539.866209880995" y1="31.5" y2="38.5" />
+	<line id="AA-bottom-tick-15000" stroke="black" stroke-width="1" x1="539.866209880995" x2="539.866209880995" y1="145.5" y2="131.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="541.866209880995" y="143.5">15K</text>
+	<line id="AA-top-tick-20000" stroke="black" stroke-width="1" x1="715.488279841327" x2="715.488279841327" y1="31.5" y2="38.5" />
+	<line id="AA-bottom-tick-20000" stroke="black" stroke-width="1" x1="715.488279841327" x2="715.488279841327" y1="145.5" y2="131.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="717.488279841327" y="143.5">20K</text>
+	<line id="AA-top-tick-25000" stroke="black" stroke-width="1" x1="891.110349801659" x2="891.110349801659" y1="31.5" y2="38.5" />
+	<line id="AA-bottom-tick-25000" stroke="black" stroke-width="1" x1="891.110349801659" x2="891.110349801659" y1="145.5" y2="131.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="893.110349801659" y="143.5">25K</text>
+	<rect height="5" id="AA-REPEAT-AA_REPEAT01" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="10.2563288856834" x="75.3809592499098" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT02" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="8.18398846015145" x="206.254525784349" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT03" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="1.96696718355571" x="214.473638658493" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT04" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="23.814352686621" x="217.564587089794" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT05" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="4.49592499098446" x="465.99956725568" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT06" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="3.82856112513525" x="739.864623151821" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT07" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="6.18189686260371" x="772.565452578435" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT08" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="21.0746483952398" x="780.187450414713" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT09" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="6.70876307248466" x="867.190623873062" y="123.5" />
+	<rect height="5" id="AA-REPEAT-AA_REPEAT10" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.77482870537324" x="925.426902271908" y="123.5" />
+	<polygon points="48.1595384060584,113.5 179.066354129102,113.5 179.066354129102,111.5 194.066354129102,116 179.066354129102,120.5 179.066354129102,118.5 48.1595384060584,118.5 " style="fill: darkcyan; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="271.19956725568,113.5 351.035485034259,113.5 351.035485034259,111.5 366.035485034259,116 351.035485034259,120.5 351.035485034259,118.5 271.19956725568,118.5 " style="fill: blue; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="368.845438153624,113.5 444.606923909124,113.5 444.606923909124,111.5 459.606923909124,116 444.606923909124,120.5 444.606923909124,118.5 368.845438153624,118.5 " style="fill: darkslategray; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="582.401875225388,113.5 646.221060223585,113.5 646.221060223585,111.5 661.221060223585,116 646.221060223585,120.5 646.221060223585,118.5 582.401875225388,118.5 " style="fill: purple; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="668.140569780022,116 683.140569780022,111.5 683.140569780022,113.5 756.232600072124,113.5 756.232600072124,118.5 683.140569780022,118.5 683.140569780022,120.5 " style="fill: brown; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="813.766390191129,116 828.766390191129,111.5 828.766390191129,113.5 951.875586007934,113.5 951.875586007934,118.5 828.766390191129,118.5 828.766390191129,120.5 " style="fill: darkviolet; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<line id="AA-EXPRESSION0" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="108.5" y2="108.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="111.5">0</text>
+	<line id="AA-EXPRESSION2" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="75" y2="75" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="78">2</text>
+	<line id="AA-EXPRESSION4" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="41.5" y2="41.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="44.5">4</text>
+	<rect height="0.22684525" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261170-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="119.61294626758" y="108.27315475" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261170-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="129.61294626758" x2="124.61294626758" y1="107.81946425" y2="107.81946425" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261170-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="127.11294626758" x2="127.11294626758" y1="107.81946425" y2="108.72684525" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261170-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="129.61294626758" x2="124.61294626758" y1="108.72684525" y2="108.72684525" />
+	<rect height="0.18654475" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261170-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="134.61294626758" y="108.31345525" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261170-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="144.61294626758" x2="139.61294626758" y1="107.94036575" y2="107.94036575" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261170-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="142.11294626758" x2="142.11294626758" y1="107.94036575" y2="108.68654475" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261170-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="144.61294626758" x2="139.61294626758" y1="108.68654475" y2="108.68654475" />
+	<rect height="15.6612835" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="287.117526144969" y="92.8387165" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Root24d-toperr" stroke="black" stroke-width="1" x1="297.117526144969" x2="292.117526144969" y1="89.465233" y2="89.465233" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Root24d-miderr" stroke="black" stroke-width="1" x1="294.617526144969" x2="294.617526144969" y1="89.465233" y2="96.2122" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Root24d-boterr" stroke="black" stroke-width="1" x1="297.117526144969" x2="292.117526144969" y1="96.2122" y2="96.2122" />
+	<rect height="4.01663325" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="302.117526144969" y="104.48336675" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Shoot24d-toperr" stroke="black" stroke-width="1" x1="312.117526144969" x2="307.117526144969" y1="103.4635095" y2="103.4635095" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Shoot24d-miderr" stroke="black" stroke-width="1" x1="309.617526144969" x2="309.617526144969" y1="103.4635095" y2="105.503224" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Shoot24d-boterr" stroke="black" stroke-width="1" x1="312.117526144969" x2="307.117526144969" y1="105.503224" y2="105.503224" />
+	<rect height="2.37788025" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="317.117526144969" y="106.12211975" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="327.117526144969" x2="322.117526144969" y1="104.65565725" y2="104.65565725" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="324.617526144969" x2="324.617526144969" y1="104.65565725" y2="107.58858225" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="327.117526144969" x2="322.117526144969" y1="107.58858225" y2="107.58858225" />
+	<rect height="2.049865" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="332.117526144969" y="106.450135" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="342.117526144969" x2="337.117526144969" y1="105.592736" y2="105.592736" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="339.617526144969" x2="339.617526144969" y1="105.592736" y2="107.307534" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261180-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="342.117526144969" x2="337.117526144969" y1="107.307534" y2="107.307534" />
+	<rect height="9.51126975" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="382.726181031374" y="98.98873025" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Root24d-toperr" stroke="black" stroke-width="1" x1="392.726181031374" x2="387.726181031374" y1="92.93182975" y2="92.93182975" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Root24d-miderr" stroke="black" stroke-width="1" x1="390.226181031374" x2="390.226181031374" y1="92.93182975" y2="105.04563075" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Root24d-boterr" stroke="black" stroke-width="1" x1="392.726181031374" x2="387.726181031374" y1="105.04563075" y2="105.04563075" />
+	<rect height="6.644792" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="397.726181031374" y="101.855208" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Shoot24d-toperr" stroke="black" stroke-width="1" x1="407.726181031374" x2="402.726181031374" y1="100.8026715" y2="100.8026715" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Shoot24d-miderr" stroke="black" stroke-width="1" x1="405.226181031374" x2="405.226181031374" y1="100.8026715" y2="102.9077445" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Shoot24d-boterr" stroke="black" stroke-width="1" x1="407.726181031374" x2="402.726181031374" y1="102.9077445" y2="102.9077445" />
+	<rect height="2.82899125" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="412.726181031374" y="105.67100875" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="422.726181031374" x2="417.726181031374" y1="104.93427675" y2="104.93427675" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="420.226181031374" x2="420.226181031374" y1="104.93427675" y2="106.40774075" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="422.726181031374" x2="417.726181031374" y1="106.40774075" y2="106.40774075" />
+	<rect height="2.250999" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="427.726181031374" y="106.249001" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="437.726181031374" x2="432.726181031374" y1="104.69699625" y2="104.69699625" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="435.226181031374" x2="435.226181031374" y1="104.69699625" y2="107.80100575" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261190-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="437.726181031374" x2="432.726181031374" y1="107.80100575" y2="107.80100575" />
+	<rect height="5.52028075" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="590.311467724486" y="102.97971925" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Root24d-toperr" stroke="black" stroke-width="1" x1="600.311467724486" x2="595.311467724486" y1="100.6850195" y2="100.6850195" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Root24d-miderr" stroke="black" stroke-width="1" x1="597.811467724486" x2="597.811467724486" y1="100.6850195" y2="105.274419" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Root24d-boterr" stroke="black" stroke-width="1" x1="600.311467724486" x2="595.311467724486" y1="105.274419" y2="105.274419" />
+	<rect height="38.986228" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="605.311467724486" y="69.513772" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Shoot24d-toperr" stroke="black" stroke-width="1" x1="615.311467724486" x2="610.311467724486" y1="67.57142525" y2="67.57142525" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Shoot24d-miderr" stroke="black" stroke-width="1" x1="612.811467724486" x2="612.811467724486" y1="67.57142525" y2="71.45611875" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Shoot24d-boterr" stroke="black" stroke-width="1" x1="615.311467724486" x2="610.311467724486" y1="71.45611875" y2="71.45611875" />
+	<rect height="1.24152675" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="620.311467724486" y="107.25847325" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="630.311467724486" x2="625.311467724486" y1="106.109775" y2="106.109775" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="627.811467724486" x2="627.811467724486" y1="106.109775" y2="108.4071715" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261220-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="630.311467724486" x2="625.311467724486" y1="108.4071715" y2="108.4071715" />
+	<rect height="46.01514775" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="680.686584926073" y="62.48485225" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Root24d-toperr" stroke="black" stroke-width="1" x1="690.686584926073" x2="685.686584926073" y1="60.968994" y2="60.968994" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Root24d-miderr" stroke="black" stroke-width="1" x1="688.186584926073" x2="688.186584926073" y1="60.968994" y2="64.0007105" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Root24d-boterr" stroke="black" stroke-width="1" x1="690.686584926073" x2="685.686584926073" y1="64.0007105" y2="64.0007105" />
+	<rect height="29.77407975" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="695.686584926073" y="78.72592025" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Shoot24d-toperr" stroke="black" stroke-width="1" x1="705.686584926073" x2="700.686584926073" y1="77.08924425" y2="77.08924425" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Shoot24d-miderr" stroke="black" stroke-width="1" x1="703.186584926073" x2="703.186584926073" y1="77.08924425" y2="80.36259625" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Shoot24d-boterr" stroke="black" stroke-width="1" x1="705.686584926073" x2="700.686584926073" y1="80.36259625" y2="80.36259625" />
+	<rect height="40.5826035" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="710.686584926073" y="67.9173965" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="720.686584926073" x2="715.686584926073" y1="64.16591575" y2="64.16591575" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="718.186584926073" x2="718.186584926073" y1="64.16591575" y2="71.66887725" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="720.686584926073" x2="715.686584926073" y1="71.66887725" y2="71.66887725" />
+	<rect height="35.68063225" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="725.686584926073" y="72.81936775" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="735.686584926073" x2="730.686584926073" y1="68.9592465" y2="68.9592465" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="733.186584926073" x2="733.186584926073" y1="68.9592465" y2="76.679489" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261230-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="735.686584926073" x2="730.686584926073" y1="76.679489" y2="76.679489" />
+	<rect height="27.407355" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="851.320988099531" y="81.092645" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Root24d-toperr" stroke="black" stroke-width="1" x1="861.320988099531" x2="856.320988099531" y1="76.58841925" y2="76.58841925" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Root24d-miderr" stroke="black" stroke-width="1" x1="858.820988099531" x2="858.820988099531" y1="76.58841925" y2="85.59687075" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Root24d-boterr" stroke="black" stroke-width="1" x1="861.320988099531" x2="856.320988099531" y1="85.59687075" y2="85.59687075" />
+	<rect height="50.20036975" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="866.320988099531" y="58.29963025" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Shoot24d-toperr" stroke="black" stroke-width="1" x1="876.320988099531" x2="871.320988099531" y1="55.8718685" y2="55.8718685" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Shoot24d-miderr" stroke="black" stroke-width="1" x1="873.820988099531" x2="873.820988099531" y1="55.8718685" y2="60.727392" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Shoot24d-boterr" stroke="black" stroke-width="1" x1="876.320988099531" x2="871.320988099531" y1="60.727392" y2="60.727392" />
+	<rect height="2.23664425" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="881.320988099531" y="106.26335575" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="891.320988099531" x2="886.320988099531" y1="103.61461125" y2="103.61461125" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="888.820988099531" x2="888.820988099531" y1="103.61461125" y2="108.91210025" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="891.320988099531" x2="886.320988099531" y1="108.91210025" y2="108.91210025" />
+	<rect height="6.22595825" id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="896.320988099531" y="102.27404175" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="906.320988099531" x2="901.320988099531" y1="99.08380325" y2="99.08380325" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="903.820988099531" x2="903.820988099531" y1="99.08380325" y2="105.46428025" />
+	<line id="AA-EXPRESSION-TRIAE_CS42_5AS_TGACv1_392578_AA1261240-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="906.320988099531" x2="901.320988099531" y1="105.46428025" y2="105.46428025" />
+	<rect height="117" id="DD-frame" style="fill: rgb(240, 248, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="980" x="10" y="200" />
+	<line id="DD-top-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="202" y2="202" />
+	<line id="DD-top-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="203" y2="203" />
+	<line id="DD-bottom-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="315" y2="315" />
+	<line id="DD-bottom-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="314" y2="314" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="15" y="313.5">DD</text>
+	<line id="DD-top-tick-5000" stroke="black" stroke-width="1" x1="130.632850241546" x2="130.632850241546" y1="201.5" y2="208.5" />
+	<line id="DD-bottom-tick-5000" stroke="black" stroke-width="1" x1="130.632850241546" x2="130.632850241546" y1="315.5" y2="301.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="132.632850241546" y="313.5">5K</text>
+	<line id="DD-top-tick-10000" stroke="black" stroke-width="1" x1="248.265700483092" x2="248.265700483092" y1="201.5" y2="208.5" />
+	<line id="DD-bottom-tick-10000" stroke="black" stroke-width="1" x1="248.265700483092" x2="248.265700483092" y1="315.5" y2="301.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="250.265700483092" y="313.5">10K</text>
+	<line id="DD-top-tick-15000" stroke="black" stroke-width="1" x1="365.898550724638" x2="365.898550724638" y1="201.5" y2="208.5" />
+	<line id="DD-bottom-tick-15000" stroke="black" stroke-width="1" x1="365.898550724638" x2="365.898550724638" y1="315.5" y2="301.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="367.898550724638" y="313.5">15K</text>
+	<line id="DD-top-tick-20000" stroke="black" stroke-width="1" x1="483.531400966184" x2="483.531400966184" y1="201.5" y2="208.5" />
+	<line id="DD-bottom-tick-20000" stroke="black" stroke-width="1" x1="483.531400966184" x2="483.531400966184" y1="315.5" y2="301.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="485.531400966184" y="313.5">20K</text>
+	<line id="DD-top-tick-25000" stroke="black" stroke-width="1" x1="601.164251207729" x2="601.164251207729" y1="201.5" y2="208.5" />
+	<line id="DD-bottom-tick-25000" stroke="black" stroke-width="1" x1="601.164251207729" x2="601.164251207729" y1="315.5" y2="301.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="603.164251207729" y="313.5">25K</text>
+	<line id="DD-top-tick-30000" stroke="black" stroke-width="1" x1="718.797101449275" x2="718.797101449275" y1="201.5" y2="208.5" />
+	<line id="DD-bottom-tick-30000" stroke="black" stroke-width="1" x1="718.797101449275" x2="718.797101449275" y1="315.5" y2="301.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="720.797101449275" y="313.5">30K</text>
+	<line id="DD-top-tick-35000" stroke="black" stroke-width="1" x1="836.429951690821" x2="836.429951690821" y1="201.5" y2="208.5" />
+	<line id="DD-bottom-tick-35000" stroke="black" stroke-width="1" x1="836.429951690821" x2="836.429951690821" y1="315.5" y2="301.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="838.429951690821" y="313.5">35K</text>
+	<line id="DD-top-tick-40000" stroke="black" stroke-width="1" x1="954.062801932367" x2="954.062801932367" y1="201.5" y2="208.5" />
+	<line id="DD-bottom-tick-40000" stroke="black" stroke-width="1" x1="954.062801932367" x2="954.062801932367" y1="315.5" y2="301.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="956.062801932367" y="313.5">40K</text>
+	<rect height="5" id="DD-REPEAT-DD_REPEAT01" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="6.51685990338164" x="20.7402415458937" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT02" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.02328502415459" x="111.623381642512" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT03" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="5.15231884057971" x="115.034734299517" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT04" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="1.62333333333332" x="120.634057971014" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT05" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="19.5270531400966" x="122.280917874396" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT06" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.30560386473431" x="185.473285024155" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT07" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.37618357487924" x="339.172367149758" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT08" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.23502415458938" x="344.818743961353" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT09" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="1.92917874396136" x="362.510724637681" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT10" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="3.92893719806762" x="528.443623188406" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT11" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.89376811594207" x="533.501835748792" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT12" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="13.9747826086956" x="587.754106280193" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT13" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.25855072463764" x="628.57270531401" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT14" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.35265700483092" x="769.638019323672" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT15" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.56439613526561" x="827.254589371981" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT16" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="4.65826086956531" x="848.640241545894" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT17" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="0.588164251207786" x="854.498357487923" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT18" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="14.5158937198067" x="855.110048309179" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT19" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="3.29371980676319" x="869.649468599034" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT20" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="1.74096618357487" x="875.178212560386" y="293.5" />
+	<rect height="5" id="DD-REPEAT-DD_REPEAT21" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="5.26995169082124" x="883.906570048309" y="293.5" />
+	<polygon points="36.5500966183575,283.5 97.3997584541063,283.5 97.3997584541063,281.5 112.399758454106,286 97.3997584541063,290.5 97.3997584541063,288.5 36.5500966183575,288.5 " style="fill: darkcyan; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="215.116763285024,283.5 243.711497584541,283.5 243.711497584541,281.5 258.711497584541,286 243.711497584541,290.5 243.711497584541,288.5 215.116763285024,288.5 " style="fill: blue; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="261.934637681159,283.5 316.855603864734,283.5 316.855603864734,281.5 331.855603864734,286 316.855603864734,290.5 316.855603864734,288.5 261.934637681159,288.5 " style="fill: darkslategray; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="721.879082125604,283.5 754.23806763285,283.5 754.23806763285,281.5 769.23806763285,286 754.23806763285,290.5 754.23806763285,288.5 721.879082125604,288.5 " style="fill: purple; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="781.189565217391,286 796.189565217391,281.5 796.189565217391,283.5 838.312077294686,283.5 838.312077294686,288.5 796.189565217391,288.5 796.189565217391,290.5 " style="fill: brown; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="879.460048309179,286 894.460048309179,281.5 894.460048309179,283.5 963.473429951691,283.5 963.473429951691,288.5 894.460048309179,288.5 894.460048309179,290.5 " style="fill: darkviolet; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<line id="DD-EXPRESSION0" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="278.5" y2="278.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="281.5">0</text>
+	<line id="DD-EXPRESSION2" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="245" y2="245" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="248">2</text>
+	<line id="DD-EXPRESSION4" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="211.5" y2="211.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="214.5">4</text>
+	<rect height="1.078097" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="42.9749275362319" y="277.421903" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Root24d-toperr" stroke="black" stroke-width="1" x1="52.9749275362319" x2="47.9749275362319" y1="275.5545795" y2="275.5545795" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Root24d-miderr" stroke="black" stroke-width="1" x1="50.4749275362319" x2="50.4749275362319" y1="275.5545795" y2="279.2892265" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Root24d-boterr" stroke="black" stroke-width="1" x1="52.9749275362319" x2="47.9749275362319" y1="279.2892265" y2="279.2892265" />
+	<rect height="6.15634525" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="72.9749275362319" y="272.34365475" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="82.9749275362319" x2="77.9749275362319" y1="270.27131125" y2="270.27131125" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="80.4749275362319" x2="80.4749275362319" y1="270.27131125" y2="274.41599825" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="82.9749275362319" x2="77.9749275362319" y1="274.41599825" y2="274.41599825" />
+	<rect height="1.05255325" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="87.9749275362319" y="277.44744675" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="97.9749275362319" x2="92.9749275362319" y1="276.46107275" y2="276.46107275" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="95.4749275362319" x2="95.4749275362319" y1="276.46107275" y2="278.43382075" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472490-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="97.9749275362319" x2="92.9749275362319" y1="278.43382075" y2="278.43382075" />
+	<rect height="12.7503345" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="197.904625603865" y="265.7496655" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Root24d-toperr" stroke="black" stroke-width="1" x1="207.904625603865" x2="202.904625603865" y1="257.416507" y2="257.416507" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Root24d-miderr" stroke="black" stroke-width="1" x1="205.404625603865" x2="205.404625603865" y1="257.416507" y2="274.082824" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Root24d-boterr" stroke="black" stroke-width="1" x1="207.904625603865" x2="202.904625603865" y1="274.082824" y2="274.082824" />
+	<rect height="3.4036" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="212.904625603865" y="275.0964" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Shoot24d-toperr" stroke="black" stroke-width="1" x1="222.904625603865" x2="217.904625603865" y1="272.70852" y2="272.70852" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Shoot24d-miderr" stroke="black" stroke-width="1" x1="220.404625603865" x2="220.404625603865" y1="272.70852" y2="277.48428" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Shoot24d-boterr" stroke="black" stroke-width="1" x1="222.904625603865" x2="217.904625603865" y1="277.48428" y2="277.48428" />
+	<rect height="1.27114075" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="227.904625603865" y="277.22885925" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="237.904625603865" x2="232.904625603865" y1="276.09414725" y2="276.09414725" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="235.404625603865" x2="235.404625603865" y1="276.09414725" y2="278.36357125" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="237.904625603865" x2="232.904625603865" y1="278.36357125" y2="278.36357125" />
+	<rect height="0.59822625" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="242.904625603865" y="277.90177375" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="252.904625603865" x2="247.904625603865" y1="277.43079725" y2="277.43079725" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="250.404625603865" x2="250.404625603865" y1="277.43079725" y2="278.37275025" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472500-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="252.904625603865" x2="247.904625603865" y1="278.37275025" y2="278.37275025" />
+	<rect height="6.006416" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="272.904625603865" y="272.493584" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Root24d-toperr" stroke="black" stroke-width="1" x1="282.904625603865" x2="277.904625603865" y1="269.08276475" y2="269.08276475" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Root24d-miderr" stroke="black" stroke-width="1" x1="280.404625603865" x2="280.404625603865" y1="269.08276475" y2="275.90440325" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Root24d-boterr" stroke="black" stroke-width="1" x1="282.904625603865" x2="277.904625603865" y1="275.90440325" y2="275.90440325" />
+	<rect height="1.949432" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="287.904625603865" y="276.550568" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Shoot24d-toperr" stroke="black" stroke-width="1" x1="297.904625603865" x2="292.904625603865" y1="274.57783675" y2="274.57783675" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Shoot24d-miderr" stroke="black" stroke-width="1" x1="295.404625603865" x2="295.404625603865" y1="274.57783675" y2="278.52329925" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Shoot24d-boterr" stroke="black" stroke-width="1" x1="297.904625603865" x2="292.904625603865" y1="278.52329925" y2="278.52329925" />
+	<rect height="2.07638025" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="302.904625603865" y="276.42361975" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="312.904625603865" x2="307.904625603865" y1="274.96499625" y2="274.96499625" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="310.404625603865" x2="310.404625603865" y1="274.96499625" y2="277.88224325" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="312.904625603865" x2="307.904625603865" y1="277.88224325" y2="277.88224325" />
+	<rect height="0.62050375" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="317.904625603865" y="277.87949625" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="327.904625603865" x2="322.904625603865" y1="277.1349755" y2="277.1349755" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="325.404625603865" x2="325.404625603865" y1="277.1349755" y2="278.624017" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472510-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="327.904625603865" x2="322.904625603865" y1="278.624017" y2="278.624017" />
+	<rect height="39.1384855" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="783.654698067633" y="239.3615145" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Root24d-toperr" stroke="black" stroke-width="1" x1="793.654698067633" x2="788.654698067633" y1="236.79563225" y2="236.79563225" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Root24d-miderr" stroke="black" stroke-width="1" x1="791.154698067633" x2="791.154698067633" y1="236.79563225" y2="241.92739675" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Root24d-boterr" stroke="black" stroke-width="1" x1="793.654698067633" x2="788.654698067633" y1="241.92739675" y2="241.92739675" />
+	<rect height="21.357791" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="798.654698067633" y="257.142209" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Shoot24d-toperr" stroke="black" stroke-width="1" x1="808.654698067633" x2="803.654698067633" y1="248.35195975" y2="248.35195975" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Shoot24d-miderr" stroke="black" stroke-width="1" x1="806.154698067633" x2="806.154698067633" y1="248.35195975" y2="265.93245825" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Shoot24d-boterr" stroke="black" stroke-width="1" x1="808.654698067633" x2="803.654698067633" y1="265.93245825" y2="265.93245825" />
+	<rect height="46.31018225" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="813.654698067633" y="232.18981775" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="823.654698067633" x2="818.654698067633" y1="226.94850825" y2="226.94850825" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="821.154698067633" x2="821.154698067633" y1="226.94850825" y2="237.43112725" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="823.654698067633" x2="818.654698067633" y1="237.43112725" y2="237.43112725" />
+	<rect height="36.189648" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="828.654698067633" y="242.310352" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="838.654698067633" x2="833.654698067633" y1="240.98051925" y2="240.98051925" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="836.154698067633" x2="836.154698067633" y1="240.98051925" y2="243.64018475" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472570-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="838.654698067633" x2="833.654698067633" y1="243.64018475" y2="243.64018475" />
+	<rect height="35.03966" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="889.966739130435" y="243.46034" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Root24d-toperr" stroke="black" stroke-width="1" x1="899.966739130435" x2="894.966739130435" y1="240.1519135" y2="240.1519135" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Root24d-miderr" stroke="black" stroke-width="1" x1="897.466739130435" x2="897.466739130435" y1="240.1519135" y2="246.7687665" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Root24d-boterr" stroke="black" stroke-width="1" x1="899.966739130435" x2="894.966739130435" y1="246.7687665" y2="246.7687665" />
+	<rect height="46.8226485" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="904.966739130435" y="231.6773515" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Shoot24d-toperr" stroke="black" stroke-width="1" x1="914.966739130435" x2="909.966739130435" y1="226.91041875" y2="226.91041875" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Shoot24d-miderr" stroke="black" stroke-width="1" x1="912.466739130435" x2="912.466739130435" y1="226.91041875" y2="236.44428425" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Shoot24d-boterr" stroke="black" stroke-width="1" x1="914.966739130435" x2="909.966739130435" y1="236.44428425" y2="236.44428425" />
+	<rect height="8.710737" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="919.966739130435" y="269.789263" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="929.966739130435" x2="924.966739130435" y1="265.43444725" y2="265.43444725" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="927.466739130435" x2="927.466739130435" y1="265.43444725" y2="274.14407875" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="929.966739130435" x2="924.966739130435" y1="274.14407875" y2="274.14407875" />
+	<rect height="15.078417" id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="934.966739130435" y="263.421583" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="944.966739130435" x2="939.966739130435" y1="260.639609" y2="260.639609" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="942.466739130435" x2="942.466739130435" y1="260.639609" y2="266.203557" />
+	<line id="DD-EXPRESSION-TRIAE_CS42_5DS_TGACv1_456510_AA1472580-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="944.966739130435" x2="939.966739130435" y1="266.203557" y2="266.203557" />
+	<rect height="117" id="BB-frame" style="fill: rgb(240, 248, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="980" x="10" y="370" />
+	<line id="BB-top-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="372" y2="372" />
+	<line id="BB-top-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="373" y2="373" />
+	<line id="BB-bottom-inner1" stroke="rgb(70, 130, 180)" stroke-width="1" x1="11.5" x2="988.5" y1="485" y2="485" />
+	<line id="BB-bottom-inner2" stroke="rgb(154, 188, 217)" stroke-width="1" x1="11.5" x2="988.5" y1="484" y2="484" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="15" y="483.5">BB</text>
+	<line id="BB-top-tick-5000" stroke="black" stroke-width="1" x1="203.830721003135" x2="203.830721003135" y1="371.5" y2="378.5" />
+	<line id="BB-bottom-tick-5000" stroke="black" stroke-width="1" x1="203.830721003135" x2="203.830721003135" y1="485.5" y2="471.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="205.830721003135" y="483.5">5K</text>
+	<line id="BB-top-tick-10000" stroke="black" stroke-width="1" x1="394.66144200627" x2="394.66144200627" y1="371.5" y2="378.5" />
+	<line id="BB-bottom-tick-10000" stroke="black" stroke-width="1" x1="394.66144200627" x2="394.66144200627" y1="485.5" y2="471.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="396.66144200627" y="483.5">10K</text>
+	<line id="BB-top-tick-15000" stroke="black" stroke-width="1" x1="585.492163009404" x2="585.492163009404" y1="371.5" y2="378.5" />
+	<line id="BB-bottom-tick-15000" stroke="black" stroke-width="1" x1="585.492163009404" x2="585.492163009404" y1="485.5" y2="471.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="587.492163009404" y="483.5">15K</text>
+	<line id="BB-top-tick-20000" stroke="black" stroke-width="1" x1="776.322884012539" x2="776.322884012539" y1="371.5" y2="378.5" />
+	<line id="BB-bottom-tick-20000" stroke="black" stroke-width="1" x1="776.322884012539" x2="776.322884012539" y1="485.5" y2="471.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="778.322884012539" y="483.5">20K</text>
+	<line id="BB-top-tick-25000" stroke="black" stroke-width="1" x1="967.153605015674" x2="967.153605015674" y1="371.5" y2="378.5" />
+	<line id="BB-bottom-tick-25000" stroke="black" stroke-width="1" x1="967.153605015674" x2="967.153605015674" y1="485.5" y2="471.5" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" width="14" x="969.153605015674" y="483.5">25K</text>
+	<rect height="5" id="BB-REPEAT-BB_REPEAT01" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="7.9003918495298" x="359.472257053292" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_REPEAT02" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="18.1670846394984" x="415.576489028213" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_REPEAT03" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="2.82429467084648" x="530.647413793103" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_REPEAT04" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="45.7230407523512" x="541.98275862069" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_REPEAT05" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="4.16010971786829" x="679.419043887147" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_REPEAT06" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="3.43495297805646" x="707.700156739812" y="463.5" />
+	<rect height="5" id="BB-REPEAT-BB_REPEAT07" style="fill: black; fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 3" width="6.75540752351094" x="711.173275862069" y="463.5" />
+	<polygon points="51.2043103448276,453.5 155.397178683386,453.5 155.397178683386,451.5 170.397178683386,456 155.397178683386,460.5 155.397178683386,458.5 51.2043103448276,458.5 " style="fill: blue; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="174.786285266458,453.5 290.238166144201,453.5 290.238166144201,451.5 305.238166144201,456 290.238166144201,460.5 290.238166144201,458.5 174.786285266458,458.5 " style="fill: darkslategray; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="456.910423197492,453.5 510.991144200627,453.5 510.991144200627,451.5 525.991144200627,456 510.991144200627,460.5 510.991144200627,458.5 456.910423197492,458.5 " style="fill: purple; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="596.598510971787,456 611.598510971787,451.5 611.598510971787,453.5 695.792319749216,453.5 695.792319749216,458.5 611.598510971787,458.5 611.598510971787,460.5 " style="fill: brown; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<polygon points="793.726645768025,456 808.726645768025,451.5 808.726645768025,453.5 948.833855799373,453.5 948.833855799373,458.5 808.726645768025,458.5 808.726645768025,460.5 " style="fill: darkviolet; fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 1" />
+	<line id="BB-EXPRESSION0" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="448.5" y2="448.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="451.5">0</text>
+	<line id="BB-EXPRESSION2" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="415" y2="415" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="418">2</text>
+	<line id="BB-EXPRESSION4" stroke="grey" stroke-width="1" x1="26.5" x2="983.5" y1="381.5" y2="381.5" />
+	<text font-family="Arial" font-size="12" height="7.5" text-anchor="start" text-color="black" width="7.5" x="15.25" y="384.5">4</text>
+	<rect height="9.73370975" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="79.3007445141066" y="438.76629025" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Root24d-toperr" stroke="black" stroke-width="1" x1="89.3007445141066" x2="84.3007445141066" y1="435.187703" y2="435.187703" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Root24d-miderr" stroke="black" stroke-width="1" x1="86.8007445141066" x2="86.8007445141066" y1="435.187703" y2="442.3448775" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Root24d-boterr" stroke="black" stroke-width="1" x1="89.3007445141066" x2="84.3007445141066" y1="442.3448775" y2="442.3448775" />
+	<rect height="3.4937485" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="94.3007445141066" y="445.0062515" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Shoot24d-toperr" stroke="black" stroke-width="1" x1="104.300744514107" x2="99.3007445141066" y1="444.79511775" y2="444.79511775" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Shoot24d-miderr" stroke="black" stroke-width="1" x1="101.800744514107" x2="101.800744514107" y1="444.79511775" y2="445.21738525" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Shoot24d-boterr" stroke="black" stroke-width="1" x1="104.300744514107" x2="99.3007445141066" y1="445.21738525" y2="445.21738525" />
+	<rect height="1.964909" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="109.300744514107" y="446.535091" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="119.300744514107" x2="114.300744514107" y1="445.57801275" y2="445.57801275" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="116.800744514107" x2="116.800744514107" y1="445.57801275" y2="447.49216925" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="119.300744514107" x2="114.300744514107" y1="447.49216925" y2="447.49216925" />
+	<rect height="0.646282" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="124.300744514107" y="447.853718" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="134.300744514107" x2="129.300744514107" y1="447.357985" y2="447.357985" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="131.800744514107" x2="131.800744514107" y1="447.357985" y2="448.349451" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388640-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="134.300744514107" x2="129.300744514107" y1="448.349451" y2="448.349451" />
+	<rect height="5.93517825" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="208.512225705329" y="442.56482175" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Root24d-toperr" stroke="black" stroke-width="1" x1="218.512225705329" x2="213.512225705329" y1="438.58649575" y2="438.58649575" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Root24d-miderr" stroke="black" stroke-width="1" x1="216.012225705329" x2="216.012225705329" y1="438.58649575" y2="446.54314775" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Root24d-boterr" stroke="black" stroke-width="1" x1="218.512225705329" x2="213.512225705329" y1="446.54314775" y2="446.54314775" />
+	<rect height="8.14587675" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="223.512225705329" y="440.35412325" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Shoot24d-toperr" stroke="black" stroke-width="1" x1="233.512225705329" x2="228.512225705329" y1="439.3580845" y2="439.3580845" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Shoot24d-miderr" stroke="black" stroke-width="1" x1="231.012225705329" x2="231.012225705329" y1="439.3580845" y2="441.350162" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Shoot24d-boterr" stroke="black" stroke-width="1" x1="233.512225705329" x2="228.512225705329" y1="441.350162" y2="441.350162" />
+	<rect height="1.84543125" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="238.512225705329" y="446.65456875" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="248.512225705329" x2="243.512225705329" y1="445.81670025" y2="445.81670025" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="246.012225705329" x2="246.012225705329" y1="445.81670025" y2="447.49243725" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="248.512225705329" x2="243.512225705329" y1="447.49243725" y2="447.49243725" />
+	<rect height="1.17496225" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="253.512225705329" y="447.32503775" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="263.512225705329" x2="258.512225705329" y1="446.5343205" y2="446.5343205" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="261.012225705329" x2="261.012225705329" y1="446.5343205" y2="448.115755" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388650-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="263.512225705329" x2="258.512225705329" y1="448.115755" y2="448.115755" />
+	<rect height="31.56194125" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="614.695415360502" y="416.93805875" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Root24d-toperr" stroke="black" stroke-width="1" x1="624.695415360502" x2="619.695415360502" y1="409.6303855" y2="409.6303855" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Root24d-miderr" stroke="black" stroke-width="1" x1="622.195415360502" x2="622.195415360502" y1="409.6303855" y2="424.245732" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Root24d-boterr" stroke="black" stroke-width="1" x1="624.695415360502" x2="619.695415360502" y1="424.245732" y2="424.245732" />
+	<rect height="13.94784225" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="629.695415360502" y="434.55215775" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Shoot24d-toperr" stroke="black" stroke-width="1" x1="639.695415360502" x2="634.695415360502" y1="433.1703665" y2="433.1703665" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Shoot24d-miderr" stroke="black" stroke-width="1" x1="637.195415360502" x2="637.195415360502" y1="433.1703665" y2="435.933949" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Shoot24d-boterr" stroke="black" stroke-width="1" x1="639.695415360502" x2="634.695415360502" y1="435.933949" y2="435.933949" />
+	<rect height="33.719425" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="644.695415360502" y="414.780575" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="654.695415360502" x2="649.695415360502" y1="411.5450445" y2="411.5450445" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="652.195415360502" x2="652.195415360502" y1="411.5450445" y2="418.0161055" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="654.695415360502" x2="649.695415360502" y1="418.0161055" y2="418.0161055" />
+	<rect height="28.66395675" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="659.695415360502" y="419.83604325" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="669.695415360502" x2="664.695415360502" y1="416.58728025" y2="416.58728025" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="667.195415360502" x2="667.195415360502" y1="416.58728025" y2="423.08480625" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388670-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="669.695415360502" x2="664.695415360502" y1="423.08480625" y2="423.08480625" />
+	<rect height="31.26426025" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Root24d" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="839.780250783699" y="417.23573975" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Root24d-toperr" stroke="black" stroke-width="1" x1="849.780250783699" x2="844.780250783699" y1="414.81827925" y2="414.81827925" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Root24d-miderr" stroke="black" stroke-width="1" x1="847.280250783699" x2="847.280250783699" y1="414.81827925" y2="419.65320025" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Root24d-boterr" stroke="black" stroke-width="1" x1="849.780250783699" x2="844.780250783699" y1="419.65320025" y2="419.65320025" />
+	<rect height="48.97818925" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Shoot24d" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="854.780250783699" y="399.52181075" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Shoot24d-toperr" stroke="black" stroke-width="1" x1="864.780250783699" x2="859.780250783699" y1="396.98318075" y2="396.98318075" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Shoot24d-miderr" stroke="black" stroke-width="1" x1="862.280250783699" x2="862.280250783699" y1="396.98318075" y2="402.06044075" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Shoot24d-boterr" stroke="black" stroke-width="1" x1="864.780250783699" x2="859.780250783699" y1="402.06044075" y2="402.06044075" />
+	<rect height="3.700276" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Endosperm10d" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="869.780250783699" y="444.799724" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Endosperm10d-toperr" stroke="black" stroke-width="1" x1="879.780250783699" x2="874.780250783699" y1="442.70016175" y2="442.70016175" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Endosperm10d-miderr" stroke="black" stroke-width="1" x1="877.280250783699" x2="877.280250783699" y1="442.70016175" y2="446.89928625" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Endosperm10d-boterr" stroke="black" stroke-width="1" x1="879.780250783699" x2="874.780250783699" y1="446.89928625" y2="446.89928625" />
+	<rect height="8.988519" id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Endosperm20d" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="15" x="884.780250783699" y="439.511481" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Endosperm20d-toperr" stroke="black" stroke-width="1" x1="894.780250783699" x2="889.780250783699" y1="435.79808975" y2="435.79808975" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Endosperm20d-miderr" stroke="black" stroke-width="1" x1="892.280250783699" x2="892.280250783699" y1="435.79808975" y2="443.22487225" />
+	<line id="BB-EXPRESSION-TRIAE_CS42_5BS_TGACv1_424311_AA1388680-Endosperm20d-boterr" stroke="black" stroke-width="1" x1="894.780250783699" x2="889.780250783699" y1="443.22487225" y2="443.22487225" />
+	<polygon id="AA-DD-synteny-0" points="57.0108907320591,148.5 63.82502704652,148.5 17.6347342995169,198.5 13.0235265700483,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-1" points="63.9304002884962,148.5 66.8808510638298,148.5 23.1634782608696,198.5 21.1637198067633,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-2" points="66.9159754778219,148.5 74.2218535881717,148.5 31.4213043478261,198.5 26.7395169082126,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-3" points="74.2569780021637,148.5 76.2590695997115,148.5 36.1266183574879,198.5 34.5738647342995,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-4" points="85.5670393076091,148.5 90.0980887125856,148.5 39.2085990338164,198.5 36.1501449275362,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-5" points="105.728452939055,148.5 133.617237648756,148.5 57.9592753623188,198.5 39.2321256038647,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-6" points="133.652362062748,148.5 208.151244139921,148.5 118.069661835749,198.5 65.3466183574879,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-7" points="212.612044716913,148.5 253.18074287775,148.5 145.242850241546,198.5 118.093188405797,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-8" points="253.215867291742,148.5 355.111792282726,148.5 265.345990338164,198.5 198.436425120773,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-9" points="356.797764154345,148.5 470.60086548864,148.5 341.689710144928,198.5 265.369516908213,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-10" points="470.635989902633,148.5 481.875802380094,148.5 580.672608695652,198.5 573.167632850242,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-11" points="493.291236927515,148.5 530.698737829066,148.5 686.518647342995,198.5 657.769178743961,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-12" points="550.544031734583,148.5 564.277677605481,148.5 704.728212560387,198.5 695.529323671498,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-13" points="564.312802019473,148.5 703.756725567977,148.5 805.633671497584,198.5 710.139323671498,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-14" points="705.16170212766,148.5 706.039812477461,148.5 806.245362318841,198.5 805.657198067633,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-15" points="709.446880634692,148.5 757.497078975838,148.5 839.08845410628,198.5 806.268888888889,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-16" points="758.094194013704,148.5 760.166534439236,148.5 840.947053140097,198.5 839.606038647343,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-17" points="764.943454742157,148.5 767.472412549585,148.5 842.57038647343,198.5 840.970579710145,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-18" points="768.455896141363,148.5 812.396538045438,148.5 877.272077294686,198.5 844.687777777778,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-19" points="815.136242336819,148.5 821.458636855391,148.5 883.859516908213,198.5 879.648260869565,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-20" points="822.512369275153,148.5 823.98759466282,148.5 884.777053140097,198.5 883.883043478261,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-21" points="824.022719076812,148.5 897.292246664263,148.5 937.476570048309,198.5 887.741400966184,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="AA-DD-synteny-22" points="903.403894698882,148.5 963.115398485395,148.5 977.071787439614,198.5 937.500096618357,198.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<line id="AA-DD-synteny-0-left" stroke="black" stroke-width="1" x1="57.0108907320591" x2="13.0235265700483" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-0-right" stroke="black" stroke-width="1" x1="63.82502704652" x2="17.6347342995169" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-1-left" stroke="black" stroke-width="1" x1="63.9304002884962" x2="21.1637198067633" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-1-right" stroke="black" stroke-width="1" x1="66.8808510638298" x2="23.1634782608696" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-2-left" stroke="black" stroke-width="1" x1="66.9159754778219" x2="26.7395169082126" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-2-right" stroke="black" stroke-width="1" x1="74.2218535881717" x2="31.4213043478261" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-3-left" stroke="black" stroke-width="1" x1="74.2569780021637" x2="34.5738647342995" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-3-right" stroke="black" stroke-width="1" x1="76.2590695997115" x2="36.1266183574879" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-4-left" stroke="black" stroke-width="1" x1="85.5670393076091" x2="36.1501449275362" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-4-right" stroke="black" stroke-width="1" x1="90.0980887125856" x2="39.2085990338164" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-5-left" stroke="black" stroke-width="1" x1="105.728452939055" x2="39.2321256038647" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-5-right" stroke="black" stroke-width="1" x1="133.617237648756" x2="57.9592753623188" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-6-left" stroke="black" stroke-width="1" x1="133.652362062748" x2="65.3466183574879" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-6-right" stroke="black" stroke-width="1" x1="208.151244139921" x2="118.069661835749" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-7-left" stroke="black" stroke-width="1" x1="212.612044716913" x2="118.093188405797" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-7-right" stroke="black" stroke-width="1" x1="253.18074287775" x2="145.242850241546" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-8-left" stroke="black" stroke-width="1" x1="253.215867291742" x2="198.436425120773" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-8-right" stroke="black" stroke-width="1" x1="355.111792282726" x2="265.345990338164" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-9-left" stroke="black" stroke-width="1" x1="356.797764154345" x2="265.369516908213" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-9-right" stroke="black" stroke-width="1" x1="470.60086548864" x2="341.689710144928" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-10-left" stroke="black" stroke-width="1" x1="470.635989902633" x2="573.167632850242" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-10-right" stroke="black" stroke-width="1" x1="481.875802380094" x2="580.672608695652" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-11-left" stroke="black" stroke-width="1" x1="493.291236927515" x2="657.769178743961" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-11-right" stroke="black" stroke-width="1" x1="530.698737829066" x2="686.518647342995" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-12-left" stroke="black" stroke-width="1" x1="550.544031734583" x2="695.529323671498" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-12-right" stroke="black" stroke-width="1" x1="564.277677605481" x2="704.728212560387" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-13-left" stroke="black" stroke-width="1" x1="564.312802019473" x2="710.139323671498" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-13-right" stroke="black" stroke-width="1" x1="703.756725567977" x2="805.633671497584" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-14-left" stroke="black" stroke-width="1" x1="705.16170212766" x2="805.657198067633" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-14-right" stroke="black" stroke-width="1" x1="706.039812477461" x2="806.245362318841" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-15-left" stroke="black" stroke-width="1" x1="709.446880634692" x2="806.268888888889" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-15-right" stroke="black" stroke-width="1" x1="757.497078975838" x2="839.08845410628" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-16-left" stroke="black" stroke-width="1" x1="758.094194013704" x2="839.606038647343" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-16-right" stroke="black" stroke-width="1" x1="760.166534439236" x2="840.947053140097" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-17-left" stroke="black" stroke-width="1" x1="764.943454742157" x2="840.970579710145" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-17-right" stroke="black" stroke-width="1" x1="767.472412549585" x2="842.57038647343" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-18-left" stroke="black" stroke-width="1" x1="768.455896141363" x2="844.687777777778" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-18-right" stroke="black" stroke-width="1" x1="812.396538045438" x2="877.272077294686" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-19-left" stroke="black" stroke-width="1" x1="815.136242336819" x2="879.648260869565" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-19-right" stroke="black" stroke-width="1" x1="821.458636855391" x2="883.859516908213" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-20-left" stroke="black" stroke-width="1" x1="822.512369275153" x2="883.883043478261" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-20-right" stroke="black" stroke-width="1" x1="823.98759466282" x2="884.777053140097" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-21-left" stroke="black" stroke-width="1" x1="824.022719076812" x2="887.741400966184" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-21-right" stroke="black" stroke-width="1" x1="897.292246664263" x2="937.476570048309" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-22-left" stroke="black" stroke-width="1" x1="903.403894698882" x2="937.500096618357" y1="148.5" y2="198.5" />
+	<line id="AA-DD-synteny-22-right" stroke="black" stroke-width="1" x1="963.115398485395" x2="977.071787439614" y1="148.5" y2="198.5" />
+	<polygon id="DD-BB-synteny-0" points="191.425507246377,318.5 264.381400966184,318.5 133.414184952978,368.5 13.0381661442006,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-1" points="264.404927536232,318.5 332.961352657005,318.5 276.499059561129,368.5 167.03855799373,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-2" points="713.291884057971,318.5 715.338695652174,318.5 391.379153605016,368.5 388.058699059561,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-3" points="717.667826086957,318.5 720.914492753623,318.5 397.447570532915,368.5 392.180642633229,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-4" points="720.938019323671,318.5 728.631207729469,318.5 469.619749216301,368.5 457.711912225705,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-5" points="734.842222222222,318.5 769.590966183575,318.5 527.899451410658,368.5 469.657915360502,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-6" points="771.849516908213,318.5 778.625169082126,318.5 540.570611285266,368.5 528.128448275862,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-7" points="778.648695652174,318.5 811.209468599034,318.5 646.290830721003,368.5 594.690203761755,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-8" points="811.280048309179,318.5 842.217487922705,318.5 704.227037617555,368.5 654.878213166144,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-9" points="869.555362318841,318.5 874.190096618358,318.5 722.012460815047,368.5 714.570062695925,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-10" points="874.472415458937,318.5 877.272077294686,318.5 796.092946708464,368.5 791.665673981191,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-11" points="880.236425120773,318.5 884.847632850242,318.5 804.832993730408,368.5 796.283777429467,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-12" points="887.717874396135,318.5 923.948792270531,318.5 861.204388714734,368.5 804.909326018809,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-13" points="923.97231884058,318.5 977.048260869565,318.5 954.825940438871,368.5 868.150626959248,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-14" points="811.280048309179,318.5 813.162173913043,318.5 648.580799373041,368.5 646.328996865204,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-15" points="920.090434782609,318.5 923.007729468599,318.5 866.47131661442,368.5 861.776880877743,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<polygon id="DD-BB-synteny-16" points="923.031256038647,318.5 923.784106280193,318.5 867.883463949843,368.5 866.662147335423,368.5 " style="fill: rgb(204,233,223); fill-opacity: 1; stroke: black; stroke-opacity: 0; stroke-width: 0" />
+	<line id="DD-BB-synteny-0-left" stroke="black" stroke-width="1" x1="191.425507246377" x2="13.0381661442006" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-0-right" stroke="black" stroke-width="1" x1="264.381400966184" x2="133.414184952978" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-1-left" stroke="black" stroke-width="1" x1="264.404927536232" x2="167.03855799373" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-1-right" stroke="black" stroke-width="1" x1="332.961352657005" x2="276.499059561129" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-2-left" stroke="black" stroke-width="1" x1="713.291884057971" x2="388.058699059561" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-2-right" stroke="black" stroke-width="1" x1="715.338695652174" x2="391.379153605016" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-3-left" stroke="black" stroke-width="1" x1="717.667826086957" x2="392.180642633229" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-3-right" stroke="black" stroke-width="1" x1="720.914492753623" x2="397.447570532915" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-4-left" stroke="black" stroke-width="1" x1="720.938019323671" x2="457.711912225705" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-4-right" stroke="black" stroke-width="1" x1="728.631207729469" x2="469.619749216301" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-5-left" stroke="black" stroke-width="1" x1="734.842222222222" x2="469.657915360502" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-5-right" stroke="black" stroke-width="1" x1="769.590966183575" x2="527.899451410658" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-6-left" stroke="black" stroke-width="1" x1="771.849516908213" x2="528.128448275862" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-6-right" stroke="black" stroke-width="1" x1="778.625169082126" x2="540.570611285266" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-7-left" stroke="black" stroke-width="1" x1="778.648695652174" x2="594.690203761755" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-7-right" stroke="black" stroke-width="1" x1="811.209468599034" x2="646.290830721003" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-8-left" stroke="black" stroke-width="1" x1="811.280048309179" x2="654.878213166144" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-8-right" stroke="black" stroke-width="1" x1="842.217487922705" x2="704.227037617555" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-9-left" stroke="black" stroke-width="1" x1="869.555362318841" x2="714.570062695925" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-9-right" stroke="black" stroke-width="1" x1="874.190096618358" x2="722.012460815047" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-10-left" stroke="black" stroke-width="1" x1="874.472415458937" x2="791.665673981191" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-10-right" stroke="black" stroke-width="1" x1="877.272077294686" x2="796.092946708464" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-11-left" stroke="black" stroke-width="1" x1="880.236425120773" x2="796.283777429467" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-11-right" stroke="black" stroke-width="1" x1="884.847632850242" x2="804.832993730408" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-12-left" stroke="black" stroke-width="1" x1="887.717874396135" x2="804.909326018809" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-12-right" stroke="black" stroke-width="1" x1="923.948792270531" x2="861.204388714734" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-13-left" stroke="black" stroke-width="1" x1="923.97231884058" x2="868.150626959248" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-13-right" stroke="black" stroke-width="1" x1="977.048260869565" x2="954.825940438871" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-14-left" stroke="black" stroke-width="1" x1="811.280048309179" x2="646.328996865204" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-14-right" stroke="black" stroke-width="1" x1="813.162173913043" x2="648.580799373041" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-15-left" stroke="black" stroke-width="1" x1="920.090434782609" x2="861.776880877743" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-15-right" stroke="black" stroke-width="1" x1="923.007729468599" x2="866.47131661442" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-16-left" stroke="black" stroke-width="1" x1="923.031256038647" x2="866.662147335423" y1="318.5" y2="368.5" />
+	<line id="DD-BB-synteny-16-right" stroke="black" stroke-width="1" x1="923.784106280193" x2="867.883463949843" y1="318.5" y2="368.5" />
+	<rect height="14" id="LEGEND-Root24d-rectangular" style="fill: rgb(0, 255, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="14" x="486" y="13" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" text-color="black" width="126" x="503" y="27">Root24d</text>
+	<rect height="14" id="LEGEND-Shoot24d-rectangular" style="fill: rgb(255, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="14" x="612" y="13" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" text-color="black" width="126" x="629" y="27">Shoot24d</text>
+	<rect height="14" id="LEGEND-Endosperm10d-rectangular" style="fill: rgb(0, 255, 0); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="14" x="738" y="13" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" text-color="black" width="126" x="755" y="27">Endosperm10d</text>
+	<rect height="14" id="LEGEND-Endosperm20d-rectangular" style="fill: rgb(255, 0, 255); fill-opacity: 1; stroke: black; stroke-opacity: 1; stroke-width: 1" width="14" x="864" y="13" />
+	<text font-family="Arial" font-size="14" height="14" text-anchor="start" text-color="black" width="126" x="881" y="27">Endosperm20d</text>
+	<!-- 
+	Generated using the Perl SVG Module V2.64
+	by Ronan Oger
+	Info: http://www.roitsystems.com/
+ -->
+</svg>
