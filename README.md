@@ -1,26 +1,27 @@
-#SyntenyPlot
+# SyntenyPlot
 
-usage: synteny_plot.pl global.config synteny.config annotation.config output.svg
+	usage: synteny_plot.pl global.config synteny.config annotation.config output.svg
 
-#Descriptions:
+## Descriptions:
 
-Produce publishable vector-format synteny views using user-defined parameter and datasets
+	Produce publishable vector-format synteny views using user-defined parameter and datasets
 
-SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
+	SVG format further improvement could be achieved using Adobe Illustrator on Windows or Inkscape on Linux. 
 
->Click *block4.svg* for an example, to see what the output svg looks like.
+	>Click *block4.svg* for an example, to see what the output svg looks like.
 
-#Requirements: 
+## Requirements: 
+
 	Perl Modules: SVG, Data::Dumper
 
 #HOW-TO
-##1. **user.config**
+### 1. **user.config**
 
 user.config contains plot parameter for the plot, including length, height, and color of line and fillins
 
 >		Better to defined the sequence length here as autodetected length by this script might not be the real length
 
-##2. **synteny.config**
+### 2. **synteny.config**
 
 synteny.config specifies the syntonic region between two sequences
 
@@ -31,7 +32,7 @@ synteny.config specifies the syntonic region between two sequences
 >		*Final format:	
 >			#REF1	START1	END1	REF2	START2	END2	...
 
-##3. **anntation.config**
+### 3. **anntation.config**
 
 anntation.config specifies the gene/feature/repeat locations
 
@@ -40,18 +41,19 @@ anntation.config specifies the gene/feature/repeat locations
 >		*check /examples/block4/annotation.config for examples
 >		*Curently CDS might not supplorted very vell as can not link the individual CDS box using lines.
 
-#TO-DO list;
+### TO-DO list;
 
 + [ ] 1. Support CDS TRACKs
 + [ ] 2. Make delicate legends.
 + [ ] 3. Avoid Tick marks out of main plot
 + [ ] 4. Regenerate examples
 
-#Citation:
+## Citation:
 
 To be published.
 
-#Author:
+## Author:
+
 ---------------------------------------------------------------------
 
 >	**Fu-Hao Lu**
@@ -65,3 +67,28 @@ To be published.
 >	E-mail: <Fu-Hao.Lu@jic.ac.uk>
 
 ---------------------------------------------------------------------
+
+## Copyright
+
+Copyright (c) 2016-2018 Fu-Hao Lu
+
+Under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version, Permission is hereby granted, 
+free of charge, to any person obtaining a copy of this software and 
+associated documentation files (the "Software"), to deal in the Software 
+without restriction, including without limitation the rights to use, 
+copy, modify, merge, publish, distribute, sublicense, and/or sell 
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
