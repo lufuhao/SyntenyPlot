@@ -13,15 +13,15 @@ Descriptions:
 Requirements: 
 	Perl Modules: SVG, Data::Dumper
 
-synteny.config [2 column data set]
+synteny.config [2-4 column data set]
 #Line start with # would be ignored
 #At the end mark one more line with chromosome length (eg: 1001) and value 0
 #    to indicate the precise ploting on chromsome
 #gene positions are not necessarily unique
-#gene_position	expression_value
+#gene_position	expression_value	[Opt1: line color]	[Opt2: marker color]
 100	1.25
-200	8.00
-254	-4.00
+200	8.00	blue	blue
+254	-4.00 red	red
 1001	0
 
 Version:
@@ -55,11 +55,13 @@ my %confighash=(
 	'plot_font_family' => 'Arial',
 	'plot_track_space' => 10,
 ##[synteny]
-	'synteny_chrom_height' => 10,
+	'synteny_chrom_height' => 12,
 	'synteny_chrom_fillin_color' => 'grey',
 	'synteny_chrom_line_color' => 'black',
 	'synteny_chrom_line_width' => 1,
 	'synteny_chrom_length' => 371759578, #chromsome length or will use largest position in config if not specified
+	'synteny_chrom_up_label' => "3DL",
+	'synteny_chrom_bottom_label' => "3L",
 ##[ruler]
 	'ruler_mark_interval' => 2,
 	'ruler_tick_color' => 'black',
@@ -72,15 +74,17 @@ my %confighash=(
 	'ruler_x_line_width' => 2,
 	'ruler_y_line_color' => 'black',
 	'ruler_y_line_width' => 2,
-	'ruler_y_top_scalar' => 10,  ### will auto detect when set to '#N/A'
-	'ruler_y_down_scalar' => -10, ### will auto detect when set to '#N/A'
+#	'ruler_y_top_scalar' => 10,  ### will auto detect when set to '#N/A'
+#	'ruler_y_down_scalar' => -10, ### will auto detect when set to '#N/A'
 ###[expression]
 #	[start(>=), end(<=), line_color, marker_color]
 #	will use synteny_chrom_line_color if not set
-	'exprs_color_array' => [[-12, 12, 'grey', 'grey']],
-	'exprs_up_line_size' => 0.3,
+#	use for backgroup color
+#	color in configure file will overwrite this setting
+	'exprs_color_array' => [[-12, 12, '#A9A9A9', '#A9A9A9']],
+	'exprs_up_line_size' => 0.2,
 	'exprs_up_marker_size' => 0.6,
-	'exprs_down_line_size' => 0.3,
+	'exprs_down_line_size' => 0.2,
 	'exprs_down_marker_size' => 0.6,
 );
 #$confighash{'ruler_y_top_scalar'}
@@ -106,12 +110,14 @@ unlink "$outputsvg" if (-e "$outputsvg");
 
 ### read configure file
 my %pos2exp=();
+my %usercolor=();
 my $linenum=0;
 my $validnum=0;
 my $tick_up_scale=0;
 my $tick_down_scale=0;
 my $tick_up_autodetect=0;
 my $tick_down_autodetect=0;
+
 my $scale_min=0;
 my $scale_max=0;
 if (exists $confighash{'ruler_y_top_scalar'} and $confighash{'ruler_y_top_scalar'}=~/^[-+]{0,1}\d+\.*\d*$/) {
@@ -138,8 +144,8 @@ while (my $line=<CONFIGUREINPUT>) {
 	$linenum++;
 	next if ($line=~/^#/);
 	my @arr=split(/\t/, $line);
-	unless (scalar(@arr)==2) {
-		die "Error: NumCol!=2 at line ($linenum): $line\n";
+	unless (scalar(@arr)>=2 and scalar(@arr)<=4) {
+		die "Error: NumCol not 2-4 at line ($linenum): $line\n";
 	}
 	unless (defined $arr[0] and $arr[0]=~/^\d+$/ and $arr[0]>0) {
 		die "Error: Col1 not INT at line ($linenum): $line\n";
@@ -148,10 +154,31 @@ while (my $line=<CONFIGUREINPUT>) {
 		print STDERR "Warnings: ignored line due to Col2 not number at line ($linenum): $line\n";
 		next;
 	}
-#	if (exists $pos2exp{$arr[0]}) {
-#		die "Error: duplicated position at line ($linenum): $line\n"
-#	}
+	if (exists $usercolor{$arr[0]} and exists $usercolor{$arr[0]}{$arr[1]}) {
+		if (defined $arr[2] and $arr[2]=~/^\S+$/) {
+			if (exists $usercolor{$arr[0]}{$arr[1]}{'lc'} and $usercolor{$arr[0]}{$arr[1]}{'lc'} ne $arr[2]) {
+				die "Error: duplicated position and different line color at line ($linenum): $line\n";
+			}
+		}
+		if (defined $arr[3] and $arr[3]=~/^\S+$/) {
+			if (exists $usercolor{$arr[0]}{$arr[1]}{'mc'} and $usercolor{$arr[0]}{$arr[1]}{'mc'} ne $arr[3]) {
+				die "Error: duplicated position and different marker color at line ($linenum): $line\n";
+			}
+		}
+	}
+
 	$pos2exp{$arr[0]}{$arr[1]}++;
+	
+	if (defined $arr[2] and $arr[2]=~/^\S+$/) {
+		$usercolor{$arr[0]}{$arr[1]}{'lc'}=$arr[2];
+#		print "Test: Pos: $arr[0] line ", $usercolor{$arr[0]}{$arr[1]}{'lc'}, "\n"; ### For test ###
+#		print "test: array: ", join ("\t", @arr), "\n";
+	}
+	if (defined $arr[3] and $arr[3]=~/^\S+$/) {
+		$usercolor{$arr[0]}{$arr[1]}{'mc'}=$arr[3];
+#		print "Test: Pos: $arr[0] marker ", $usercolor{$arr[0]}{$arr[1]}{'mc'}, "\n"; ### For test ###
+	}
+
 	if ($tick_up_autodetect==1) {
 		if ($validnum==0) {
 			$scale_max=$arr[1];
@@ -233,7 +260,20 @@ $vectorout-> rectangle (	x => $chrom_x_start, y=> $chrom_y_bottom,
 									'fill-opacity'   =>  1
 								},
 					);
-
+$vectorout->text(	x => $chrom_x_start-$confighash{'ruler_y_line_width'}/2, y=> $chrom_y_top+$confighash{'synteny_chrom_height'}/2+$confighash{'ruler_font_size'}/2,
+				width => $confighash{'ruler_font_size'}, 
+				height => $confighash{'ruler_font_size'}, 
+				"font-family"=>$confighash{'plot_font_family'}, 
+				"text-anchor"=>"end",
+				"font-size"=>$confighash{'ruler_font_size'}, 
+				"-cdata" => $confighash{'synteny_chrom_up_label'});
+$vectorout->text(	x => $chrom_x_start-$confighash{'ruler_y_line_width'}/2, y=> $chrom_y_bottom+$confighash{'synteny_chrom_height'}/2+$confighash{'ruler_font_size'}/2,
+				width => $confighash{'ruler_font_size'}, 
+				height => $confighash{'ruler_font_size'}, 
+				"font-family"=>$confighash{'plot_font_family'}, 
+				"text-anchor"=>"end",
+				"font-size"=>$confighash{'ruler_font_size'}, 
+				"-cdata" => $confighash{'synteny_chrom_bottom_label'});
 
 ### y - axis
 my $scale_y_top=$confighash{'plot_margin_top'}+$confighash{'synteny_chrom_height'}+$confighash{'plot_track_space'};
@@ -323,17 +363,6 @@ for (my $tick_ind_num=1; $tick_ind_num<=$total_scales; $tick_ind_num++) {
 }
 
 ### draw expression
-###[expression]
-#	'exprs_color_array' => [[-1000, -4, 'blue', 'blue'], [-4, 4, 'grey', 'grey'], [4, 1000, 'red', 'red']];
-#	'exprs_up_line_size' => 0.1,
-#	'exprs_up_marker_size' => 0.2,
-#	'exprs_down_line_size' => 0.1,
-#	'exprs_down_marker_size' => 0.2,
-#	'synteny_chrom_length' => 371759578, 
-#);
-#$confighash{'exprs_color_array'}
-#$chrom_x_start
-#$chrom_x_end
 my @posarr=sort {$a<=>$b} keys %pos2exp;
 my $chrom_length=$posarr[-1];
 if (exists $confighash{'synteny_chrom_length'} and $confighash{'synteny_chrom_length'}=~/^\d+$/ and $confighash{'synteny_chrom_length'}>=$chrom_length) {
@@ -357,7 +386,7 @@ foreach my $indpos (sort {$a<=>$b} @posarr) {
 					last;
 				}
 			}
-			if ($test_color_set==0) {
+			if ($test_color_set==0 and ! exists $usercolor{$indpos} and ! exists $usercolor{$indpos}{$ind_exp_value}) {
 				print STDERR "Warnings: color array not set: POSITION $indpos VALUE $ind_exp_value\n";
 				print STDERR "          use default synteny_chrom_line_color : ", $confighash{'synteny_chrom_line_color'}, "\n";
 				$ind_exprs_line_color=$confighash{'synteny_chrom_line_color'};
@@ -370,10 +399,21 @@ foreach my $indpos (sort {$a<=>$b} @posarr) {
 		}
 		my $ins_exprs_y_end=$exprs_y_start-($ind_exp_value-$xaxis_scale)*$scale_y_height/($tick_up_scale-$tick_down_scale);
 		if ($ind_exp_value>$tick_up_scale) {### control extra high
-			$ins_exprs_y_end=$exprs_y_start-($tick_up_scale-$xaxis_scale)*$scale_y_height/($tick_up_scale-$tick_down_scale)
+			$ins_exprs_y_end=$exprs_y_start-($tick_up_scale-$xaxis_scale)*$scale_y_height/($tick_up_scale-$tick_down_scale);
 		}
 		if ($ind_exp_value<$tick_down_scale) {### control extra low
-			$ins_exprs_y_end=$exprs_y_start-($tick_down_scale-$xaxis_scale)*$scale_y_height/($tick_up_scale-$tick_down_scale)
+			$ins_exprs_y_end=$exprs_y_start-($tick_down_scale-$xaxis_scale)*$scale_y_height/($tick_up_scale-$tick_down_scale);
+		}
+		if (exists $usercolor{$indpos} and exists $usercolor{$indpos}{$ind_exp_value}) {
+			if (exists $usercolor{$indpos}{$ind_exp_value}{'lc'}) {
+				$ind_exprs_line_color=$usercolor{$indpos}{$ind_exp_value}{'lc'};
+			}
+			if (exists $usercolor{$indpos}{$ind_exp_value}{'mc'}) {
+				$ins_exprs_mark_color=$usercolor{$indpos}{$ind_exp_value}{'mc'};
+#				print "Test: marker $ins_exprs_mark_color\n";### For test ###
+			}
+#			print "Test: line: $ind_exprs_line_color marker $ins_exprs_mark_color\n";### For test ###
+			next;
 		}
 
 		if ($ind_exp_value>$xaxis_scale) {
@@ -422,7 +462,100 @@ foreach my $indpos (sort {$a<=>$b} @posarr) {
 		}
 	}
 }
+foreach my $indpos (sort {$a<=>$b} @posarr) {
+	my $ind_exprs_x=$chrom_x_start+($chrom_x_end-$chrom_x_start)*$indpos/$chrom_length;
+	my $ind_exprs_line_color='';
+	my $ins_exprs_mark_color='';
+	foreach my $ind_exp_value (sort {$a<=>$b} keys %{$pos2exp{$indpos}}) {
+		if (exists $confighash{'exprs_color_array'}) {
+			my $test_color_set=0;
+			foreach my $color_array (@{$confighash{'exprs_color_array'}}) {
+				if ($ind_exp_value >= $color_array->[0] and $ind_exp_value <= $color_array->[1]) {
+					$ind_exprs_line_color=$color_array->[2];
+					$ins_exprs_mark_color=$color_array->[3];
+					$test_color_set=1;
+	#				print "POS $indpos EXP ", $ind_exp_value, " Line $ind_exprs_line_color Marker $ins_exprs_mark_color\n" if ($debug);
+					last;
+				}
+			}
+			if ($test_color_set==0) {
+				print STDERR "Warnings: color array not set: POSITION $indpos VALUE $ind_exp_value\n";
+				print STDERR "          use default synteny_chrom_line_color : ", $confighash{'synteny_chrom_line_color'}, "\n";
+				$ind_exprs_line_color=$confighash{'synteny_chrom_line_color'};
+				$ins_exprs_mark_color=$confighash{'synteny_chrom_line_color'};
+			}
+		}
+		else {
+			$ind_exprs_line_color=$confighash{'synteny_chrom_line_color'};
+			$ins_exprs_mark_color=$confighash{'synteny_chrom_line_color'};
+		}
+		my $ins_exprs_y_end=$exprs_y_start-($ind_exp_value-$xaxis_scale)*$scale_y_height/($tick_up_scale-$tick_down_scale);
+		if ($ind_exp_value>$tick_up_scale) {### control extra high
+			$ins_exprs_y_end=$exprs_y_start-($tick_up_scale-$xaxis_scale)*$scale_y_height/($tick_up_scale-$tick_down_scale);
+		}
+		if ($ind_exp_value<$tick_down_scale) {### control extra low
+			$ins_exprs_y_end=$exprs_y_start-($tick_down_scale-$xaxis_scale)*$scale_y_height/($tick_up_scale-$tick_down_scale);
+		}
+		if (exists $usercolor{$indpos} and exists $usercolor{$indpos}{$ind_exp_value}) {
+			if (exists $usercolor{$indpos}{$ind_exp_value}{'lc'}) {
+				$ind_exprs_line_color=$usercolor{$indpos}{$ind_exp_value}{'lc'};
+			}
+			if (exists $usercolor{$indpos}{$ind_exp_value}{'mc'}) {
+				$ins_exprs_mark_color=$usercolor{$indpos}{$ind_exp_value}{'mc'};
+#				print "Test: marker $ins_exprs_mark_color\n";### For test ###
+			}
+#			print "Test: line: $ind_exprs_line_color marker $ins_exprs_mark_color\n";### For test ###
+		}
+		else {
+			next;
+		}
 
+		if ($ind_exp_value>$xaxis_scale) {
+			$vectorout->line (id=> "exprs-line-user-pos$indpos-expr$ind_exp_value",
+					x1 => $ind_exprs_x,
+					y1 => $exprs_y_start,
+					x2 => $ind_exprs_x, 
+					y2 => $ins_exprs_y_end,
+					stroke => $ind_exprs_line_color, 
+					"stroke-width" => $confighash{'exprs_up_line_size'}
+					);
+			$vectorout->circle (id=> "exprs-marker-user-pos$indpos-expr$ind_exp_value",
+					cx => $ind_exprs_x,
+					cy => $ins_exprs_y_end,
+					r => $confighash{'exprs_up_marker_size'},
+					style => {
+						'stroke' => $ins_exprs_mark_color,
+						"stroke-width" => $confighash{'exprs_up_line_size'}/8,
+						'fill' =>$ins_exprs_mark_color,
+						'stroke-opacity' => 1,
+						'fill-opacity' => 1
+						}
+					);
+		}
+		elsif ($ind_exp_value<$xaxis_scale) {
+			$vectorout->line (id=> "exprs-line-user-pos$indpos-expr$ind_exp_value",
+					x1 => $ind_exprs_x,
+					y1 => $exprs_y_start, 
+					x2 => $ind_exprs_x, 
+					y2 => $ins_exprs_y_end, 
+					stroke => $ind_exprs_line_color, 
+					"stroke-width" => $confighash{'exprs_down_line_size'}
+					);
+			$vectorout->circle (id=> "exprs-marker-user-pos$indpos-expr$ind_exp_value",
+					cx => $ind_exprs_x,
+					cy => $ins_exprs_y_end,
+					r => $confighash{'exprs_down_marker_size'},
+					style => {
+						'stroke' => $ins_exprs_mark_color,
+						"stroke-width" => $confighash{'exprs_down_line_size'}/8,
+						'fill' => $ins_exprs_mark_color,
+						'stroke-opacity' => 1,
+						'fill-opacity' => 1
+						}
+					);
+		}
+	}
+}
 
 
 my $finalout = $vectorout->xmlify;
